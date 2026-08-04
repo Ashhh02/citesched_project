@@ -159,12 +159,15 @@ write_password_config
 export PORT="${PORT:-10000}"
 envsubst '${PORT}' < "$NGINX_SOURCE" > "$NGINX_CONFIG"
 
-/app/server \
-  --mode production \
-  --server-id default \
-  --logging normal \
-  --role monolith \
-  --apply-migrations &
+set -- --mode production --server-id default --logging normal --role monolith
+if [ "${SERVERPOD_APPLY_MIGRATIONS:-false}" = "true" ]; then
+  set -- "$@" --apply-migrations
+fi
+if [ "${SERVERPOD_APPLY_REPAIR_MIGRATION:-false}" = "true" ]; then
+  set -- "$@" --apply-repair-migration
+fi
+
+/app/server "$@" &
 
 server_pid=$!
 
