@@ -3,7 +3,7 @@
 # server binary and the Flutter web app from the same Git commit.
 FROM ghcr.io/cirruslabs/flutter:stable AS build
 
-ARG CITESCHED_SERVER_URL=https://citesched.onrender.com/
+ARG CITESCHED_SERVER_URL=https://citesched-project.onrender.com/
 ARG GOOGLE_WEB_CLIENT_ID=787281029476-efu9h96a0libvk8o0ubhsluh7u09fnen.apps.googleusercontent.com
 
 WORKDIR /src
