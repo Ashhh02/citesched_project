@@ -22,7 +22,7 @@ database:
   name: temp
   user: citesched_user
   requireSsl: true
-  maxConnectionCount: 16
+  maxConnectionCount: 5
 
 redis:
   enabled: false
