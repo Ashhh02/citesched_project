@@ -9,6 +9,14 @@ void main() {
     sessionBuilder,
     endpoints,
   ) {
+    group('Dashboard -', () {
+      test('Dashboard stats load with the Section schema', () async {
+        final stats = await endpoints.admin.getDashboardStats(sessionBuilder);
+
+        expect(stats.totalStudents, greaterThanOrEqualTo(0));
+      });
+    });
+
     group('Faculty CRUD -', () {
       test('Create faculty with valid data succeeds', () async {
         var faculty = await endpoints.admin.createFaculty(

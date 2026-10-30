@@ -1144,3 +1144,1612 @@ AUTH DEBUG: UserRole found: admin
 [DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
 2026-10-30 18:13:12.665048Z 1011086266 METHOD         admin.getDashboardStats  user=1, queries=16, duration=633ms
 2026-10-30 18:13:12.882336Z  855142954 METHOD         admin.getAllStudents     user=1, queries=14, duration=846ms
+2026-10-30 18:56:05.724598Z  897653062 WEB            /app/                    user=null, queries=0, duration=366ms
+2026-10-30 18:56:09.676616Z  135484949 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=61.4ms
+2026-10-30 18:56:26.871249Z  356887245 WEB            /app/manifest.json       user=null, queries=0, duration=9.93ms
+2026-10-30 18:56:27.131787Z  863151203 WEB            /app/main.dart.mjs       user=null, queries=0, duration=5.67ms
+2026-10-30 18:56:27.235158Z  466459949 WEB            /app/main.dart.wasm      user=null, queries=0, duration=6.01ms
+2026-10-30 18:56:28.430438Z  650501724 WEB            /app/assets/FontManifest.json user=null, queries=0, duration=12.2ms
+2026-10-30 18:56:28.533724Z  248001373 WEB            /app/assets/fonts/MaterialIcons-Regular.otf user=null, queries=0, duration=13.6ms
+2026-10-30 18:56:28.550544Z  967073523 WEB            /app/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf user=null, queries=0, duration=15.2ms
+2026-10-30 18:56:29.263694Z  164362784 WEB            /app/assets/assets/config.json user=null, queries=0, duration=11.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: All authentication methods failed.
+2026-10-30 18:56:29.989179Z   67194961 METHOD         serverpod_auth_core.status.isSignedIn user=null, queries=0, duration=418ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: All authentication methods failed.
+2026-10-30 18:56:30.038025Z  334249498 METHOD         serverpod_auth_core.status.signOutDevice user=null, queries=0, duration=9.27ms
+2026-10-30 18:56:30.154648Z  702950990 WEB            /app/assets/AssetManifest.bin.json user=null, queries=0, duration=9.16ms
+2026-10-30 18:56:30.196030Z  332775342 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=20.7ms
+2026-10-30 18:56:30.445962Z  961978076 WEB            /app/assets/assets/jmcbackground.jpg user=null, queries=0, duration=20.5ms
+2026-10-30 18:56:30.457557Z  176192042 WEB            /app/assets/assets/jmclogo.png user=null, queries=0, duration=16.7ms
+2026-10-30 18:56:39.899786Z 1027584270 LOG            DEBUG                    message=authenticate admin.user@jmc.edu.ph / XXXXXXXX
+2026-10-30 18:56:40.301883Z 1027584270 LOG            DEBUG                    message= - found entry 
+2026-10-30 18:56:40.587141Z 1027584270 LOG            DEBUG                    message= - password is correct, userId: 1)
+2026-10-30 18:56:40.681405Z 1027584270 LOG            DEBUG                    message= - user found
+2026-10-30 18:56:40.758051Z 1027584270 LOG            DEBUG                    message= - user signed in
+2026-10-30 18:56:40.891256Z 1027584270 METHOD         customAuth.loginWithId   user=1, queries=7, duration=1.1s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:42.623742Z  222558252 METHOD         debug.getSessionInfo     user=1, queries=3, duration=97ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:42.741680Z  907598564 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=66.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:43.204279Z     705010 METHOD         admin.getAllFaculty      user=1, queries=2, duration=627ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:56:43.992492Z  493815194 QUERY          n/a                      id=null, duration=109ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:56:43.999613Z  493815194 METHOD         admin.getDashboardStats  user=1, queries=16, duration=1.42s
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:44.119370Z  449052575 QUERY          n/a                      id=null, duration=1.19s, query=      SELECT column_name
+      FROM information_schema.columns
+      WHERE table_schema = 'public'
+        AND table_name = 'student'
+        AND column_name IN ('sectionId', 'academicStatus')
+      
+2026-10-30 18:56:44.120443Z  449052575 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=1.32s
+2026-10-30 18:56:44.433926Z   81093131 QUERY          n/a                      id=null, duration=16.1ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:56:44.437886Z   81093131 METHOD         admin.getAllStudents     user=1, queries=3, duration=1.85s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:56:45.065440Z  886415627 QUERY          n/a                      id=null, duration=18.3ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:56:45.073389Z  886415627 METHOD         admin.getDashboardStats  user=1, queries=16, duration=617ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:45.614515Z  347627690 QUERY          n/a                      id=null, duration=39ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:56:45.620003Z  347627690 METHOD         admin.getAllStudents     user=1, queries=3, duration=530ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:56:46.540183Z  694479757 QUERY          n/a                      id=null, duration=10.5ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:56:46.541781Z  694479757 METHOD         admin.getDashboardStats  user=1, queries=16, duration=765ms
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:46.784112Z  269272408 QUERY          n/a                      id=null, duration=15.9ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:56:46.790162Z  269272408 METHOD         admin.getAllStudents     user=1, queries=3, duration=402ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:47.925918Z  574067365 QUERY          n/a                      id=null, duration=11.6ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:56:47.933313Z  574067365 METHOD         admin.getAllStudents     user=1, queries=3, duration=144ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:56:48.281698Z  835732574 QUERY          n/a                      id=null, duration=13.3ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:56:48.296630Z  835732574 METHOD         admin.getDashboardStats  user=1, queries=16, duration=520ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:49.784411Z  979762646 QUERY          n/a                      id=null, duration=13.8ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:56:49.787405Z  979762646 METHOD         admin.getAllStudents     user=1, queries=3, duration=94.7ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:56:50.357782Z  943049661 QUERY          n/a                      id=null, duration=7.83ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:56:50.362614Z  943049661 METHOD         admin.getDashboardStats  user=1, queries=16, duration=262ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:53.158036Z  913450844 QUERY          n/a                      id=null, duration=2.78ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:56:53.160202Z  913450844 METHOD         admin.getAllStudents     user=1, queries=3, duration=36.4ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:56:54.224755Z  818380721 QUERY          n/a                      id=null, duration=13.4ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:56:54.228307Z  818380721 METHOD         admin.getDashboardStats  user=1, queries=16, duration=516ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:56:59.859069Z   54027905 QUERY          n/a                      id=null, duration=22.7ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:56:59.866058Z   54027905 METHOD         admin.getAllStudents     user=1, queries=3, duration=144ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:57:01.351779Z   40364058 QUERY          n/a                      id=null, duration=19.4ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:57:01.359652Z   40364058 METHOD         admin.getDashboardStats  user=1, queries=16, duration=464ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:57:06.584757Z   51301437 QUERY          n/a                      id=null, duration=6.72ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:57:06.586633Z   51301437 METHOD         admin.getAllStudents     user=1, queries=3, duration=80.7ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:57:08.438233Z  316440228 QUERY          n/a                      id=null, duration=7.27ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:57:08.439824Z  316440228 METHOD         admin.getDashboardStats  user=1, queries=16, duration=454ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:57:13.332975Z  242361471 QUERY          n/a                      id=null, duration=18.5ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:57:13.336021Z  242361471 METHOD         admin.getAllStudents     user=1, queries=3, duration=162ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:57:15.359538Z  297031258 QUERY          n/a                      id=null, duration=21.4ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:57:15.365246Z  297031258 METHOD         admin.getDashboardStats  user=1, queries=16, duration=390ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:57:20.328796Z  793351553 QUERY          n/a                      id=null, duration=16.4ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:57:20.338100Z  793351553 METHOD         admin.getAllStudents     user=1, queries=3, duration=288ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:57:22.346861Z  876590384 QUERY          n/a                      id=null, duration=11.2ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:57:22.349859Z  876590384 METHOD         admin.getDashboardStats  user=1, queries=16, duration=274ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:57:27.208322Z  797928976 QUERY          n/a                      id=null, duration=8.01ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:57:27.236346Z  797928976 METHOD         admin.getAllStudents     user=1, queries=3, duration=120ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:57:29.851893Z  829244384 QUERY          n/a                      id=null, duration=7.24ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:57:29.873718Z  829244384 METHOD         admin.getDashboardStats  user=1, queries=16, duration=505ms
+2026-10-30 18:57:35.008054Z  104640069 WEB            /app/                    user=null, queries=0, duration=129ms
+2026-10-30 18:57:35.230983Z  191834970 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=10.5ms
+2026-10-30 18:57:35.720992Z  816463201 WEB            /app/manifest.json       user=null, queries=0, duration=1.97ms
+2026-10-30 18:57:35.798482Z   60434555 WEB            /app/favicon.png         user=null, queries=0, duration=14.8ms
+2026-10-30 18:57:35.803402Z  265819009 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=2.9ms
+2026-10-30 18:57:36.018691Z  536471345 WEB            /app/main.dart.js        user=null, queries=0, duration=20.9ms
+2026-10-30 18:57:36.021253Z  138221375 WEB            /app/main.dart.wasm      user=null, queries=0, duration=12.6ms
+2026-10-30 18:57:36.022249Z   65219682 WEB            /app/main.dart.mjs       user=null, queries=0, duration=5.58ms
+2026-10-30 18:57:36.094476Z  405358646 WEB            /app/index.html          user=null, queries=0, duration=4ms
+2026-10-30 18:57:36.152281Z   67313654 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=2.02ms
+2026-10-30 18:57:36.203140Z  474218479 WEB            /app/assets/AssetManifest.bin.json user=null, queries=0, duration=9.69ms
+2026-10-30 18:57:36.246418Z  792339476 WEB            /app/assets/FontManifest.json user=null, queries=0, duration=2.51ms
+2026-10-30 18:57:36.373097Z  969498059 WEB            /app/icons/Icon-192.png  user=null, queries=0, duration=553ms
+2026-10-30 18:57:38.117707Z  556664942 WEB            /app/assets/fonts/MaterialIcons-Regular.otf user=null, queries=0, duration=11.2ms
+2026-10-30 18:57:38.118702Z  454938194 WEB            /app/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf user=null, queries=0, duration=7.24ms
+2026-10-30 18:57:38.357539Z  222966856 WEB            /app/assets/assets/config.json user=null, queries=0, duration=1ms
+2026-10-30 18:57:39.488224Z   36091651 WEB            /app/assets/assets/jmcbackground.jpg user=null, queries=0, duration=4.49ms
+2026-10-30 18:57:39.489249Z  263366649 WEB            /app/assets/assets/jmclogo.png user=null, queries=0, duration=3.54ms
+2026-10-30 18:57:41.344873Z  391438389 WEB            /.well-known/appspecific/com.chrome.devtools.json user=null, queries=0, duration=5.05ms
+2026-10-30 18:57:41.740435Z  160507688 WEB            /app/manifest.json       user=null, queries=0, duration=22.7ms
+2026-10-30 18:57:42.133086Z  623057262 WEB            /app/flutter.js.map      user=null, queries=0, duration=1.01ms
+2026-10-30 18:57:42.356248Z  927347796 WEB            /app/icons/Icon-512.png  user=null, queries=0, duration=227ms
+2026-10-30 18:58:05.503377Z  348510944 WEB            /app/                    user=null, queries=0, duration=13.9ms
+2026-10-30 18:58:05.528177Z  626942851 WEB            /app/                    user=null, queries=0, duration=2.67ms
+2026-10-30 18:58:05.649839Z  336929200 WEB            /app/icons/Icon-192.png  user=null, queries=0, duration=4.65ms
+2026-10-30 18:58:05.706522Z  329830087 WEB            /app/icons/Icon-maskable-192.png user=null, queries=0, duration=66.4ms
+2026-10-30 18:58:05.722893Z  612543908 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=9.39ms
+2026-10-30 18:58:05.859550Z  654596054 WEB            /app/manifest.json       user=null, queries=0, duration=11.9ms
+2026-10-30 18:58:05.877607Z  449754119 WEB            /app/favicon.png         user=null, queries=0, duration=7.07ms
+2026-10-30 18:58:05.971672Z  695973588 WEB            /.well-known/appspecific/com.chrome.devtools.json user=null, queries=0, duration=4.11ms
+2026-10-30 18:58:05.973272Z  970280705 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=26ms
+2026-10-30 18:58:06.015230Z   49455087 WEB            /app/flutter.js.map      user=null, queries=0, duration=22.4ms
+2026-10-30 18:58:06.018843Z  428604823 WEB            /app/icons/Icon-512.png  user=null, queries=0, duration=14ms
+2026-10-30 18:58:06.109919Z  848336315 WEB            /app/icons/Icon-maskable-512.png user=null, queries=0, duration=115ms
+2026-10-30 18:58:06.188745Z  967382146 WEB            /app/main.dart.js        user=null, queries=0, duration=17.4ms
+2026-10-30 18:58:06.192291Z  426306612 WEB            /app/main.dart.wasm      user=null, queries=0, duration=16.6ms
+2026-10-30 18:58:06.197912Z  951710447 WEB            /app/main.dart.mjs       user=null, queries=0, duration=17.4ms
+2026-10-30 18:58:06.324351Z  194182054 WEB            /app/index.html          user=null, queries=0, duration=6.48ms
+2026-10-30 18:58:06.425505Z  421192572 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=1.74ms
+2026-10-30 18:58:06.537735Z  545211805 WEB            /app/assets/AssetManifest.bin.json user=null, queries=0, duration=11.5ms
+2026-10-30 18:58:06.630035Z  107945022 WEB            /app/assets/FontManifest.json user=null, queries=0, duration=2.69ms
+2026-10-30 18:58:08.152766Z  552888216 WEB            /app/assets/fonts/MaterialIcons-Regular.otf user=null, queries=0, duration=4.99ms
+2026-10-30 18:58:08.154779Z  557937845 WEB            /app/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf user=null, queries=0, duration=5.73ms
+2026-10-30 18:58:08.215687Z  107167806 WEB            /app/assets/assets/config.json user=null, queries=0, duration=1.01ms
+2026-10-30 18:58:08.495223Z  655235780 WEB            /.well-known/appspecific/com.chrome.devtools.json user=null, queries=0, duration=1.03ms
+2026-10-30 18:58:08.567366Z  404716206 WEB            /app/assets/assets/jmcbackground.jpg user=null, queries=0, duration=2.03ms
+2026-10-30 18:58:08.571560Z  436368314 WEB            /app/assets/assets/jmclogo.png user=null, queries=0, duration=2.02ms
+2026-10-30 18:58:15.083759Z  716193170 WEB            /app/manifest.json       user=null, queries=0, duration=4.74ms
+2026-10-30 18:58:15.132532Z  170550326 WEB            /.well-known/appspecific/com.chrome.devtools.json user=null, queries=0, duration=1.63ms
+2026-10-30 18:58:15.583165Z  655630374 WEB            /app/flutter.js.map      user=null, queries=0, duration=2ms
+2026-10-30 18:58:23.223389Z  171050849 LOG            DEBUG                    message=authenticate admin.user@jmc.edu.ph / XXXXXXXX
+2026-10-30 18:58:23.543868Z  171050849 LOG            DEBUG                    message= - found entry 
+2026-10-30 18:58:24.363480Z  171050849 LOG            DEBUG                    message= - password is correct, userId: 1)
+2026-10-30 18:58:24.435947Z  171050849 LOG            DEBUG                    message= - user found
+2026-10-30 18:58:24.473042Z  171050849 LOG            DEBUG                    message= - user signed in
+2026-10-30 18:58:24.534208Z  171050849 METHOD         customAuth.loginWithId   user=1, queries=7, duration=1.4s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+2026-10-30 18:58:24.865329Z  435724328 METHOD         debug.getSessionInfo     user=1, queries=3, duration=96.8ms
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+2026-10-30 18:58:24.903396Z  432988057 METHOD         admin.getAllFaculty      user=1, queries=2, duration=78.3ms
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:25.004840Z 1071026156 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=53.7ms
+2026-10-30 18:58:25.029292Z  716497592 QUERY          n/a                      id=null, duration=15ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:25.031672Z  716497592 METHOD         admin.getAllStudents     user=1, queries=3, duration=200ms
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:25.301739Z 1054332645 QUERY          n/a                      id=null, duration=10.2ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:25.304877Z 1054332645 METHOD         admin.getDashboardStats  user=1, queries=16, duration=480ms
+2026-10-30 18:58:25.378030Z  437743451 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=237ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:25.560045Z 1045866808 QUERY          n/a                      id=null, duration=15.8ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:25.563132Z 1045866808 METHOD         admin.getAllStudents     user=1, queries=3, duration=103ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:26.053623Z  525567645 QUERY          n/a                      id=null, duration=11.8ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:26.057213Z  525567645 METHOD         admin.getDashboardStats  user=1, queries=16, duration=426ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:26.255578Z  229292225 QUERY          n/a                      id=null, duration=13.5ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:26.261947Z  229292225 METHOD         admin.getAllStudents     user=1, queries=3, duration=149ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:26.926422Z  155325867 QUERY          n/a                      id=null, duration=9.95ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:26.929849Z  155325867 METHOD         admin.getDashboardStats  user=1, queries=16, duration=331ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:27.238976Z  830059987 QUERY          n/a                      id=null, duration=10.9ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:27.241173Z  830059987 METHOD         admin.getAllStudents     user=1, queries=3, duration=53.6ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:28.135440Z  140540943 QUERY          n/a                      id=null, duration=9.05ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:28.137950Z  140540943 METHOD         admin.getDashboardStats  user=1, queries=16, duration=273ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:29.406573Z 1048878709 QUERY          n/a                      id=null, duration=1.15ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:29.407229Z 1048878709 METHOD         admin.getAllStudents     user=1, queries=3, duration=25.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:30.473858Z  658848492 QUERY          n/a                      id=null, duration=1.71ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:30.474936Z  658848492 METHOD         admin.getDashboardStats  user=1, queries=16, duration=96.4ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:33.402382Z  173211610 QUERY          n/a                      id=null, duration=7.3ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:33.402951Z  173211610 METHOD         admin.getAllStudents     user=1, queries=3, duration=30.1ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:34.476782Z  952503064 QUERY          n/a                      id=null, duration=1.81ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:34.477505Z  952503064 METHOD         admin.getDashboardStats  user=1, queries=16, duration=102ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:40.405014Z  562258972 QUERY          n/a                      id=null, duration=1.1ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:40.406137Z  562258972 METHOD         admin.getAllStudents     user=1, queries=3, duration=28.7ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:41.438436Z  328249383 QUERY          n/a                      id=null, duration=1.66ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:41.439459Z  328249383 METHOD         admin.getDashboardStats  user=1, queries=16, duration=65.8ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:47.039178Z  258508982 QUERY          n/a                      id=null, duration=10.9ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:47.042677Z  258508982 METHOD         admin.getAllStudents     user=1, queries=3, duration=149ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:48.262530Z  253440020 QUERY          n/a                      id=null, duration=5.84ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:48.265540Z  253440020 METHOD         admin.getDashboardStats  user=1, queries=16, duration=371ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:58:53.822867Z  484783825 QUERY          n/a                      id=null, duration=22.2ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:58:53.827171Z  484783825 METHOD         admin.getAllStudents     user=1, queries=3, duration=147ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:58:55.047695Z  933953673 QUERY          n/a                      id=null, duration=9.18ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:58:55.049744Z  933953673 METHOD         admin.getDashboardStats  user=1, queries=16, duration=282ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:00.552355Z  795694400 QUERY          n/a                      id=null, duration=13.5ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:59:00.555713Z  795694400 METHOD         admin.getAllStudents     user=1, queries=3, duration=128ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:59:02.441009Z 1059736119 QUERY          n/a                      id=null, duration=1.6ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:02.442080Z 1059736119 METHOD         admin.getDashboardStats  user=1, queries=16, duration=63.6ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:07.402844Z   64210164 QUERY          n/a                      id=null, duration=2.19ms, query=SELECT "student"."id" AS "student.id", "student"."name" AS "student.name", "student"."email" AS "student.email", "student"."studentNumber" AS "student.studentNumber", "student"."course" AS "student.course", "student"."yearLevel" AS "student.yearLevel", "student"."section" AS "student.section", "student"."sectionId" AS "student.sectionId", "student"."userInfoId" AS "student.userInfoId", "student"."academicStatus" AS "student.academicStatus", "student"."isActive" AS "student.isActive", "student"."createdAt" AS "student.createdAt", "student"."updatedAt" AS "student.updatedAt", "student_sectionRef_section"."id" AS "student_sectionRef_section.id", "student_sectionRef_section"."program" AS "student_sectionRef_section.program", "student_sectionRef_section"."yearLevel" AS "student_sectionRef_section.yearLevel", "student_sectionRef_section"."sectionCode" AS "student_sectionRef_section.sectionCode", "student_sectionRef_section"."availabilityJson" AS "student_sectionRef_section.availabilityJson", "student_sectionRef_section"."academicYear" AS "student_sectionRef_section.academicYear", "student_sectionRef_section"."semester" AS "student_sectionRef_section.semester", "student_sectionRef_section"."isActive" AS "student_sectionRef_section.isActive", "student_sectionRef_section"."createdAt" AS "student_sectionRef_section.createdAt", "student_sectionRef_section"."updatedAt" AS "student_sectionRef_section.updatedAt" FROM "student" LEFT JOIN "section" AS "student_sectionRef_section" ON "student"."sectionId" = "student_sectionRef_section"."id" WHERE "student"."isActive" = true
+2026-10-30 18:59:07.404540Z   64210164 METHOD         admin.getAllStudents     user=1, queries=3, duration=22.1ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[ERROR] getDashboardStats failed: DatabaseQueryException: { message: column section.availabilityJson does not exist, code: 42703, position: 178 }
+[ERROR] Stack trace: 
+#0      _PgSessionBase._prepare (package:postgres/src/v3/connection.dart:199:35)
+#1      _PgSessionBase.execute (package:postgres/src/v3/connection.dart:183:30)
+#2      _PoolConnection.execute (package:postgres/src/pool/pool_impl.dart:309:24)
+#3      PoolImplementation.execute.<anonymous closure> (package:postgres/src/pool/pool_impl.dart:64:34)
+#4      PoolImplementation.withConnection (package:postgres/src/pool/pool_impl.dart:153:24)
+<asynchronous suspension>
+#5      PostgresDatabaseConnection._query (package:serverpod/src/database/adapters/postgres/database_connection.dart:562:20)
+<asynchronous suspension>
+#6      PostgresDatabaseConnection._mappedResultsQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:660:18)
+<asynchronous suspension>
+#7      PostgresDatabaseConnection._deserializedMappedQuery (package:serverpod/src/database/adapters/postgres/database_connection.dart:693:18)
+<asynchronous suspension>
+#8      ConflictService._addSectionAvailabilityConflicts (package:citesched_server/src/services/conflict_service.dart:1251:22)
+<asynchronous suspension>
+#9      ConflictService.getAllConflicts (package:citesched_server/src/services/conflict_service.dart:1381:5)
+<asynchronous suspension>
+#10     AdminEndpoint.getDashboardStats (package:citesched_server/src/endpoints/admin_endpoint.dart:1979:42)
+<asynchronous suspension>
+#11     Server._handleEndpointCall (package:serverpod/src/server/server.dart:509:22)
+<asynchronous suspension>
+#12     Server._endpoints (package:serverpod/src/server/server.dart:376:12)
+<asynchronous suspension>
+#13     Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:207:16)
+<asynchronous suspension>
+#14     Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:351:22)
+<asynchronous suspension>
+#15     _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic_core/src/middleware/routing_middleware.dart:135:18)
+<asynchronous suspension>
+#16     _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic_core/src/relic_server.dart:156:24)
+<asynchronous suspension>
+#17     _RelicServer._handleRequest (package:relic_core/src/relic_server.dart:132:22)
+<asynchronous suspension>
+
+2026-10-30 18:59:09.481526Z  891388155 QUERY          n/a                      id=null, duration=3ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:09.482198Z  891388155 METHOD         admin.getDashboardStats  user=1, queries=16, duration=102ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:30.722360Z  909260762 METHOD         admin.getAllFaculty      user=1, queries=5, duration=261ms
+2026-10-30 18:59:30.869676Z  810111668 QUERY          n/a                      id=null, duration=25.9ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:30.872190Z  810111668 METHOD         admin.getAllConflicts    user=1, queries=8, duration=397ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:31.337688Z   98111930 QUERY          n/a                      id=null, duration=11ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:31.339303Z   98111930 METHOD         admin.getAllConflicts    user=1, queries=8, duration=166ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:32.011048Z  641139896 QUERY          n/a                      id=null, duration=2.19ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:32.012098Z  641139896 METHOD         admin.getAllConflicts    user=1, queries=8, duration=75ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:33.018724Z  983124805 QUERY          n/a                      id=null, duration=2.92ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:33.020899Z  983124805 METHOD         admin.getAllConflicts    user=1, queries=8, duration=128ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:34.790547Z  280671251 QUERY          n/a                      id=null, duration=3.47ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:34.793529Z  280671251 METHOD         admin.getAllConflicts    user=1, queries=8, duration=108ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:40.871197Z  635912633 QUERY          n/a                      id=null, duration=48.8ms, query=SELECT "schedule"."id" AS "schedule.id", "schedule"."subjectId" AS "schedule.subjectId", "schedule"."facultyId" AS "schedule.facultyId", "schedule"."roomId" AS "schedule.roomId", "schedule"."timeslotId" AS "schedule.timeslotId", "schedule"."section" AS "schedule.section", "schedule"."sectionId" AS "schedule.sectionId", "schedule"."loadTypes" AS "schedule.loadTypes", "schedule"."units" AS "schedule.units", "schedule"."hours" AS "schedule.hours", "schedule"."isActive" AS "schedule.isActive", "schedule"."createdAt" AS "schedule.createdAt", "schedule"."updatedAt" AS "schedule.updatedAt", "schedule_subject_subject"."id" AS "schedule_subject_subject.id", "schedule_subject_subject"."code" AS "schedule_subject_subject.code", "schedule_subject_subject"."name" AS "schedule_subject_subject.name", "schedule_subject_subject"."units" AS "schedule_subject_subject.units", "schedule_subject_subject"."hours" AS "schedule_subject_subject.hours", "schedule_subject_subject"."yearLevel" AS "schedule_subject_subject.yearLevel", "schedule_subject_subject"."term" AS "schedule_subject_subject.term", "schedule_subject_subject"."facultyId" AS "schedule_subject_subject.facultyId", "schedule_subject_subject"."types" AS "schedule_subject_subject.types", "schedule_subject_subject"."program" AS "schedule_subject_subject.program", "schedule_subject_subject"."studentsCount" AS "schedule_subject_subject.studentsCount", "schedule_subject_subject"."isActive" AS "schedule_subject_subject.isActive", "schedule_subject_subject"."createdAt" AS "schedule_subject_subject.createdAt", "schedule_subject_subject"."updatedAt" AS "schedule_subject_subject.updatedAt", "schedule_faculty_faculty"."id" AS "schedule_faculty_faculty.id", "schedule_faculty_faculty"."name" AS "schedule_faculty_faculty.name", "schedule_faculty_faculty"."email" AS "schedule_faculty_faculty.email", "schedule_faculty_faculty"."maxLoad" AS "schedule_faculty_faculty.maxLoad", "schedule_faculty_faculty"."employmentStatus" AS "schedule_faculty_faculty.employmentStatus", "schedule_faculty_faculty"."shiftPreference" AS "schedule_faculty_faculty.shiftPreference", "schedule_faculty_faculty"."preferredHours" AS "schedule_faculty_faculty.preferredHours", "schedule_faculty_faculty"."facultyId" AS "schedule_faculty_faculty.facultyId", "schedule_faculty_faculty"."userInfoId" AS "schedule_faculty_faculty.userInfoId", "schedule_faculty_faculty"."program" AS "schedule_faculty_faculty.program", "schedule_faculty_faculty"."isActive" AS "schedule_faculty_faculty.isActive", "schedule_faculty_faculty"."currentLoad" AS "schedule_faculty_faculty.currentLoad", "schedule_faculty_faculty"."createdAt" AS "schedule_faculty_faculty.createdAt", "schedule_faculty_faculty"."updatedAt" AS "schedule_faculty_faculty.updatedAt", "schedule_room_room"."id" AS "schedule_room_room.id", "schedule_room_room"."name" AS "schedule_room_room.name", "schedule_room_room"."capacity" AS "schedule_room_room.capacity", "schedule_room_room"."type" AS "schedule_room_room.type", "schedule_room_room"."program" AS "schedule_room_room.program", "schedule_room_room"."isActive" AS "schedule_room_room.isActive", "schedule_room_room"."createdAt" AS "schedule_room_room.createdAt", "schedule_room_room"."updatedAt" AS "schedule_room_room.updatedAt", "schedule_timeslot_timeslot"."id" AS "schedule_timeslot_timeslot.id", "schedule_timeslot_timeslot"."day" AS "schedule_timeslot_timeslot.day", "schedule_timeslot_timeslot"."startTime" AS "schedule_timeslot_timeslot.startTime", "schedule_timeslot_timeslot"."endTime" AS "schedule_timeslot_timeslot.endTime", "schedule_timeslot_timeslot"."label" AS "schedule_timeslot_timeslot.label", "schedule_timeslot_timeslot"."createdAt" AS "schedule_timeslot_timeslot.createdAt", "schedule_timeslot_timeslot"."updatedAt" AS "schedule_timeslot_timeslot.updatedAt", "schedule_sectionRef_section"."id" AS "schedule_sectionRef_section.id", "schedule_sectionRef_section"."program" AS "schedule_sectionRef_section.program", "schedule_sectionRef_section"."yearLevel" AS "schedule_sectionRef_section.yearLevel", "schedule_sectionRef_section"."sectionCode" AS "schedule_sectionRef_section.sectionCode", "schedule_sectionRef_section"."availabilityJson" AS "schedule_sectionRef_section.availabilityJson", "schedule_sectionRef_section"."academicYear" AS "schedule_sectionRef_section.academicYear", "schedule_sectionRef_section"."semester" AS "schedule_sectionRef_section.semester", "schedule_sectionRef_section"."isActive" AS "schedule_sectionRef_section.isActive", "schedule_sectionRef_section"."createdAt" AS "schedule_sectionRef_section.createdAt", "schedule_sectionRef_section"."updatedAt" AS "schedule_sectionRef_section.updatedAt" FROM "schedule" LEFT JOIN "subject" AS "schedule_subject_subject" ON "schedule"."subjectId" = "schedule_subject_subject"."id" LEFT JOIN "faculty" AS "schedule_faculty_faculty" ON "schedule"."facultyId" = "schedule_faculty_faculty"."id" LEFT JOIN "room" AS "schedule_room_room" ON "schedule"."roomId" = "schedule_room_room"."id" LEFT JOIN "timeslot" AS "schedule_timeslot_timeslot" ON "schedule"."timeslotId" = "schedule_timeslot_timeslot"."id" LEFT JOIN "section" AS "schedule_sectionRef_section" ON "schedule"."sectionId" = "schedule_sectionRef_section"."id" WHERE TRUE
+2026-10-30 18:59:40.874238Z  635912633 METHOD         admin.getAllSchedules    user=1, queries=2, duration=312ms
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:41.105474Z  875886243 METHOD         admin.getAllSubjects     user=1, queries=2, duration=526ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:41.237466Z   33320104 METHOD         admin.getAllRooms        user=1, queries=2, duration=639ms
+2026-10-30 18:59:41.316441Z  955163769 METHOD         admin.getAllTimeslots    user=1, queries=2, duration=708ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:41.843576Z  144236331 QUERY          n/a                      id=null, duration=54.4ms, query=SELECT "schedule"."id" AS "schedule.id", "schedule"."subjectId" AS "schedule.subjectId", "schedule"."facultyId" AS "schedule.facultyId", "schedule"."roomId" AS "schedule.roomId", "schedule"."timeslotId" AS "schedule.timeslotId", "schedule"."section" AS "schedule.section", "schedule"."sectionId" AS "schedule.sectionId", "schedule"."loadTypes" AS "schedule.loadTypes", "schedule"."units" AS "schedule.units", "schedule"."hours" AS "schedule.hours", "schedule"."isActive" AS "schedule.isActive", "schedule"."createdAt" AS "schedule.createdAt", "schedule"."updatedAt" AS "schedule.updatedAt", "schedule_subject_subject"."id" AS "schedule_subject_subject.id", "schedule_subject_subject"."code" AS "schedule_subject_subject.code", "schedule_subject_subject"."name" AS "schedule_subject_subject.name", "schedule_subject_subject"."units" AS "schedule_subject_subject.units", "schedule_subject_subject"."hours" AS "schedule_subject_subject.hours", "schedule_subject_subject"."yearLevel" AS "schedule_subject_subject.yearLevel", "schedule_subject_subject"."term" AS "schedule_subject_subject.term", "schedule_subject_subject"."facultyId" AS "schedule_subject_subject.facultyId", "schedule_subject_subject"."types" AS "schedule_subject_subject.types", "schedule_subject_subject"."program" AS "schedule_subject_subject.program", "schedule_subject_subject"."studentsCount" AS "schedule_subject_subject.studentsCount", "schedule_subject_subject"."isActive" AS "schedule_subject_subject.isActive", "schedule_subject_subject"."createdAt" AS "schedule_subject_subject.createdAt", "schedule_subject_subject"."updatedAt" AS "schedule_subject_subject.updatedAt", "schedule_faculty_faculty"."id" AS "schedule_faculty_faculty.id", "schedule_faculty_faculty"."name" AS "schedule_faculty_faculty.name", "schedule_faculty_faculty"."email" AS "schedule_faculty_faculty.email", "schedule_faculty_faculty"."maxLoad" AS "schedule_faculty_faculty.maxLoad", "schedule_faculty_faculty"."employmentStatus" AS "schedule_faculty_faculty.employmentStatus", "schedule_faculty_faculty"."shiftPreference" AS "schedule_faculty_faculty.shiftPreference", "schedule_faculty_faculty"."preferredHours" AS "schedule_faculty_faculty.preferredHours", "schedule_faculty_faculty"."facultyId" AS "schedule_faculty_faculty.facultyId", "schedule_faculty_faculty"."userInfoId" AS "schedule_faculty_faculty.userInfoId", "schedule_faculty_faculty"."program" AS "schedule_faculty_faculty.program", "schedule_faculty_faculty"."isActive" AS "schedule_faculty_faculty.isActive", "schedule_faculty_faculty"."currentLoad" AS "schedule_faculty_faculty.currentLoad", "schedule_faculty_faculty"."createdAt" AS "schedule_faculty_faculty.createdAt", "schedule_faculty_faculty"."updatedAt" AS "schedule_faculty_faculty.updatedAt", "schedule_room_room"."id" AS "schedule_room_room.id", "schedule_room_room"."name" AS "schedule_room_room.name", "schedule_room_room"."capacity" AS "schedule_room_room.capacity", "schedule_room_room"."type" AS "schedule_room_room.type", "schedule_room_room"."program" AS "schedule_room_room.program", "schedule_room_room"."isActive" AS "schedule_room_room.isActive", "schedule_room_room"."createdAt" AS "schedule_room_room.createdAt", "schedule_room_room"."updatedAt" AS "schedule_room_room.updatedAt", "schedule_timeslot_timeslot"."id" AS "schedule_timeslot_timeslot.id", "schedule_timeslot_timeslot"."day" AS "schedule_timeslot_timeslot.day", "schedule_timeslot_timeslot"."startTime" AS "schedule_timeslot_timeslot.startTime", "schedule_timeslot_timeslot"."endTime" AS "schedule_timeslot_timeslot.endTime", "schedule_timeslot_timeslot"."label" AS "schedule_timeslot_timeslot.label", "schedule_timeslot_timeslot"."createdAt" AS "schedule_timeslot_timeslot.createdAt", "schedule_timeslot_timeslot"."updatedAt" AS "schedule_timeslot_timeslot.updatedAt", "schedule_sectionRef_section"."id" AS "schedule_sectionRef_section.id", "schedule_sectionRef_section"."program" AS "schedule_sectionRef_section.program", "schedule_sectionRef_section"."yearLevel" AS "schedule_sectionRef_section.yearLevel", "schedule_sectionRef_section"."sectionCode" AS "schedule_sectionRef_section.sectionCode", "schedule_sectionRef_section"."availabilityJson" AS "schedule_sectionRef_section.availabilityJson", "schedule_sectionRef_section"."academicYear" AS "schedule_sectionRef_section.academicYear", "schedule_sectionRef_section"."semester" AS "schedule_sectionRef_section.semester", "schedule_sectionRef_section"."isActive" AS "schedule_sectionRef_section.isActive", "schedule_sectionRef_section"."createdAt" AS "schedule_sectionRef_section.createdAt", "schedule_sectionRef_section"."updatedAt" AS "schedule_sectionRef_section.updatedAt" FROM "schedule" LEFT JOIN "subject" AS "schedule_subject_subject" ON "schedule"."subjectId" = "schedule_subject_subject"."id" LEFT JOIN "faculty" AS "schedule_faculty_faculty" ON "schedule"."facultyId" = "schedule_faculty_faculty"."id" LEFT JOIN "room" AS "schedule_room_room" ON "schedule"."roomId" = "schedule_room_room"."id" LEFT JOIN "timeslot" AS "schedule_timeslot_timeslot" ON "schedule"."timeslotId" = "schedule_timeslot_timeslot"."id" LEFT JOIN "section" AS "schedule_sectionRef_section" ON "schedule"."sectionId" = "schedule_sectionRef_section"."id" WHERE TRUE
+2026-10-30 18:59:41.849396Z  144236331 METHOD         admin.getAllSchedules    user=1, queries=2, duration=171ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:43.514382Z  948831189 QUERY          n/a                      id=null, duration=42.4ms, query=SELECT "schedule"."id" AS "schedule.id", "schedule"."subjectId" AS "schedule.subjectId", "schedule"."facultyId" AS "schedule.facultyId", "schedule"."roomId" AS "schedule.roomId", "schedule"."timeslotId" AS "schedule.timeslotId", "schedule"."section" AS "schedule.section", "schedule"."sectionId" AS "schedule.sectionId", "schedule"."loadTypes" AS "schedule.loadTypes", "schedule"."units" AS "schedule.units", "schedule"."hours" AS "schedule.hours", "schedule"."isActive" AS "schedule.isActive", "schedule"."createdAt" AS "schedule.createdAt", "schedule"."updatedAt" AS "schedule.updatedAt", "schedule_subject_subject"."id" AS "schedule_subject_subject.id", "schedule_subject_subject"."code" AS "schedule_subject_subject.code", "schedule_subject_subject"."name" AS "schedule_subject_subject.name", "schedule_subject_subject"."units" AS "schedule_subject_subject.units", "schedule_subject_subject"."hours" AS "schedule_subject_subject.hours", "schedule_subject_subject"."yearLevel" AS "schedule_subject_subject.yearLevel", "schedule_subject_subject"."term" AS "schedule_subject_subject.term", "schedule_subject_subject"."facultyId" AS "schedule_subject_subject.facultyId", "schedule_subject_subject"."types" AS "schedule_subject_subject.types", "schedule_subject_subject"."program" AS "schedule_subject_subject.program", "schedule_subject_subject"."studentsCount" AS "schedule_subject_subject.studentsCount", "schedule_subject_subject"."isActive" AS "schedule_subject_subject.isActive", "schedule_subject_subject"."createdAt" AS "schedule_subject_subject.createdAt", "schedule_subject_subject"."updatedAt" AS "schedule_subject_subject.updatedAt", "schedule_faculty_faculty"."id" AS "schedule_faculty_faculty.id", "schedule_faculty_faculty"."name" AS "schedule_faculty_faculty.name", "schedule_faculty_faculty"."email" AS "schedule_faculty_faculty.email", "schedule_faculty_faculty"."maxLoad" AS "schedule_faculty_faculty.maxLoad", "schedule_faculty_faculty"."employmentStatus" AS "schedule_faculty_faculty.employmentStatus", "schedule_faculty_faculty"."shiftPreference" AS "schedule_faculty_faculty.shiftPreference", "schedule_faculty_faculty"."preferredHours" AS "schedule_faculty_faculty.preferredHours", "schedule_faculty_faculty"."facultyId" AS "schedule_faculty_faculty.facultyId", "schedule_faculty_faculty"."userInfoId" AS "schedule_faculty_faculty.userInfoId", "schedule_faculty_faculty"."program" AS "schedule_faculty_faculty.program", "schedule_faculty_faculty"."isActive" AS "schedule_faculty_faculty.isActive", "schedule_faculty_faculty"."currentLoad" AS "schedule_faculty_faculty.currentLoad", "schedule_faculty_faculty"."createdAt" AS "schedule_faculty_faculty.createdAt", "schedule_faculty_faculty"."updatedAt" AS "schedule_faculty_faculty.updatedAt", "schedule_room_room"."id" AS "schedule_room_room.id", "schedule_room_room"."name" AS "schedule_room_room.name", "schedule_room_room"."capacity" AS "schedule_room_room.capacity", "schedule_room_room"."type" AS "schedule_room_room.type", "schedule_room_room"."program" AS "schedule_room_room.program", "schedule_room_room"."isActive" AS "schedule_room_room.isActive", "schedule_room_room"."createdAt" AS "schedule_room_room.createdAt", "schedule_room_room"."updatedAt" AS "schedule_room_room.updatedAt", "schedule_timeslot_timeslot"."id" AS "schedule_timeslot_timeslot.id", "schedule_timeslot_timeslot"."day" AS "schedule_timeslot_timeslot.day", "schedule_timeslot_timeslot"."startTime" AS "schedule_timeslot_timeslot.startTime", "schedule_timeslot_timeslot"."endTime" AS "schedule_timeslot_timeslot.endTime", "schedule_timeslot_timeslot"."label" AS "schedule_timeslot_timeslot.label", "schedule_timeslot_timeslot"."createdAt" AS "schedule_timeslot_timeslot.createdAt", "schedule_timeslot_timeslot"."updatedAt" AS "schedule_timeslot_timeslot.updatedAt", "schedule_sectionRef_section"."id" AS "schedule_sectionRef_section.id", "schedule_sectionRef_section"."program" AS "schedule_sectionRef_section.program", "schedule_sectionRef_section"."yearLevel" AS "schedule_sectionRef_section.yearLevel", "schedule_sectionRef_section"."sectionCode" AS "schedule_sectionRef_section.sectionCode", "schedule_sectionRef_section"."availabilityJson" AS "schedule_sectionRef_section.availabilityJson", "schedule_sectionRef_section"."academicYear" AS "schedule_sectionRef_section.academicYear", "schedule_sectionRef_section"."semester" AS "schedule_sectionRef_section.semester", "schedule_sectionRef_section"."isActive" AS "schedule_sectionRef_section.isActive", "schedule_sectionRef_section"."createdAt" AS "schedule_sectionRef_section.createdAt", "schedule_sectionRef_section"."updatedAt" AS "schedule_sectionRef_section.updatedAt" FROM "schedule" LEFT JOIN "subject" AS "schedule_subject_subject" ON "schedule"."subjectId" = "schedule_subject_subject"."id" LEFT JOIN "faculty" AS "schedule_faculty_faculty" ON "schedule"."facultyId" = "schedule_faculty_faculty"."id" LEFT JOIN "room" AS "schedule_room_room" ON "schedule"."roomId" = "schedule_room_room"."id" LEFT JOIN "timeslot" AS "schedule_timeslot_timeslot" ON "schedule"."timeslotId" = "schedule_timeslot_timeslot"."id" LEFT JOIN "section" AS "schedule_sectionRef_section" ON "schedule"."sectionId" = "schedule_sectionRef_section"."id" WHERE TRUE
+2026-10-30 18:59:43.527317Z  948831189 METHOD         admin.getAllSchedules    user=1, queries=2, duration=113ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+2026-10-30 18:59:44.723787Z  994777250 QUERY          n/a                      id=null, duration=28.2ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:44.729984Z  994777250 METHOD         admin.getAllConflicts    user=1, queries=8, duration=604ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:44.796437Z  152513717 QUERY          n/a                      id=null, duration=14.6ms, query=SELECT "schedule"."id" AS "schedule.id", "schedule"."subjectId" AS "schedule.subjectId", "schedule"."facultyId" AS "schedule.facultyId", "schedule"."roomId" AS "schedule.roomId", "schedule"."timeslotId" AS "schedule.timeslotId", "schedule"."section" AS "schedule.section", "schedule"."sectionId" AS "schedule.sectionId", "schedule"."loadTypes" AS "schedule.loadTypes", "schedule"."units" AS "schedule.units", "schedule"."hours" AS "schedule.hours", "schedule"."isActive" AS "schedule.isActive", "schedule"."createdAt" AS "schedule.createdAt", "schedule"."updatedAt" AS "schedule.updatedAt", "schedule_subject_subject"."id" AS "schedule_subject_subject.id", "schedule_subject_subject"."code" AS "schedule_subject_subject.code", "schedule_subject_subject"."name" AS "schedule_subject_subject.name", "schedule_subject_subject"."units" AS "schedule_subject_subject.units", "schedule_subject_subject"."hours" AS "schedule_subject_subject.hours", "schedule_subject_subject"."yearLevel" AS "schedule_subject_subject.yearLevel", "schedule_subject_subject"."term" AS "schedule_subject_subject.term", "schedule_subject_subject"."facultyId" AS "schedule_subject_subject.facultyId", "schedule_subject_subject"."types" AS "schedule_subject_subject.types", "schedule_subject_subject"."program" AS "schedule_subject_subject.program", "schedule_subject_subject"."studentsCount" AS "schedule_subject_subject.studentsCount", "schedule_subject_subject"."isActive" AS "schedule_subject_subject.isActive", "schedule_subject_subject"."createdAt" AS "schedule_subject_subject.createdAt", "schedule_subject_subject"."updatedAt" AS "schedule_subject_subject.updatedAt", "schedule_faculty_faculty"."id" AS "schedule_faculty_faculty.id", "schedule_faculty_faculty"."name" AS "schedule_faculty_faculty.name", "schedule_faculty_faculty"."email" AS "schedule_faculty_faculty.email", "schedule_faculty_faculty"."maxLoad" AS "schedule_faculty_faculty.maxLoad", "schedule_faculty_faculty"."employmentStatus" AS "schedule_faculty_faculty.employmentStatus", "schedule_faculty_faculty"."shiftPreference" AS "schedule_faculty_faculty.shiftPreference", "schedule_faculty_faculty"."preferredHours" AS "schedule_faculty_faculty.preferredHours", "schedule_faculty_faculty"."facultyId" AS "schedule_faculty_faculty.facultyId", "schedule_faculty_faculty"."userInfoId" AS "schedule_faculty_faculty.userInfoId", "schedule_faculty_faculty"."program" AS "schedule_faculty_faculty.program", "schedule_faculty_faculty"."isActive" AS "schedule_faculty_faculty.isActive", "schedule_faculty_faculty"."currentLoad" AS "schedule_faculty_faculty.currentLoad", "schedule_faculty_faculty"."createdAt" AS "schedule_faculty_faculty.createdAt", "schedule_faculty_faculty"."updatedAt" AS "schedule_faculty_faculty.updatedAt", "schedule_room_room"."id" AS "schedule_room_room.id", "schedule_room_room"."name" AS "schedule_room_room.name", "schedule_room_room"."capacity" AS "schedule_room_room.capacity", "schedule_room_room"."type" AS "schedule_room_room.type", "schedule_room_room"."program" AS "schedule_room_room.program", "schedule_room_room"."isActive" AS "schedule_room_room.isActive", "schedule_room_room"."createdAt" AS "schedule_room_room.createdAt", "schedule_room_room"."updatedAt" AS "schedule_room_room.updatedAt", "schedule_timeslot_timeslot"."id" AS "schedule_timeslot_timeslot.id", "schedule_timeslot_timeslot"."day" AS "schedule_timeslot_timeslot.day", "schedule_timeslot_timeslot"."startTime" AS "schedule_timeslot_timeslot.startTime", "schedule_timeslot_timeslot"."endTime" AS "schedule_timeslot_timeslot.endTime", "schedule_timeslot_timeslot"."label" AS "schedule_timeslot_timeslot.label", "schedule_timeslot_timeslot"."createdAt" AS "schedule_timeslot_timeslot.createdAt", "schedule_timeslot_timeslot"."updatedAt" AS "schedule_timeslot_timeslot.updatedAt", "schedule_sectionRef_section"."id" AS "schedule_sectionRef_section.id", "schedule_sectionRef_section"."program" AS "schedule_sectionRef_section.program", "schedule_sectionRef_section"."yearLevel" AS "schedule_sectionRef_section.yearLevel", "schedule_sectionRef_section"."sectionCode" AS "schedule_sectionRef_section.sectionCode", "schedule_sectionRef_section"."availabilityJson" AS "schedule_sectionRef_section.availabilityJson", "schedule_sectionRef_section"."academicYear" AS "schedule_sectionRef_section.academicYear", "schedule_sectionRef_section"."semester" AS "schedule_sectionRef_section.semester", "schedule_sectionRef_section"."isActive" AS "schedule_sectionRef_section.isActive", "schedule_sectionRef_section"."createdAt" AS "schedule_sectionRef_section.createdAt", "schedule_sectionRef_section"."updatedAt" AS "schedule_sectionRef_section.updatedAt" FROM "schedule" LEFT JOIN "subject" AS "schedule_subject_subject" ON "schedule"."subjectId" = "schedule_subject_subject"."id" LEFT JOIN "faculty" AS "schedule_faculty_faculty" ON "schedule"."facultyId" = "schedule_faculty_faculty"."id" LEFT JOIN "room" AS "schedule_room_room" ON "schedule"."roomId" = "schedule_room_room"."id" LEFT JOIN "timeslot" AS "schedule_timeslot_timeslot" ON "schedule"."timeslotId" = "schedule_timeslot_timeslot"."id" LEFT JOIN "section" AS "schedule_sectionRef_section" ON "schedule"."sectionId" = "schedule_sectionRef_section"."id" WHERE TRUE
+2026-10-30 18:59:44.800985Z  152513717 METHOD         admin.getAllSchedules    user=1, queries=2, duration=189ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:46.893028Z   43413640 QUERY          n/a                      id=null, duration=25.2ms, query=SELECT "schedule"."id" AS "schedule.id", "schedule"."subjectId" AS "schedule.subjectId", "schedule"."facultyId" AS "schedule.facultyId", "schedule"."roomId" AS "schedule.roomId", "schedule"."timeslotId" AS "schedule.timeslotId", "schedule"."section" AS "schedule.section", "schedule"."sectionId" AS "schedule.sectionId", "schedule"."loadTypes" AS "schedule.loadTypes", "schedule"."units" AS "schedule.units", "schedule"."hours" AS "schedule.hours", "schedule"."isActive" AS "schedule.isActive", "schedule"."createdAt" AS "schedule.createdAt", "schedule"."updatedAt" AS "schedule.updatedAt", "schedule_subject_subject"."id" AS "schedule_subject_subject.id", "schedule_subject_subject"."code" AS "schedule_subject_subject.code", "schedule_subject_subject"."name" AS "schedule_subject_subject.name", "schedule_subject_subject"."units" AS "schedule_subject_subject.units", "schedule_subject_subject"."hours" AS "schedule_subject_subject.hours", "schedule_subject_subject"."yearLevel" AS "schedule_subject_subject.yearLevel", "schedule_subject_subject"."term" AS "schedule_subject_subject.term", "schedule_subject_subject"."facultyId" AS "schedule_subject_subject.facultyId", "schedule_subject_subject"."types" AS "schedule_subject_subject.types", "schedule_subject_subject"."program" AS "schedule_subject_subject.program", "schedule_subject_subject"."studentsCount" AS "schedule_subject_subject.studentsCount", "schedule_subject_subject"."isActive" AS "schedule_subject_subject.isActive", "schedule_subject_subject"."createdAt" AS "schedule_subject_subject.createdAt", "schedule_subject_subject"."updatedAt" AS "schedule_subject_subject.updatedAt", "schedule_faculty_faculty"."id" AS "schedule_faculty_faculty.id", "schedule_faculty_faculty"."name" AS "schedule_faculty_faculty.name", "schedule_faculty_faculty"."email" AS "schedule_faculty_faculty.email", "schedule_faculty_faculty"."maxLoad" AS "schedule_faculty_faculty.maxLoad", "schedule_faculty_faculty"."employmentStatus" AS "schedule_faculty_faculty.employmentStatus", "schedule_faculty_faculty"."shiftPreference" AS "schedule_faculty_faculty.shiftPreference", "schedule_faculty_faculty"."preferredHours" AS "schedule_faculty_faculty.preferredHours", "schedule_faculty_faculty"."facultyId" AS "schedule_faculty_faculty.facultyId", "schedule_faculty_faculty"."userInfoId" AS "schedule_faculty_faculty.userInfoId", "schedule_faculty_faculty"."program" AS "schedule_faculty_faculty.program", "schedule_faculty_faculty"."isActive" AS "schedule_faculty_faculty.isActive", "schedule_faculty_faculty"."currentLoad" AS "schedule_faculty_faculty.currentLoad", "schedule_faculty_faculty"."createdAt" AS "schedule_faculty_faculty.createdAt", "schedule_faculty_faculty"."updatedAt" AS "schedule_faculty_faculty.updatedAt", "schedule_room_room"."id" AS "schedule_room_room.id", "schedule_room_room"."name" AS "schedule_room_room.name", "schedule_room_room"."capacity" AS "schedule_room_room.capacity", "schedule_room_room"."type" AS "schedule_room_room.type", "schedule_room_room"."program" AS "schedule_room_room.program", "schedule_room_room"."isActive" AS "schedule_room_room.isActive", "schedule_room_room"."createdAt" AS "schedule_room_room.createdAt", "schedule_room_room"."updatedAt" AS "schedule_room_room.updatedAt", "schedule_timeslot_timeslot"."id" AS "schedule_timeslot_timeslot.id", "schedule_timeslot_timeslot"."day" AS "schedule_timeslot_timeslot.day", "schedule_timeslot_timeslot"."startTime" AS "schedule_timeslot_timeslot.startTime", "schedule_timeslot_timeslot"."endTime" AS "schedule_timeslot_timeslot.endTime", "schedule_timeslot_timeslot"."label" AS "schedule_timeslot_timeslot.label", "schedule_timeslot_timeslot"."createdAt" AS "schedule_timeslot_timeslot.createdAt", "schedule_timeslot_timeslot"."updatedAt" AS "schedule_timeslot_timeslot.updatedAt", "schedule_sectionRef_section"."id" AS "schedule_sectionRef_section.id", "schedule_sectionRef_section"."program" AS "schedule_sectionRef_section.program", "schedule_sectionRef_section"."yearLevel" AS "schedule_sectionRef_section.yearLevel", "schedule_sectionRef_section"."sectionCode" AS "schedule_sectionRef_section.sectionCode", "schedule_sectionRef_section"."availabilityJson" AS "schedule_sectionRef_section.availabilityJson", "schedule_sectionRef_section"."academicYear" AS "schedule_sectionRef_section.academicYear", "schedule_sectionRef_section"."semester" AS "schedule_sectionRef_section.semester", "schedule_sectionRef_section"."isActive" AS "schedule_sectionRef_section.isActive", "schedule_sectionRef_section"."createdAt" AS "schedule_sectionRef_section.createdAt", "schedule_sectionRef_section"."updatedAt" AS "schedule_sectionRef_section.updatedAt" FROM "schedule" LEFT JOIN "subject" AS "schedule_subject_subject" ON "schedule"."subjectId" = "schedule_subject_subject"."id" LEFT JOIN "faculty" AS "schedule_faculty_faculty" ON "schedule"."facultyId" = "schedule_faculty_faculty"."id" LEFT JOIN "room" AS "schedule_room_room" ON "schedule"."roomId" = "schedule_room_room"."id" LEFT JOIN "timeslot" AS "schedule_timeslot_timeslot" ON "schedule"."timeslotId" = "schedule_timeslot_timeslot"."id" LEFT JOIN "section" AS "schedule_sectionRef_section" ON "schedule"."sectionId" = "schedule_sectionRef_section"."id" WHERE TRUE
+2026-10-30 18:59:46.903781Z   43413640 METHOD         admin.getAllSchedules    user=1, queries=2, duration=139ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:50.621164Z  555207751 QUERY          n/a                      id=null, duration=48.2ms, query=SELECT "schedule"."id" AS "schedule.id", "schedule"."subjectId" AS "schedule.subjectId", "schedule"."facultyId" AS "schedule.facultyId", "schedule"."roomId" AS "schedule.roomId", "schedule"."timeslotId" AS "schedule.timeslotId", "schedule"."section" AS "schedule.section", "schedule"."sectionId" AS "schedule.sectionId", "schedule"."loadTypes" AS "schedule.loadTypes", "schedule"."units" AS "schedule.units", "schedule"."hours" AS "schedule.hours", "schedule"."isActive" AS "schedule.isActive", "schedule"."createdAt" AS "schedule.createdAt", "schedule"."updatedAt" AS "schedule.updatedAt", "schedule_subject_subject"."id" AS "schedule_subject_subject.id", "schedule_subject_subject"."code" AS "schedule_subject_subject.code", "schedule_subject_subject"."name" AS "schedule_subject_subject.name", "schedule_subject_subject"."units" AS "schedule_subject_subject.units", "schedule_subject_subject"."hours" AS "schedule_subject_subject.hours", "schedule_subject_subject"."yearLevel" AS "schedule_subject_subject.yearLevel", "schedule_subject_subject"."term" AS "schedule_subject_subject.term", "schedule_subject_subject"."facultyId" AS "schedule_subject_subject.facultyId", "schedule_subject_subject"."types" AS "schedule_subject_subject.types", "schedule_subject_subject"."program" AS "schedule_subject_subject.program", "schedule_subject_subject"."studentsCount" AS "schedule_subject_subject.studentsCount", "schedule_subject_subject"."isActive" AS "schedule_subject_subject.isActive", "schedule_subject_subject"."createdAt" AS "schedule_subject_subject.createdAt", "schedule_subject_subject"."updatedAt" AS "schedule_subject_subject.updatedAt", "schedule_faculty_faculty"."id" AS "schedule_faculty_faculty.id", "schedule_faculty_faculty"."name" AS "schedule_faculty_faculty.name", "schedule_faculty_faculty"."email" AS "schedule_faculty_faculty.email", "schedule_faculty_faculty"."maxLoad" AS "schedule_faculty_faculty.maxLoad", "schedule_faculty_faculty"."employmentStatus" AS "schedule_faculty_faculty.employmentStatus", "schedule_faculty_faculty"."shiftPreference" AS "schedule_faculty_faculty.shiftPreference", "schedule_faculty_faculty"."preferredHours" AS "schedule_faculty_faculty.preferredHours", "schedule_faculty_faculty"."facultyId" AS "schedule_faculty_faculty.facultyId", "schedule_faculty_faculty"."userInfoId" AS "schedule_faculty_faculty.userInfoId", "schedule_faculty_faculty"."program" AS "schedule_faculty_faculty.program", "schedule_faculty_faculty"."isActive" AS "schedule_faculty_faculty.isActive", "schedule_faculty_faculty"."currentLoad" AS "schedule_faculty_faculty.currentLoad", "schedule_faculty_faculty"."createdAt" AS "schedule_faculty_faculty.createdAt", "schedule_faculty_faculty"."updatedAt" AS "schedule_faculty_faculty.updatedAt", "schedule_room_room"."id" AS "schedule_room_room.id", "schedule_room_room"."name" AS "schedule_room_room.name", "schedule_room_room"."capacity" AS "schedule_room_room.capacity", "schedule_room_room"."type" AS "schedule_room_room.type", "schedule_room_room"."program" AS "schedule_room_room.program", "schedule_room_room"."isActive" AS "schedule_room_room.isActive", "schedule_room_room"."createdAt" AS "schedule_room_room.createdAt", "schedule_room_room"."updatedAt" AS "schedule_room_room.updatedAt", "schedule_timeslot_timeslot"."id" AS "schedule_timeslot_timeslot.id", "schedule_timeslot_timeslot"."day" AS "schedule_timeslot_timeslot.day", "schedule_timeslot_timeslot"."startTime" AS "schedule_timeslot_timeslot.startTime", "schedule_timeslot_timeslot"."endTime" AS "schedule_timeslot_timeslot.endTime", "schedule_timeslot_timeslot"."label" AS "schedule_timeslot_timeslot.label", "schedule_timeslot_timeslot"."createdAt" AS "schedule_timeslot_timeslot.createdAt", "schedule_timeslot_timeslot"."updatedAt" AS "schedule_timeslot_timeslot.updatedAt", "schedule_sectionRef_section"."id" AS "schedule_sectionRef_section.id", "schedule_sectionRef_section"."program" AS "schedule_sectionRef_section.program", "schedule_sectionRef_section"."yearLevel" AS "schedule_sectionRef_section.yearLevel", "schedule_sectionRef_section"."sectionCode" AS "schedule_sectionRef_section.sectionCode", "schedule_sectionRef_section"."availabilityJson" AS "schedule_sectionRef_section.availabilityJson", "schedule_sectionRef_section"."academicYear" AS "schedule_sectionRef_section.academicYear", "schedule_sectionRef_section"."semester" AS "schedule_sectionRef_section.semester", "schedule_sectionRef_section"."isActive" AS "schedule_sectionRef_section.isActive", "schedule_sectionRef_section"."createdAt" AS "schedule_sectionRef_section.createdAt", "schedule_sectionRef_section"."updatedAt" AS "schedule_sectionRef_section.updatedAt" FROM "schedule" LEFT JOIN "subject" AS "schedule_subject_subject" ON "schedule"."subjectId" = "schedule_subject_subject"."id" LEFT JOIN "faculty" AS "schedule_faculty_faculty" ON "schedule"."facultyId" = "schedule_faculty_faculty"."id" LEFT JOIN "room" AS "schedule_room_room" ON "schedule"."roomId" = "schedule_room_room"."id" LEFT JOIN "timeslot" AS "schedule_timeslot_timeslot" ON "schedule"."timeslotId" = "schedule_timeslot_timeslot"."id" LEFT JOIN "section" AS "schedule_sectionRef_section" ON "schedule"."sectionId" = "schedule_sectionRef_section"."id" WHERE TRUE
+2026-10-30 18:59:50.643080Z  555207751 METHOD         admin.getAllSchedules    user=1, queries=2, duration=203ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:52.205134Z   68169247 QUERY          n/a                      id=null, duration=26.7ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:52.207416Z   68169247 METHOD         admin.getAllConflicts    user=1, queries=8, duration=746ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:56.954250Z  339099287 METHOD         admin.getAllFaculty      user=1, queries=5, duration=160ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:57.220325Z  609145441 METHOD         admin.getAllRooms        user=1, queries=2, duration=113ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:57.440106Z  541889338 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=113ms
+2026-10-30 18:59:57.667682Z 1059760277 QUERY          n/a                      id=null, duration=13.9ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section" WHERE "section"."id" = 1 LIMIT 1
+2026-10-30 18:59:57.670175Z 1059760277 METHOD         timetable.getSchedules   user=1, queries=18, duration=873ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:58.578386Z  207889392 QUERY          n/a                      id=null, duration=11.8ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section" WHERE "section"."id" = 1 LIMIT 1
+2026-10-30 18:59:58.581259Z  207889392 METHOD         timetable.getSchedules   user=1, queries=18, duration=514ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:59:59.470356Z   21259207 QUERY          n/a                      id=null, duration=20.2ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section"
+2026-10-30 18:59:59.476015Z   21259207 METHOD         admin.getAllConflicts    user=1, queries=8, duration=175ms
+2026-10-30 18:59:59.861307Z  982164851 QUERY          n/a                      id=null, duration=21ms, query=SELECT "section"."id" AS "section.id", "section"."program" AS "section.program", "section"."yearLevel" AS "section.yearLevel", "section"."sectionCode" AS "section.sectionCode", "section"."availabilityJson" AS "section.availabilityJson", "section"."academicYear" AS "section.academicYear", "section"."semester" AS "section.semester", "section"."isActive" AS "section.isActive", "section"."createdAt" AS "section.createdAt", "section"."updatedAt" AS "section.updatedAt" FROM "section" WHERE "section"."id" = 1 LIMIT 1
+2026-10-30 18:59:59.870499Z  982164851 METHOD         timetable.getSchedules   user=1, queries=18, duration=680ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:00:03.578245Z  744370177 QUERY          n/a                      id=null, duration=42.9ms, query=SELECT "schedule"."id" AS "schedule.id", "schedule"."subjectId" AS "schedule.subjectId", "schedule"."facultyId" AS "schedule.facultyId", "schedule"."roomId" AS "schedule.roomId", "schedule"."timeslotId" AS "schedule.timeslotId", "schedule"."section" AS "schedule.section", "schedule"."sectionId" AS "schedule.sectionId", "schedule"."loadTypes" AS "schedule.loadTypes", "schedule"."units" AS "schedule.units", "schedule"."hours" AS "schedule.hours", "schedule"."isActive" AS "schedule.isActive", "schedule"."createdAt" AS "schedule.createdAt", "schedule"."updatedAt" AS "schedule.updatedAt", "schedule_subject_subject"."id" AS "schedule_subject_subject.id", "schedule_subject_subject"."code" AS "schedule_subject_subject.code", "schedule_subject_subject"."name" AS "schedule_subject_subject.name", "schedule_subject_subject"."units" AS "schedule_subject_subject.units", "schedule_subject_subject"."hours" AS "schedule_subject_subject.hours", "schedule_subject_subject"."yearLevel" AS "schedule_subject_subject.yearLevel", "schedule_subject_subject"."term" AS "schedule_subject_subject.term", "schedule_subject_subject"."facultyId" AS "schedule_subject_subject.facultyId", "schedule_subject_subject"."types" AS "schedule_subject_subject.types", "schedule_subject_subject"."program" AS "schedule_subject_subject.program", "schedule_subject_subject"."studentsCount" AS "schedule_subject_subject.studentsCount", "schedule_subject_subject"."isActive" AS "schedule_subject_subject.isActive", "schedule_subject_subject"."createdAt" AS "schedule_subject_subject.createdAt", "schedule_subject_subject"."updatedAt" AS "schedule_subject_subject.updatedAt", "schedule_faculty_faculty"."id" AS "schedule_faculty_faculty.id", "schedule_faculty_faculty"."name" AS "schedule_faculty_faculty.name", "schedule_faculty_faculty"."email" AS "schedule_faculty_faculty.email", "schedule_faculty_faculty"."maxLoad" AS "schedule_faculty_faculty.maxLoad", "schedule_faculty_faculty"."employmentStatus" AS "schedule_faculty_faculty.employmentStatus", "schedule_faculty_faculty"."shiftPreference" AS "schedule_faculty_faculty.shiftPreference", "schedule_faculty_faculty"."preferredHours" AS "schedule_faculty_faculty.preferredHours", "schedule_faculty_faculty"."facultyId" AS "schedule_faculty_faculty.facultyId", "schedule_faculty_faculty"."userInfoId" AS "schedule_faculty_faculty.userInfoId", "schedule_faculty_faculty"."program" AS "schedule_faculty_faculty.program", "schedule_faculty_faculty"."isActive" AS "schedule_faculty_faculty.isActive", "schedule_faculty_faculty"."currentLoad" AS "schedule_faculty_faculty.currentLoad", "schedule_faculty_faculty"."createdAt" AS "schedule_faculty_faculty.createdAt", "schedule_faculty_faculty"."updatedAt" AS "schedule_faculty_faculty.updatedAt", "schedule_room_room"."id" AS "schedule_room_room.id", "schedule_room_room"."name" AS "schedule_room_room.name", "schedule_room_room"."capacity" AS "schedule_room_room.capacity", "schedule_room_room"."type" AS "schedule_room_room.type", "schedule_room_room"."program" AS "schedule_room_room.program", "schedule_room_room"."isActive" AS "schedule_room_room.isActive", "schedule_room_room"."createdAt" AS "schedule_room_room.createdAt", "schedule_room_room"."updatedAt" AS "schedule_room_room.updatedAt", "schedule_timeslot_timeslot"."id" AS "schedule_timeslot_timeslot.id", "schedule_timeslot_timeslot"."day" AS "schedule_timeslot_timeslot.day", "schedule_timeslot_timeslot"."startTime" AS "schedule_timeslot_timeslot.startTime", "schedule_timeslot_timeslot"."endTime" AS "schedule_timeslot_timeslot.endTime", "schedule_timeslot_timeslot"."label" AS "schedule_timeslot_timeslot.label", "schedule_timeslot_timeslot"."createdAt" AS "schedule_timeslot_timeslot.createdAt", "schedule_timeslot_timeslot"."updatedAt" AS "schedule_timeslot_timeslot.updatedAt", "schedule_sectionRef_section"."id" AS "schedule_sectionRef_section.id", "schedule_sectionRef_section"."program" AS "schedule_sectionRef_section.program", "schedule_sectionRef_section"."yearLevel" AS "schedule_sectionRef_section.yearLevel", "schedule_sectionRef_section"."sectionCode" AS "schedule_sectionRef_section.sectionCode", "schedule_sectionRef_section"."availabilityJson" AS "schedule_sectionRef_section.availabilityJson", "schedule_sectionRef_section"."academicYear" AS "schedule_sectionRef_section.academicYear", "schedule_sectionRef_section"."semester" AS "schedule_sectionRef_section.semester", "schedule_sectionRef_section"."isActive" AS "schedule_sectionRef_section.isActive", "schedule_sectionRef_section"."createdAt" AS "schedule_sectionRef_section.createdAt", "schedule_sectionRef_section"."updatedAt" AS "schedule_sectionRef_section.updatedAt" FROM "schedule" LEFT JOIN "subject" AS "schedule_subject_subject" ON "schedule"."subjectId" = "schedule_subject_subject"."id" LEFT JOIN "faculty" AS "schedule_faculty_faculty" ON "schedule"."facultyId" = "schedule_faculty_faculty"."id" LEFT JOIN "room" AS "schedule_room_room" ON "schedule"."roomId" = "schedule_room_room"."id" LEFT JOIN "timeslot" AS "schedule_timeslot_timeslot" ON "schedule"."timeslotId" = "schedule_timeslot_timeslot"."id" LEFT JOIN "section" AS "schedule_sectionRef_section" ON "schedule"."sectionId" = "schedule_sectionRef_section"."id" WHERE TRUE
+2026-10-30 19:00:03.601693Z  744370177 METHOD         admin.getAllSchedules    user=1, queries=2, duration=265ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:00:04.077649Z  228917929 METHOD         admin.getFacultyLoadReport user=1, queries=4, duration=737ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+2026-10-30 19:00:04.661757Z 1001501128 METHOD         admin.getFacultyLoadReport user=1, queries=4, duration=217ms
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:00:05.048220Z  699876146 METHOD         admin.getAllConflicts    user=1, queries=8, duration=393ms
+2026-10-30 19:00:03.856780Z  385174795 LOG            INFO                     message=Section schema repair: adding missing "availabilityJson" column.
+2026-10-30 19:00:05.874467Z  385174795 METHOD         admin.getAllSections     user=1, queries=61, duration=2.53s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:00:10.160198Z  704609394 METHOD         admin.getScheduleOverviewReport user=1, queries=3, duration=102ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:00:10.351325Z  612930660 METHOD         admin.getAllConflicts    user=1, queries=8, duration=120ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:00:10.980183Z  320280761 METHOD         admin.getAllSchedules    user=1, queries=2, duration=150ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:00:11.440824Z  746801924 METHOD         admin.getScheduleOverviewReport user=1, queries=3, duration=279ms
