@@ -1,5 +1,6 @@
 import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/features/nlp/models/chat_message.dart';
+import 'package:citesched_flutter/features/nlp/utils/plain_text_response.dart';
 import 'package:citesched_flutter/features/nlp/widgets/response_display.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,7 +69,7 @@ class MessageBubble extends StatelessWidget {
           ),
           child: ResponseDisplay(
             intent: _parseResponseIntent(message.responseType!),
-            message: message.text,
+            message: plainTextAiResponse(message.text),
             metadata: message.metadata ?? const {},
             schedules: message.schedules?.cast<Schedule>(),
           ),
@@ -89,7 +90,7 @@ class MessageBubble extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
-          message.text,
+          plainTextAiResponse(message.text),
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontSize: 14,

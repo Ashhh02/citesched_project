@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/main.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
@@ -25,23 +27,75 @@ final timetableFilterProvider =
       return TimetableFilterNotifier();
     });
 
+const _timetableFilterCacheLimit = 8;
+final _timetableSchedulesCache = <String, List<ScheduleInfo>>{};
+final _timetableSchedulesRequests = <String, Future<List<ScheduleInfo>>>{};
+
 final filteredSchedulesProvider = FutureProvider<List<ScheduleInfo>>((
   ref,
 ) async {
-  ref.watch(
-    schedulesProvider,
-  ); // Ensure real-time reflection of schedule changes
+  final scheduleRevision = ref.watch(scheduleSyncTriggerProvider);
   final filter = ref.watch(timetableFilterProvider);
-  return await client.timetable.getSchedules(filter);
+  final cacheKey = '$scheduleRevision:${jsonEncode(filter.toJson())}';
+  final cachedSchedules = _timetableSchedulesCache.remove(cacheKey);
+  if (cachedSchedules != null) {
+    _timetableSchedulesCache[cacheKey] = cachedSchedules;
+    return cachedSchedules;
+  }
+
+  final request = _timetableSchedulesRequests.putIfAbsent(
+    cacheKey,
+    () => client.timetable.getSchedules(filter),
+  );
+  try {
+    final schedules = await request;
+    _timetableSchedulesCache[cacheKey] = schedules;
+    while (_timetableSchedulesCache.length > _timetableFilterCacheLimit) {
+      _timetableSchedulesCache.remove(_timetableSchedulesCache.keys.first);
+    }
+    return schedules;
+  } finally {
+    if (identical(_timetableSchedulesRequests[cacheKey], request)) {
+      _timetableSchedulesRequests.remove(cacheKey);
+    }
+  }
 });
 
 final timetableSummaryProvider = FutureProvider<TimetableSummary>((ref) async {
-  ref.watch(
-    schedulesProvider,
-  ); // Ensure real-time reflection of schedule changes
-  final filter = ref.watch(timetableFilterProvider);
-  return await client.timetable.getSummary(filter);
+  final schedules = await ref.watch(filteredSchedulesProvider.future);
+  return _summarizeSchedules(schedules);
 });
+
+TimetableSummary _summarizeSchedules(List<ScheduleInfo> schedules) {
+  var totalUnits = 0.0;
+  var totalWeeklyHours = 0.0;
+  var conflictCount = 0;
+  final uniqueSubjects = <int>{};
+
+  for (final info in schedules) {
+    final schedule = info.schedule;
+    totalUnits += schedule.units ?? 0;
+    uniqueSubjects.add(schedule.subjectId);
+    if (info.conflicts.isNotEmpty) conflictCount++;
+
+    final timeslot = schedule.timeslot;
+    if (timeslot == null) continue;
+    try {
+      final start = DateTime.parse('2000-01-01 ${timeslot.startTime}');
+      final end = DateTime.parse('2000-01-01 ${timeslot.endTime}');
+      totalWeeklyHours += end.difference(start).inMinutes / 60.0;
+    } on FormatException {
+      totalWeeklyHours += 3.0;
+    }
+  }
+
+  return TimetableSummary(
+    totalSubjects: uniqueSubjects.length,
+    totalUnits: totalUnits,
+    totalWeeklyHours: totalWeeklyHours,
+    conflictCount: conflictCount,
+  );
+}
 
 class TimetableMetadata {
   final List<Faculty> facultyList;
@@ -782,13 +836,13 @@ class _TimetableScreenState extends ConsumerState<TimetableScreen> {
   }) {
     final availabilities = currentFilter.facultyId != null
         ? ref
-            .watch(
-              facultyAvailabilityProvider(currentFilter.facultyId!),
-            )
-            .maybeWhen(
-              data: (v) => v,
-              orElse: () => null,
-            )
+              .watch(
+                facultyAvailabilityProvider(currentFilter.facultyId!),
+              )
+              .maybeWhen(
+                data: (v) => v,
+                orElse: () => null,
+              )
         : null;
     final selectedFaculty = _findFacultyById(currentFilter.facultyId);
     final isInstructorView = currentFilter.facultyId != null;
@@ -898,8 +952,7 @@ class _TimetableScreenState extends ConsumerState<TimetableScreen> {
                     data: (summary) => TimetableSummaryPanel(summary: summary),
                     loading: () =>
                         const Center(child: CircularProgressIndicator()),
-                    error: (err, stack) =>
-                        const Text('Error loading summary'),
+                    error: (err, stack) => const Text('Error loading summary'),
                   ),
                 ],
               ),
@@ -927,18 +980,17 @@ class _TimetableScreenState extends ConsumerState<TimetableScreen> {
                       // Calendar Area
                       Expanded(
                         child: Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: schedulesAsync.when(
-                          data: (schedules) {
-                            return _buildSchedulesContent(
-                              schedules: schedules,
-                              currentFilter: currentFilter,
-                              bgColor: bgColor,
-                              isMobile: false,
-                              isDark: isDark,
-                            );
-                          },
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: schedulesAsync.when(
+                            data: (schedules) {
+                              return _buildSchedulesContent(
+                                schedules: schedules,
+                                currentFilter: currentFilter,
+                                bgColor: bgColor,
+                                isMobile: false,
+                                isDark: isDark,
+                              );
+                            },
                             loading: () => const Center(
                               child: CircularProgressIndicator(),
                             ),

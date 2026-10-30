@@ -3,6 +3,7 @@ import 'package:citesched_flutter/features/auth/providers/auth_provider.dart';
 import 'package:citesched_flutter/features/nlp/providers/chat_history_provider.dart';
 import 'package:citesched_flutter/features/nlp/providers/nlp_chat_provider.dart';
 import 'package:citesched_flutter/features/nlp/utils/nlp_constants.dart';
+import 'package:citesched_flutter/features/nlp/utils/plain_text_response.dart';
 import 'package:citesched_flutter/features/nlp/widgets/message_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -675,7 +676,9 @@ class _NLPChatDialogState extends ConsumerState<NLPChatDialog> {
                                       : Border.all(color: Colors.white12),
                                 ),
                                 child: Text(
-                                  entry.text,
+                                  isUser
+                                      ? entry.text
+                                      : plainTextAiResponse(entry.text),
                                   style: GoogleFonts.poppins(
                                     color: isUser
                                         ? Colors.white

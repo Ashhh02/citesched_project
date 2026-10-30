@@ -10,6 +10,7 @@ import 'package:citesched_flutter/core/widgets/theme_mode_toggle.dart';
 import 'package:citesched_flutter/core/widgets/draggable_fab.dart';
 import 'package:citesched_flutter/core/widgets/nlp_query_dialog.dart';
 import 'package:citesched_flutter/features/nlp/providers/chat_history_provider.dart';
+import 'package:citesched_flutter/features/nlp/utils/plain_text_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -860,7 +861,9 @@ class _FacultyDashboardScreenState extends ConsumerState<FacultyDashboardScreen>
                                     ),
                                     const SizedBox(height: 4),
                                     Text(
-                                      entry.text,
+                                      isUser
+                                          ? entry.text
+                                          : plainTextAiResponse(entry.text),
                                       style: GoogleFonts.poppins(fontSize: 12),
                                     ),
                                   ],

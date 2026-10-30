@@ -160,7 +160,7 @@ class NLPQueryChatNotifier extends Notifier<NLPQueryChatState> {
   }
 
   Future<void> sendQuery(String query) async {
-    if (query.trim().isEmpty) return;
+    if (state.isLoading || query.trim().isEmpty) return;
 
     final userQuery = query.trim();
     final rawNormalized = _normalizeQuery(userQuery);

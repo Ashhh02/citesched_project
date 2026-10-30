@@ -260,7 +260,7 @@ class AiGroundingService {
     }
 
     return GroundedContextPayload(
-      jsonText: const JsonEncoder.withIndent('  ').convert(data),
+      jsonText: jsonEncode(data),
       hasData: hasData,
       intent: inferredIntent,
     );

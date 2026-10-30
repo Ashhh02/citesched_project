@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 /// A wrapper widget that makes its child draggable within a Stack.
@@ -58,10 +60,19 @@ class _DraggableFabState extends State<DraggableFab> {
     final safeBottom = media.padding.bottom + 8;
     final fabSize = previousSize ?? _childSize;
 
-    const minX = 8.0;
-    final maxX = screen.width - fabSize.width - 8;
-    final minY = safeTop;
-    final maxY = screen.height - fabSize.height - safeBottom;
+    final minX = math.min(
+      8.0,
+      math.max(0.0, screen.width - fabSize.width),
+    );
+    final maxX = math.max(minX, screen.width - fabSize.width - 8);
+    final minY = math.min(
+      safeTop,
+      math.max(0.0, screen.height - fabSize.height),
+    );
+    final maxY = math.max(
+      minY,
+      screen.height - fabSize.height - safeBottom,
+    );
 
     return Offset(
       desired.dx.clamp(minX, maxX),

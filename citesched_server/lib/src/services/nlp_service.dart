@@ -144,8 +144,7 @@ class NLPService {
     'alter',
   ];
 
-  static const String _timeTokenPattern =
-      r'(\d{1,2})(?::(\d{2}))?\s?(am|pm)?';
+  static const String _timeTokenPattern = r'(\d{1,2})(?::(\d{2}))?\s?(am|pm)?';
   static const String _betweenTimeRangePattern =
       r'(between|from)\s+([0-9]{1,2}(?::[0-9]{2})?\s?(am|pm)?)\s+(and|to)\s+([0-9]{1,2}(?::[0-9]{2})?\s?(am|pm)?)';
   static const String _afterTimeRangePattern =
@@ -159,9 +158,7 @@ class NLPService {
   static final RegExp _beforeTimeRangeRegex = RegExp(_beforeTimeRangePattern);
 
   static String normalizeQueryForTest(String query) {
-    final cleaned = query
-        .toLowerCase()
-        .replaceAll(RegExp(r'[^a-z0-9\s]'), ' ');
+    final cleaned = query.toLowerCase().replaceAll(RegExp(r'[^a-z0-9\s]'), ' ');
     return cleaned.replaceAll(RegExp(r'\s+'), ' ').trim();
   }
 
@@ -385,8 +382,7 @@ class NLPService {
     String? userId,
     List<String> scopes,
     String? sessionId,
-  ) async =>
-      processQueryImpl(session, query, userId, scopes, sessionId);
+  ) async => processQueryImpl(session, query, userId, scopes, sessionId);
 
   Future<NLPResponse> processQueryImpl(
     Session session,
@@ -414,11 +410,12 @@ class NLPService {
       return _unsupportedResponse('english');
     }
 
-    final preferredLanguage = await _resolvePreferredLanguage(
+    final languageContext = await _resolvePreferredLanguage(
       session,
       query: query,
       sessionId: sessionId,
     );
+    final preferredLanguage = languageContext.language;
 
     if (_isUnsupportedLanguageRequest(query)) {
       return NLPResponse(
@@ -472,8 +469,9 @@ class NLPService {
       requestedDays,
       relativeDays,
     );
+    NLPResponse? groundedLlmResponse;
     if (preferGroundedResponse) {
-      final groundedFirstResponse = await _tryGroundedLlmFallback(
+      groundedLlmResponse = await _tryGroundedLlmFallback(
         session,
         rawQuery: query,
         normalizedQuery: normalizedQuery,
@@ -481,11 +479,12 @@ class NLPService {
         role: resolvedRole,
         sessionId: sessionId,
         preferredLanguage: preferredLanguage,
+        recentMessages: languageContext.recentMessages,
       );
-      if (groundedFirstResponse != null &&
-          groundedFirstResponse.text !=
+      if (groundedLlmResponse != null &&
+          groundedLlmResponse.text !=
               _llmUnavailableMessage(preferredLanguage)) {
-        return groundedFirstResponse;
+        return groundedLlmResponse;
       }
     }
 
@@ -612,16 +611,15 @@ class NLPService {
 
     if (_hasSystemIntent(normalizedQuery)) {
       return NLPResponse(
-        text:
-            _textForLanguage(
-              preferredLanguage,
-              english:
-                  'That action needs the admin scheduling tools. Use the Timetable or Conflict modules to generate, optimize, or resolve schedules.',
-              tagalog:
-                  'Kailangan ng action na iyon ang admin scheduling tools. Gamitin ang Timetable o Conflict modules para gumawa, mag-optimize, o mag-resolve ng schedules.',
-              bisaya:
-                  'Kana nga aksyon nanginahanglan sa admin scheduling tools. Gamita ang Timetable o Conflict modules aron maghimo, mag-optimize, o mag-resolve sa schedules.',
-            ),
+        text: _textForLanguage(
+          preferredLanguage,
+          english:
+              'That action needs the admin scheduling tools. Use the Timetable or Conflict modules to generate, optimize, or resolve schedules.',
+          tagalog:
+              'Kailangan ng action na iyon ang admin scheduling tools. Gamitin ang Timetable o Conflict modules para gumawa, mag-optimize, o mag-resolve ng schedules.',
+          bisaya:
+              'Kana nga aksyon nanginahanglan sa admin scheduling tools. Gamita ang Timetable o Conflict modules aron maghimo, mag-optimize, o mag-resolve sa schedules.',
+        ),
         intent: NLPIntent.unknown,
       );
     }
@@ -629,16 +627,15 @@ class NLPService {
     if (_containsKeywordFuzzy(normalizedQuery, ['free', 'available']) &&
         _containsKeywordFuzzy(normalizedQuery, ['slot', 'slots', 'time'])) {
       return NLPResponse(
-        text:
-            _textForLanguage(
-              preferredLanguage,
-              english:
-                  "Please specify whose availability to check (e.g., 'Show free time slots for Prof Ryan') or include a day/time.",
-              tagalog:
-                  "Pakisabi kung kaninong availability ang iche-check (halimbawa, 'Show free time slots for Prof Ryan') o maglagay ng araw/oras.",
-              bisaya:
-                  "Palihug isulti kang kinsang availability ang tan-awon (pananglitan, 'Show free time slots for Prof Ryan') o ilakip ang adlaw/oras.",
-            ),
+        text: _textForLanguage(
+          preferredLanguage,
+          english:
+              "Please specify whose availability to check (e.g., 'Show free time slots for Prof Ryan') or include a day/time.",
+          tagalog:
+              "Pakisabi kung kaninong availability ang iche-check (halimbawa, 'Show free time slots for Prof Ryan') o maglagay ng araw/oras.",
+          bisaya:
+              "Palihug isulti kang kinsang availability ang tan-awon (pananglitan, 'Show free time slots for Prof Ryan') o ilakip ang adlaw/oras.",
+        ),
         intent: NLPIntent.schedule,
       );
     }
@@ -646,44 +643,45 @@ class NLPService {
     if (_containsKeywordFuzzy(normalizedQuery, ['free']) &&
         _containsKeywordFuzzy(normalizedQuery, ['room'])) {
       return NLPResponse(
-        text:
-            _textForLanguage(
-              preferredLanguage,
-              english:
-                  "Please specify a day and time range to find a free room (e.g., 'Find free room on Monday between 1 PM and 3 PM').",
-              tagalog:
-                  "Pakispecify ang araw at oras para makahanap ng bakanteng room (halimbawa, 'Find free room on Monday between 1 PM and 3 PM').",
-              bisaya:
-                  "Palihug ispecify ang adlaw ug time range aron makakita og bakanteng room (pananglitan, 'Find free room on Monday between 1 PM and 3 PM').",
-            ),
+        text: _textForLanguage(
+          preferredLanguage,
+          english:
+              "Please specify a day and time range to find a free room (e.g., 'Find free room on Monday between 1 PM and 3 PM').",
+          tagalog:
+              "Pakispecify ang araw at oras para makahanap ng bakanteng room (halimbawa, 'Find free room on Monday between 1 PM and 3 PM').",
+          bisaya:
+              "Palihug ispecify ang adlaw ug time range aron makakita og bakanteng room (pananglitan, 'Find free room on Monday between 1 PM and 3 PM').",
+        ),
         intent: NLPIntent.roomStatus,
       );
     }
 
-    final llmResponse = await _tryGroundedLlmFallback(
-      session,
-        rawQuery: query,
-        normalizedQuery: normalizedQuery,
-        userId: resolvedUserId,
-        role: resolvedRole,
-        sessionId: sessionId,
-        preferredLanguage: preferredLanguage,
-      );
+    final llmResponse =
+        groundedLlmResponse ??
+        await _tryGroundedLlmFallback(
+          session,
+          rawQuery: query,
+          normalizedQuery: normalizedQuery,
+          userId: resolvedUserId,
+          role: resolvedRole,
+          sessionId: sessionId,
+          preferredLanguage: preferredLanguage,
+          recentMessages: languageContext.recentMessages,
+        );
     if (llmResponse != null) {
       return llmResponse;
     }
 
     return NLPResponse(
-      text:
-          _textForLanguage(
-            preferredLanguage,
-            english:
-                "I couldn't match that request. Try asking about schedules, rooms, conflicts, or faculty load. Example: 'My schedule on Monday' or 'Is IT LAB available at 2 PM?'",
-            tagalog:
-                "Hindi ko maitugma ang request na iyon. Subukan mong magtanong tungkol sa schedules, rooms, conflicts, o faculty load. Halimbawa: 'My schedule on Monday' o 'Is IT LAB available at 2 PM?'",
-            bisaya:
-                "Dili nako ma-match kana nga request. Sulayi pangutana bahin sa schedules, rooms, conflicts, o faculty load. Pananglitan: 'My schedule on Monday' o 'Is IT LAB available at 2 PM?'",
-          ),
+      text: _textForLanguage(
+        preferredLanguage,
+        english:
+            "I couldn't match that request. Try asking about schedules, rooms, conflicts, or faculty load. Example: 'My schedule on Monday' or 'Is IT LAB available at 2 PM?'",
+        tagalog:
+            "Hindi ko maitugma ang request na iyon. Subukan mong magtanong tungkol sa schedules, rooms, conflicts, o faculty load. Halimbawa: 'My schedule on Monday' o 'Is IT LAB available at 2 PM?'",
+        bisaya:
+            "Dili nako ma-match kana nga request. Sulayi pangutana bahin sa schedules, rooms, conflicts, o faculty load. Pananglitan: 'My schedule on Monday' o 'Is IT LAB available at 2 PM?'",
+      ),
       intent: NLPIntent.unknown,
     );
   }
@@ -696,6 +694,7 @@ class NLPService {
     required String role,
     String? sessionId,
     required String preferredLanguage,
+    List<AiChatMessage>? recentMessages,
   }) async {
     if (userId == null || userId.isEmpty) {
       return null;
@@ -719,6 +718,7 @@ class NLPService {
       session,
       sessionId: sessionId,
       currentQuery: rawQuery,
+      recentMessages: recentMessages,
     );
 
     final llmResult = await _llmProvider.generate(
@@ -740,7 +740,7 @@ class NLPService {
     }
 
     return NLPResponse(
-      text: llmResult.text,
+      text: _plainTextResponse(llmResult.text),
       intent: groundedContext.intent,
       dataJson: jsonEncode({
         'provider': 'gemini',
@@ -765,17 +765,82 @@ class NLPService {
     return isComplex ? 'gemini-2.5-flash' : 'gemini-2.5-flash-lite';
   }
 
-  String _systemPrompt(String role, {required String preferredLanguage}) => '''
+  String _systemPrompt(String role, {required String preferredLanguage}) =>
+      '''
 You are CITESched AI, the official scheduling assistant of Jose Maria College Foundation Inc.
 Use ONLY verified CITESched system data provided to you.
 Never invent schedules, rooms, faculty, students, or subjects.
 Always provide accurate responses related to scheduling, faculty loading, room assignments, timetable conflicts, and student schedules.
 If data is unavailable, clearly state: "I don't have enough schedule data to answer that accurately."
+Use only facts explicitly present in the verified data payload. Never infer or fill in missing values. If the payload does not contain the specific fact requested, say that the data is unavailable.
+Use conversation history only to resolve references such as "that room" or "my schedule"; never use it as a source of current schedule facts.
 The active user role for this request is: $role.
 Preferred response language for this conversation: ${_languageLabel(preferredLanguage)}. Follow that language unless the user explicitly asks to switch.
 ${_rolePromptRule(role)}
-Keep answers concise, helpful, and grounded in the verified data payload.
+Reply in plain text only. Do not use Markdown, headings, bold or italic markers, code fences, Markdown tables, or Markdown links. Use short sentences and plain-text bullets only when needed.
+Answer the user's current question directly and concisely. Do not claim that you changed or performed anything in the system.
 ''';
+
+  String _plainTextResponse(String text) {
+    final lines = text.replaceAll('\r\n', '\n').split('\n');
+    final result = <String>[];
+
+    for (var line in lines) {
+      var cleaned = line.trimRight();
+      final trimmed = cleaned.trim();
+      if (trimmed.startsWith('```') ||
+          RegExp(r'^(?:-{3,}|\*{3,}|_{3,})$').hasMatch(trimmed) ||
+          RegExp(
+            r'^\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?$',
+          ).hasMatch(trimmed)) {
+        continue;
+      }
+
+      cleaned = cleaned.replaceFirst(RegExp(r'^\s{0,3}#{1,6}\s+'), '');
+      cleaned = cleaned.replaceFirst(RegExp(r'^\s*>\s?'), '');
+      cleaned = cleaned.replaceFirst(RegExp(r'^\s*[-*+]\s+'), '• ');
+      cleaned = cleaned.replaceFirst(
+        RegExp(r'^\s*(\d+)[.)]\s+'),
+        r'$1. ',
+      );
+      cleaned = cleaned.replaceAllMapped(
+        RegExp(r'!\[([^\]]*)\]\([^)]+\)'),
+        (match) => match[1] ?? '',
+      );
+      cleaned = cleaned.replaceAllMapped(
+        RegExp(r'\[([^\]]+)\]\([^)]+\)'),
+        (match) => match[1] ?? '',
+      );
+      cleaned = cleaned.replaceAllMapped(
+        RegExp(r'(\*\*|__)(.+?)\1'),
+        (match) => match[2] ?? '',
+      );
+      cleaned = cleaned.replaceAllMapped(
+        RegExp(r'(?<![\w])(\*|_)(.+?)\1(?!\w)'),
+        (match) => match[2] ?? '',
+      );
+      cleaned = cleaned.replaceAllMapped(
+        RegExp(r'~~(.+?)~~'),
+        (match) => match[1] ?? '',
+      );
+      cleaned = cleaned.replaceAllMapped(
+        RegExp(r'(`+)(.+?)\1'),
+        (match) => match[2] ?? '',
+      );
+      cleaned = cleaned.replaceAll(RegExp(r'\*{1,2}|_{1,2}|~~|`+'), '');
+      if (cleaned.contains('|')) {
+        final cells = cleaned.trim().split('|');
+        if (cells.first.trim().isEmpty) cells.removeAt(0);
+        if (cells.isNotEmpty && cells.last.trim().isEmpty) cells.removeLast();
+        cleaned = cells.map((cell) => cell.trim()).join(' — ');
+      }
+      result.add(cleaned);
+    }
+
+    return result.join('\n').replaceAll(RegExp(r'\n{3,}'), '\n\n').trim();
+  }
+
+  String sanitizeResponseText(String text) => _plainTextResponse(text);
 
   String _rolePromptRule(String role) {
     if (role == 'faculty') {
@@ -833,7 +898,10 @@ Keep answers concise, helpful, and grounded in the verified data payload.
       );
     }
 
-    final matchedFaculty = _matchFacultyByName(query, await Faculty.db.find(session));
+    final matchedFaculty = _matchFacultyByName(
+      query,
+      await Faculty.db.find(session),
+    );
     if (matchedFaculty != null && matchedFaculty.id != faculty.id) {
       return _restrictedResponse(
         _facultyAccessRestrictedMessage,
@@ -848,7 +916,9 @@ Keep answers concise, helpful, and grounded in the verified data payload.
         where: (t) => t.facultyId.equals(faculty.id!),
       );
       final allowedSections = schedules.map((s) => s.section).toSet();
-      final requestedCandidates = _buildSectionCandidates(extractedSection).toSet();
+      final requestedCandidates = _buildSectionCandidates(
+        extractedSection,
+      ).toSet();
       final hasAssignedSection = allowedSections.any(
         (section) => requestedCandidates.contains(section.toUpperCase()),
       );
@@ -895,8 +965,12 @@ Keep answers concise, helpful, and grounded in the verified data payload.
       final allowedCandidates = _buildSectionCandidates(
         student.section ?? student.sectionRef?.sectionCode ?? '',
       ).toSet();
-      final requestedCandidates = _buildSectionCandidates(extractedSection).toSet();
-      final matchesOwnSection = requestedCandidates.any(allowedCandidates.contains);
+      final requestedCandidates = _buildSectionCandidates(
+        extractedSection,
+      ).toSet();
+      final matchesOwnSection = requestedCandidates.any(
+        allowedCandidates.contains,
+      );
       if (!matchesOwnSection) {
         return _restrictedResponse(
           _studentSectionRestrictedMessage,
@@ -1204,32 +1278,30 @@ Keep answers concise, helpful, and grounded in the verified data payload.
 
     if (_isCapabilityQuery(query)) {
       return NLPResponse(
-        text:
-            _textForLanguage(
-              preferredLanguage,
-              english:
-                  'Yes. I can help with section schedules, faculty schedules, room usage, timetable views, subject schedules, faculty load checks, and conflict-related questions based on verified CITESched data.',
-              tagalog:
-                  'Oo. Makakatulong ako sa section schedules, faculty schedules, room usage, timetable views, subject schedules, faculty load checks, at conflict-related questions gamit ang verified CITESched data.',
-              bisaya:
-                  'Oo. Makatabang ko sa section schedules, faculty schedules, room usage, timetable views, subject schedules, faculty load checks, ug conflict-related nga mga pangutana gamit ang verified CITESched data.',
-            ),
+        text: _textForLanguage(
+          preferredLanguage,
+          english:
+              'Yes. I can help with section schedules, faculty schedules, room usage, timetable views, subject schedules, faculty load checks, and conflict-related questions based on verified CITESched data.',
+          tagalog:
+              'Oo. Makakatulong ako sa section schedules, faculty schedules, room usage, timetable views, subject schedules, faculty load checks, at conflict-related questions gamit ang verified CITESched data.',
+          bisaya:
+              'Oo. Makatabang ko sa section schedules, faculty schedules, room usage, timetable views, subject schedules, faculty load checks, ug conflict-related nga mga pangutana gamit ang verified CITESched data.',
+        ),
         intent: NLPIntent.unknown,
       );
     }
 
     if (_isGeneralQuestionPrompt(query)) {
       return NLPResponse(
-        text:
-            _textForLanguage(
-              preferredLanguage,
-              english:
-                  'Yes, you can ask. What would you like to know about CITESched? I can help with schedules, timetable, rooms, faculty load, and conflict checks.',
-              tagalog:
-                  'Oo, pwede kang magtanong. Ano ang gusto mong malaman tungkol sa CITESched? Makakatulong ako sa schedules, timetable, rooms, faculty load, at conflict checks.',
-              bisaya:
-                  'Oo, pwede ka mangutana. Unsay gusto nimo mahibal-an sa CITESched? Mahimo ko motabang sa schedules, timetable, rooms, faculty load, ug conflict checks.',
-            ),
+        text: _textForLanguage(
+          preferredLanguage,
+          english:
+              'Yes, you can ask. What would you like to know about CITESched? I can help with schedules, timetable, rooms, faculty load, and conflict checks.',
+          tagalog:
+              'Oo, pwede kang magtanong. Ano ang gusto mong malaman tungkol sa CITESched? Makakatulong ako sa schedules, timetable, rooms, faculty load, at conflict checks.',
+          bisaya:
+              'Oo, pwede ka mangutana. Unsay gusto nimo mahibal-an sa CITESched? Mahimo ko motabang sa schedules, timetable, rooms, faculty load, ug conflict checks.',
+        ),
         intent: NLPIntent.unknown,
       );
     }
@@ -1357,7 +1429,10 @@ Keep answers concise, helpful, and grounded in the verified data payload.
   }
 
   bool _isConflictExplanationQuery(String query) {
-    final asksConflict = _containsKeywordFuzzy(query, ['conflict', 'conflicts']);
+    final asksConflict = _containsKeywordFuzzy(query, [
+      'conflict',
+      'conflicts',
+    ]);
     final asksHow = _containsKeywordFuzzy(query, [
       'how',
       'manage',
@@ -1571,19 +1646,23 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     Session session, {
     String? sessionId,
     required String currentQuery,
+    List<AiChatMessage>? recentMessages,
   }) async {
     final parsedSessionId = int.tryParse(sessionId?.trim() ?? '');
     if (parsedSessionId == null) return const [];
 
-    final messages = await _chatService.getMessages(
-      session,
-      sessionId: parsedSessionId,
-      limit: 12,
-    );
+    final messages =
+        recentMessages ??
+        await _chatService.getMessages(
+          session,
+          sessionId: parsedSessionId,
+          limit: 12,
+        );
     if (messages.isEmpty) return const [];
 
     final normalizedCurrent = _normalizeQuery(currentQuery.toLowerCase());
-    final historyMessages = List<AiChatMessage>.from(messages);
+    final startIndex = messages.length > 12 ? messages.length - 12 : 0;
+    final historyMessages = messages.sublist(startIndex);
     if (historyMessages.isNotEmpty) {
       final last = historyMessages.last;
       if (last.sender == 'user' &&
@@ -1595,19 +1674,30 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     return _chatService.toConversationHistory(historyMessages);
   }
 
-  Future<String> _resolvePreferredLanguage(
+  Future<({String language, List<AiChatMessage>? recentMessages})>
+  _resolvePreferredLanguage(
     Session session, {
     required String query,
     String? sessionId,
   }) async {
-    if (_isBisayaLanguageRequest(query)) return 'bisaya';
-    if (_isTagalogLanguageRequest(query)) return 'tagalog';
-    if (_isEnglishLanguageRequest(query)) return 'english';
+    if (_isBisayaLanguageRequest(query)) {
+      return (language: 'bisaya', recentMessages: null);
+    }
+    if (_isTagalogLanguageRequest(query)) {
+      return (language: 'tagalog', recentMessages: null);
+    }
+    if (_isEnglishLanguageRequest(query)) {
+      return (language: 'english', recentMessages: null);
+    }
     final dominant = _detectDominantLanguage(query);
-    if (dominant != null) return dominant;
+    if (dominant != null) {
+      return (language: dominant, recentMessages: null);
+    }
 
     final parsedSessionId = int.tryParse(sessionId?.trim() ?? '');
-    if (parsedSessionId == null) return 'english';
+    if (parsedSessionId == null) {
+      return (language: 'english', recentMessages: null);
+    }
 
     final messages = await _chatService.getMessages(
       session,
@@ -1617,14 +1707,22 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     for (final message in messages.reversed) {
       if (message.sender != 'user') continue;
       final text = message.message;
-      if (_isBisayaLanguageRequest(text)) return 'bisaya';
-      if (_isTagalogLanguageRequest(text)) return 'tagalog';
-      if (_isEnglishLanguageRequest(text)) return 'english';
+      if (_isBisayaLanguageRequest(text)) {
+        return (language: 'bisaya', recentMessages: messages);
+      }
+      if (_isTagalogLanguageRequest(text)) {
+        return (language: 'tagalog', recentMessages: messages);
+      }
+      if (_isEnglishLanguageRequest(text)) {
+        return (language: 'english', recentMessages: messages);
+      }
       final historyDominant = _detectDominantLanguage(text);
-      if (historyDominant != null) return historyDominant;
+      if (historyDominant != null) {
+        return (language: historyDominant, recentMessages: messages);
+      }
     }
 
-    return 'english';
+    return (language: 'english', recentMessages: messages);
   }
 
   String? _detectDominantLanguage(String query) {
@@ -1741,7 +1839,8 @@ Keep answers concise, helpful, and grounded in the verified data payload.
       'kapampangan',
     ];
     return unsupportedLanguages.any(
-      (language) => RegExp(r'\b' + RegExp.escape(language) + r'\b').hasMatch(lowered),
+      (language) =>
+          RegExp(r'\b' + RegExp.escape(language) + r'\b').hasMatch(lowered),
     );
   }
 
@@ -1784,7 +1883,10 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     );
   }
 
-  String _loginRequiredMessage(String preferredLanguage, {required String purpose}) {
+  String _loginRequiredMessage(
+    String preferredLanguage, {
+    required String purpose,
+  }) {
     switch (purpose) {
       case 'viewSchedule':
         return _textForLanguage(
@@ -2077,7 +2179,8 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     if (bulletFormat) {
       return _textForLanguage(
         preferredLanguage,
-        english: '''CITESched is an academic scheduling system for Jose Maria College Foundation Inc. It covers:
+        english:
+            '''CITESched is an academic scheduling system for Jose Maria College Foundation Inc. It covers:
 * Faculty management
 * Student and section management
 * Subject and room management
@@ -2085,7 +2188,8 @@ Keep answers concise, helpful, and grounded in the verified data payload.
 * Timetable views
 * Conflict checking
 * Verified schedule-based AI assistance''',
-        tagalog: '''Ang CITESched ay academic scheduling system para sa Jose Maria College Foundation Inc. Saklaw nito ang:
+        tagalog:
+            '''Ang CITESched ay academic scheduling system para sa Jose Maria College Foundation Inc. Saklaw nito ang:
 * Faculty management
 * Student at section management
 * Subject at room management
@@ -2093,7 +2197,8 @@ Keep answers concise, helpful, and grounded in the verified data payload.
 * Timetable views
 * Conflict checking
 * Verified schedule-based AI assistance''',
-        bisaya: '''Ang CITESched usa ka academic scheduling system para sa Jose Maria College Foundation Inc. Naglangkob kini sa:
+        bisaya:
+            '''Ang CITESched usa ka academic scheduling system para sa Jose Maria College Foundation Inc. Naglangkob kini sa:
 * Faculty management
 * Student ug section management
 * Subject ug room management
@@ -2171,7 +2276,8 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     ]);
 
     if (!asksForRooms || !asksToShow) return null;
-    if (_matchRoomByName(query, await Room.db.find(session)) != null) return null;
+    if (_matchRoomByName(query, await Room.db.find(session)) != null)
+      return null;
     if (_extractTimeRange(query) != null) return null;
     if (_extractDayOfWeek(query) != null) return null;
 
@@ -2309,13 +2415,12 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     String query,
     DayOfWeek? requestedDay,
     List<String> scopes,
-  ) async =>
-      _tryRoomTypeScheduleQueryImpl(
-        session,
-        query,
-        requestedDay,
-        scopes,
-      );
+  ) async => _tryRoomTypeScheduleQueryImpl(
+    session,
+    query,
+    requestedDay,
+    scopes,
+  );
 
   Future<NLPResponse?> _tryRoomTypeScheduleQueryImpl(
     Session session,
@@ -2752,8 +2857,7 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     String userId,
     List<String> scopes,
     String query,
-  ) async =>
-      _handleOverloadQueryImpl(session, userId, scopes, query);
+  ) async => _handleOverloadQueryImpl(session, userId, scopes, query);
 
   Future<NLPResponse> _handleOverloadQueryImpl(
     Session session,
@@ -3006,15 +3110,14 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     List<String> scopes,
     DayOfWeek? requestedDay,
     List<DayOfWeek> requestedDays,
-  ) async =>
-      _handleScheduleQueryImpl(
-        session,
-        query,
-        userId,
-        scopes,
-        requestedDay,
-        requestedDays,
-      );
+  ) async => _handleScheduleQueryImpl(
+    session,
+    query,
+    userId,
+    scopes,
+    requestedDay,
+    requestedDays,
+  );
 
   Future<NLPResponse> _handleScheduleQueryImpl(
     Session session,
@@ -3349,7 +3452,9 @@ Keep answers concise, helpful, and grounded in the verified data payload.
 
       if (candidateTokens.isNotEmpty) {
         final candidateContainsAll = candidateTokens.every(nameTokens.contains);
-        final nameContainsCandidate = nameTokens.every(candidateTokens.contains);
+        final nameContainsCandidate = nameTokens.every(
+          candidateTokens.contains,
+        );
         if (candidateContainsAll || nameContainsCandidate) {
           return f;
         }
@@ -3413,7 +3518,9 @@ Keep answers concise, helpful, and grounded in the verified data payload.
   String? _extractFacultyNameCandidate(String text) {
     final patterns = [
       RegExp(r'(?:schedule|timetable|class|classes)\s+of\s+(.+)$'),
-      RegExp(r'(?:for|of)\s+(?:sir|maam|mam|mr|ms|mrs|prof|professor|dr)?\s*(.+)$'),
+      RegExp(
+        r'(?:for|of)\s+(?:sir|maam|mam|mr|ms|mrs|prof|professor|dr)?\s*(.+)$',
+      ),
       RegExp(r'(?:sir|maam|mam|mr|ms|mrs|prof|professor|dr)\s+(.+)$'),
     ];
 
@@ -3449,8 +3556,9 @@ Keep answers concise, helpful, and grounded in the verified data payload.
       return true;
     }
 
-    return RegExp(r'\b(schedule|class|classes|timetable)\s+of\s+[a-z]{3,}')
-        .hasMatch(query);
+    return RegExp(
+      r'\b(schedule|class|classes|timetable)\s+of\s+[a-z]{3,}',
+    ).hasMatch(query);
   }
 
   bool _shouldPreferGroundedResponse(
@@ -3871,8 +3979,7 @@ Keep answers concise, helpful, and grounded in the verified data payload.
   List<Schedule> _applyExactStartOrEndFilter(
     String query,
     List<Schedule> schedules,
-  ) =>
-      _applyExactStartOrEndFilterImpl(query, schedules);
+  ) => _applyExactStartOrEndFilterImpl(query, schedules);
 
   List<Schedule> _applyExactStartOrEndFilterImpl(
     String query,
@@ -4000,16 +4107,15 @@ Keep answers concise, helpful, and grounded in the verified data payload.
     DayOfWeek? requestedDay,
     List<DayOfWeek> relativeDays,
     _TimeRange? timeRange,
-  ) async =>
-      _tryFilteredScheduleQueryImpl(
-        session,
-        query,
-        userId,
-        scopes,
-        requestedDay,
-        relativeDays,
-        timeRange,
-      );
+  ) async => _tryFilteredScheduleQueryImpl(
+    session,
+    query,
+    userId,
+    scopes,
+    requestedDay,
+    relativeDays,
+    timeRange,
+  );
 
   Future<NLPResponse?> _tryFilteredScheduleQueryImpl(
     Session session,

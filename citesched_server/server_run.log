@@ -1,0 +1,1146 @@
+SERVERPOD version: 3.4.5, dart: 3.10.7 (stable) (Tue Dec 23 00:01:57 2025 -0800) on "windows_x64", time: 2026-10-30 15:55:35.847138Z
+runMode: development
+serverId: default
+role: monolith
+loggingMode: normal
+applyMigrations: true
+applyRepairMigration: false
+SERVERPOD initialized, time: 2026-10-30 15:55:36.017282Z
+Latest database migration already applied.
+2026-10-30 15:55:37.538435Z WebServer  INFO: Webserver listening on http://localhost:8085
+TIME                        ID         TYPE           CONTEXT                  DETAILS
+--------------------------- ---------- -------------- ------------------------ ------------------------------
+2026-10-30 16:02:42.445327Z  352244091 METHOD         customAuth.loginWithId   user=null, queries=1, duration=1.09s
+2026-10-30 16:02:51.905252Z  604261083 METHOD         customAuth.loginWithId   user=null, queries=1, duration=80.3ms
+2026-10-30 16:04:17.174867Z  213558396 METHOD         customAuth.loginWithId   user=null, queries=1, duration=217ms
+2026-10-30 16:06:39.707915Z  175894983 LOG            INFO                     message=Created user admin.user@jmc.edu.ph with role admin and ID 12345
+2026-10-30 16:06:39.726640Z  175894983 METHOD         setup.createAccount      user=null, queries=7, duration=947ms
+2026-10-30 16:06:40.153270Z  868338115 LOG            INFO                     message=Created user admin.support@jmc.edu.ph with role admin and ID 54321
+2026-10-30 16:06:40.154890Z  868338115 METHOD         setup.createAccount      user=null, queries=7, duration=229ms
+2026-10-30 16:16:41.994476Z  256148656 METHOD         customAuth.loginWithId   user=null, queries=1, duration=239ms
+2026-10-30 16:17:05.330271Z  321880503 METHOD         customAuth.loginWithId   user=null, queries=1, duration=121ms
+2026-10-30 16:17:49.651635Z  193458562 LOG            INFO                     message=Created user admin.user@jmc.edu.ph with role admin and ID 12345
+2026-10-30 16:17:49.654514Z  193458562 METHOD         setup.createAccount      user=null, queries=7, duration=200ms
+2026-10-30 16:17:49.829423Z  129320736 LOG            INFO                     message=Created user admin.support@jmc.edu.ph with role admin and ID 54321
+2026-10-30 16:17:49.830618Z  129320736 METHOD         setup.createAccount      user=null, queries=7, duration=117ms
+2026-10-30 16:18:25.832844Z   29944195 METHOD         customAuth.loginWithId   user=null, queries=1, duration=65.7ms
+2026-10-30 16:18:33.733840Z  251763970 LOG            DEBUG                    message=authenticate admin.user@jmc.edu.ph / XXXXXXXX
+2026-10-30 16:18:34.046772Z  251763970 LOG            DEBUG                    message= - found entry 
+2026-10-30 16:18:34.269281Z  251763970 LOG            DEBUG                    message= - password is correct, userId: 1)
+2026-10-30 16:18:34.385017Z  251763970 LOG            DEBUG                    message= - user found
+2026-10-30 16:18:34.588202Z  251763970 LOG            DEBUG                    message= - user signed in
+2026-10-30 16:18:34.751820Z  251763970 METHOD         customAuth.loginWithId   user=1, queries=7, duration=1.02s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:18:35.746597Z  999915482 METHOD         debug.getSessionInfo     user=1, queries=3, duration=107ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:18:35.997292Z  959168571 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=160ms
+2026-10-30 16:18:36.004134Z  792429658 METHOD         admin.getAllFaculty      user=1, queries=2, duration=197ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 16:18:36.811183Z  806166248 METHOD         admin.getDashboardStats  user=1, queries=16, duration=1.01s
+2026-10-30 16:18:37.012942Z  991981165 METHOD         admin.getAllStudents     user=1, queries=14, duration=1.2s
+2026-10-30 16:18:37.087471Z  674281143 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=759ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:18:52.885631Z  797786496 METHOD         admin.getAllFaculty      user=1, queries=5, duration=235ms
+2026-10-30 16:18:53.034344Z 1060971930 METHOD         admin.getAllConflicts    user=1, queries=8, duration=381ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:20:46.179514Z  833676246 METHOD         admin.getAllSubjects     user=1, queries=2, duration=137ms
+2026-10-30 16:20:46.189004Z    2690664 METHOD         admin.getAllTimeslots    user=1, queries=2, duration=141ms
+2026-10-30 16:20:46.192467Z  606820300 METHOD         admin.getAllRooms        user=1, queries=2, duration=149ms
+2026-10-30 16:20:46.322956Z  659703552 METHOD         admin.getAllSchedules    user=1, queries=2, duration=296ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:20:50.345092Z   64059759 METHOD         admin.getFacultyAvailability user=1, queries=2, duration=44.6ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:20:54.817600Z  349020493 METHOD         admin.getFacultySchedule user=1, queries=2, duration=110ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:21:01.941020Z  193524996 METHOD         admin.getFacultySchedule user=1, queries=2, duration=139ms
+2026-10-30 16:21:01.951585Z  428189351 METHOD         admin.getFacultyAvailability user=1, queries=2, duration=140ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:21:20.579258Z  976989323 METHOD         admin.getAllFaculty      user=1, queries=5, duration=461ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:21:20.934335Z   36432507 METHOD         admin.getAllRooms        user=1, queries=2, duration=173ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:21:21.239569Z  512630001 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=153ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:21:25.205525Z  222534795 METHOD         admin.getAllConflicts    user=1, queries=8, duration=533ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:21:27.206750Z  307205561 METHOD         admin.getFacultyLoadReport user=1, queries=4, duration=379ms
+2026-10-30 16:21:27.424203Z  360668164 METHOD         admin.getAllSections     user=1, queries=12, duration=610ms
+2026-10-30 16:21:30.856323Z  553406462 METHOD         timetable.getSchedules   user=1, queries=637, duration=10.7s
+2026-10-30 16:21:30.921357Z  570854129 METHOD         timetable.getSummary     user=1, queries=637, duration=10.8s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:30:49.253913Z  379997553 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=316ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:30:49.775815Z  351488222 METHOD         debug.getSessionInfo     user=1, queries=3, duration=84.3ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:30:50.064165Z  341680280 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=105ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:30:51.959166Z   86799112 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=324ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:30:52.815666Z  170054377 METHOD         admin.getAllFaculty      user=1, queries=2, duration=255ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 16:30:53.319873Z  376760948 METHOD         admin.getDashboardStats  user=1, queries=16, duration=790ms
+2026-10-30 16:30:53.375815Z  945246542 METHOD         admin.getAllStudents     user=1, queries=14, duration=790ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:31:09.727752Z 1021028277 METHOD         admin.getAllFaculty      user=1, queries=5, duration=727ms
+2026-10-30 16:31:09.957359Z  287733699 METHOD         admin.getAllConflicts    user=1, queries=8, duration=904ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:31:13.289845Z  770829207 METHOD         admin.getAllSubjects     user=1, queries=2, duration=172ms
+2026-10-30 16:31:13.415479Z  489475034 METHOD         admin.getAllSchedules    user=1, queries=2, duration=310ms
+2026-10-30 16:31:13.444253Z  318106044 METHOD         admin.getAllRooms        user=1, queries=2, duration=322ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:31:13.543326Z  552595417 METHOD         admin.getAllTimeslots    user=1, queries=2, duration=417ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:31:33.265339Z  310760130 METHOD         admin.getAllFaculty      user=1, queries=5, duration=659ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:31:33.564070Z  600119761 METHOD         admin.getAllRooms        user=1, queries=2, duration=153ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:31:33.900007Z  961851282 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=178ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:32:34.712051Z  383497207 METHOD         timetable.getSchedules   user=1, queries=637, duration=62.1s
+2026-10-30 16:32:34.849641Z  703999717 METHOD         timetable.getSummary     user=1, queries=637, duration=62.2s
+2026-10-30 16:32:37.333374Z  891856222 METHOD         timetable.getSchedules   user=1, queries=637, duration=62.2s
+2026-10-30 16:32:37.596924Z  211760294 METHOD         timetable.getSummary     user=1, queries=637, duration=62.5s
+2026-10-30 16:32:37.727166Z  575824898 METHOD         timetable.getSchedules   user=1, queries=637, duration=61.8s
+2026-10-30 16:32:37.733682Z  880046390 METHOD         timetable.getSummary     user=1, queries=637, duration=61.8s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:39:01.322453Z  915058740 QUERY          n/a                      id=null, duration=1.37s, query=SELECT "subject"."id" AS "subject.id", "subject"."code" AS "subject.code", "subject"."name" AS "subject.name", "subject"."units" AS "subject.units", "subject"."hours" AS "subject.hours", "subject"."yearLevel" AS "subject.yearLevel", "subject"."term" AS "subject.term", "subject"."facultyId" AS "subject.facultyId", "subject"."types" AS "subject.types", "subject"."program" AS "subject.program", "subject"."studentsCount" AS "subject.studentsCount", "subject"."isActive" AS "subject.isActive", "subject"."createdAt" AS "subject.createdAt", "subject"."updatedAt" AS "subject.updatedAt" FROM "subject" WHERE "subject"."id" IN (12, 13)
+2026-10-30 16:39:01.353359Z  915058740 METHOD         timetable.getSummary     user=1, queries=637, duration=73.8s
+2026-10-30 16:39:02.041595Z 1039016163 QUERY          n/a                      id=null, duration=1.1s, query=SELECT "timeslot"."id" AS "timeslot.id", "timeslot"."day" AS "timeslot.day", "timeslot"."startTime" AS "timeslot.startTime", "timeslot"."endTime" AS "timeslot.endTime", "timeslot"."label" AS "timeslot.label", "timeslot"."createdAt" AS "timeslot.createdAt", "timeslot"."updatedAt" AS "timeslot.updatedAt" FROM "timeslot" WHERE "timeslot"."id" = 64 LIMIT 1
+2026-10-30 16:39:02.048868Z 1039016163 METHOD         timetable.getSummary     user=1, queries=637, duration=74.6s
+2026-10-30 16:39:02.779865Z  937019162 QUERY          n/a                      id=null, duration=1.36s, query=SELECT "timeslot"."id" AS "timeslot.id", "timeslot"."day" AS "timeslot.day", "timeslot"."startTime" AS "timeslot.startTime", "timeslot"."endTime" AS "timeslot.endTime", "timeslot"."label" AS "timeslot.label", "timeslot"."createdAt" AS "timeslot.createdAt", "timeslot"."updatedAt" AS "timeslot.updatedAt" FROM "timeslot" WHERE "timeslot"."id" = 64 LIMIT 1
+2026-10-30 16:39:02.786483Z  937019162 METHOD         timetable.getSchedules   user=1, queries=637, duration=75.4s
+2026-10-30 16:39:03.106953Z  928301791 QUERY          n/a                      id=null, duration=1.32s, query=SELECT "timeslot"."id" AS "timeslot.id", "timeslot"."day" AS "timeslot.day", "timeslot"."startTime" AS "timeslot.startTime", "timeslot"."endTime" AS "timeslot.endTime", "timeslot"."label" AS "timeslot.label", "timeslot"."createdAt" AS "timeslot.createdAt", "timeslot"."updatedAt" AS "timeslot.updatedAt" FROM "timeslot" WHERE "timeslot"."id" = 64 LIMIT 1
+2026-10-30 16:39:03.111856Z  928301791 METHOD         timetable.getSchedules   user=1, queries=637, duration=75.7s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+2026-10-30 16:39:03.477654Z  149197015 QUERY          n/a                      id=null, duration=1.1s, query=SELECT "room"."id" AS "room.id", "room"."name" AS "room.name", "room"."capacity" AS "room.capacity", "room"."type" AS "room.type", "room"."program" AS "room.program", "room"."isActive" AS "room.isActive", "room"."createdAt" AS "room.createdAt", "room"."updatedAt" AS "room.updatedAt" FROM "room" WHERE "room"."id" = 1 LIMIT 1
+2026-10-30 16:39:03.478744Z  149197015 QUERY          n/a                      id=null, duration=1.03s, query=SELECT "subject"."id" AS "subject.id", "subject"."code" AS "subject.code", "subject"."name" AS "subject.name", "subject"."units" AS "subject.units", "subject"."hours" AS "subject.hours", "subject"."yearLevel" AS "subject.yearLevel", "subject"."term" AS "subject.term", "subject"."facultyId" AS "subject.facultyId", "subject"."types" AS "subject.types", "subject"."program" AS "subject.program", "subject"."studentsCount" AS "subject.studentsCount", "subject"."isActive" AS "subject.isActive", "subject"."createdAt" AS "subject.createdAt", "subject"."updatedAt" AS "subject.updatedAt" FROM "subject" WHERE "subject"."id" = 12 LIMIT 1
+2026-10-30 16:39:03.479907Z  149197015 METHOD         timetable.getSchedules   user=1, queries=637, duration=75.6s
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:39:03.499319Z  800064732 QUERY          n/a                      id=null, duration=1.47s, query=SELECT "timeslot"."id" AS "timeslot.id", "timeslot"."day" AS "timeslot.day", "timeslot"."startTime" AS "timeslot.startTime", "timeslot"."endTime" AS "timeslot.endTime", "timeslot"."label" AS "timeslot.label", "timeslot"."createdAt" AS "timeslot.createdAt", "timeslot"."updatedAt" AS "timeslot.updatedAt" FROM "timeslot" WHERE "timeslot"."id" = 64 LIMIT 1
+2026-10-30 16:39:03.501007Z  800064732 METHOD         timetable.getSummary     user=1, queries=637, duration=75.6s
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:39:39.873403Z  724824664 METHOD         timetable.getSchedules   user=1, queries=637, duration=36.7s
+2026-10-30 16:39:40.027580Z   18803523 METHOD         timetable.getSchedules   user=1, queries=637, duration=36.6s
+2026-10-30 16:39:40.035121Z  518992481 METHOD         timetable.getSummary     user=1, queries=637, duration=36.7s
+2026-10-30 16:39:40.044007Z  111453515 METHOD         timetable.getSummary     user=1, queries=637, duration=36.6s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:40:52.846546Z  244925642 METHOD         admin.getAllConflicts    user=1, queries=8, duration=1.18s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:41:17.230638Z  893006936 METHOD         admin.getAllFaculty      user=1, queries=5, duration=161ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:41:17.428439Z  456303836 METHOD         admin.getAllRooms        user=1, queries=2, duration=48.3ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:41:17.567580Z  456085654 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=97.5ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:41:19.547065Z  885747507 METHOD         admin.getAllConflicts    user=1, queries=8, duration=551ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:41:20.656509Z  659613011 METHOD         admin.getFacultyLoadReport user=1, queries=4, duration=389ms
+2026-10-30 16:41:21.302729Z  301305624 METHOD         admin.getAllSections     user=1, queries=12, duration=1.04s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:44:25.313236Z  277311005 METHOD         admin.getRoomUtilizationReport user=1, queries=4, duration=410ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:44:26.118008Z   87303764 METHOD         admin.getAllConflicts    user=1, queries=8, duration=217ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:41.197861Z  610774934 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=112ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:41.415770Z  539172932 METHOD         debug.getSessionInfo     user=1, queries=3, duration=58.1ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:41.588704Z  280340182 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=35.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:41.799918Z  207277015 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=165ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:42.023453Z  937665117 METHOD         admin.getAllFaculty      user=1, queries=2, duration=64.6ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 16:56:42.750536Z  955113784 METHOD         admin.getDashboardStats  user=1, queries=16, duration=795ms
+2026-10-30 16:56:42.977475Z  239529701 METHOD         admin.getAllStudents     user=1, queries=14, duration=1.01s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:46.445357Z  885214786 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=17.3ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:46.600746Z  996517641 METHOD         debug.getSessionInfo     user=1, queries=3, duration=29.8ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:46.699954Z  183967651 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=50.2ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:46.839295Z  608437415 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=81ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:56:48.141090Z  629958543 METHOD         admin.getAllFaculty      user=1, queries=2, duration=66ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 16:56:48.305970Z  178983806 METHOD         admin.getDashboardStats  user=1, queries=16, duration=235ms
+2026-10-30 16:56:48.379854Z  648792043 METHOD         admin.getAllStudents     user=1, queries=14, duration=307ms
+2026-10-30 16:57:13.204817Z  722798077 LOG            DEBUG                    message=authenticate admin.user@jmc.edu.ph / XXXXXXXX
+2026-10-30 16:57:13.306664Z  722798077 LOG            DEBUG                    message= - found entry 
+2026-10-30 16:57:13.649352Z  722798077 LOG            DEBUG                    message= - password is correct, userId: 1)
+2026-10-30 16:57:13.778841Z  722798077 LOG            DEBUG                    message= - user found
+2026-10-30 16:57:13.842097Z  722798077 LOG            DEBUG                    message= - user signed in
+2026-10-30 16:57:13.935312Z  722798077 METHOD         customAuth.loginWithId   user=1, queries=7, duration=771ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+2026-10-30 16:57:14.371235Z  405912328 METHOD         debug.getSessionInfo     user=1, queries=3, duration=59.8ms
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:57:14.419587Z  985510118 METHOD         admin.getAllFaculty      user=1, queries=2, duration=55.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+2026-10-30 16:57:14.594979Z  355717411 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=131ms
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:57:15.031725Z  778435573 METHOD         admin.getAllStudents     user=1, queries=14, duration=662ms
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 16:57:15.085171Z  573400616 METHOD         admin.getDashboardStats  user=1, queries=16, duration=731ms
+2026-10-30 16:57:15.099584Z  305177660 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=376ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:57:18.778373Z  726416140 METHOD         admin.getAllFaculty      user=1, queries=5, duration=231ms
+2026-10-30 16:57:18.871564Z   29169458 METHOD         admin.getAllConflicts    user=1, queries=8, duration=316ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:57:19.957328Z  124495367 METHOD         admin.getAllSubjects     user=1, queries=2, duration=107ms
+2026-10-30 16:57:19.959705Z 1022112858 METHOD         admin.getAllRooms        user=1, queries=2, duration=106ms
+2026-10-30 16:57:19.972017Z  236530747 METHOD         admin.getAllTimeslots    user=1, queries=2, duration=113ms
+2026-10-30 16:57:20.008754Z  123845363 METHOD         admin.getAllSchedules    user=1, queries=2, duration=163ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:57:27.679627Z  780364495 METHOD         admin.getAllFaculty      user=1, queries=5, duration=188ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:57:27.881775Z  784890831 METHOD         admin.getAllRooms        user=1, queries=2, duration=96.2ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:57:28.076938Z   95440020 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=83.3ms
+2026-10-30 16:57:36.978854Z 1032136210 METHOD         timetable.getSummary     user=1, queries=637, duration=9.48s
+2026-10-30 16:57:36.984833Z   89174039 METHOD         timetable.getSchedules   user=1, queries=637, duration=9.49s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:58:29.651850Z  136819113 METHOD         admin.getAllConflicts    user=1, queries=8, duration=732ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:58:31.954564Z  287600628 METHOD         admin.getFacultyLoadReport user=1, queries=4, duration=279ms
+2026-10-30 16:58:32.199805Z   85371171 METHOD         admin.getAllSections     user=1, queries=12, duration=536ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:58:34.620524Z  472407766 METHOD         admin.getRoomUtilizationReport user=1, queries=4, duration=274ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:58:36.257461Z  271893488 METHOD         admin.getAllConflicts    user=1, queries=8, duration=411ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 16:58:37.415685Z  941422571 METHOD         admin.getScheduleOverviewReport user=1, queries=3, duration=189ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:17.287661Z  822042863 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=123ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:17.492164Z  763963179 METHOD         debug.getSessionInfo     user=1, queries=3, duration=44.2ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:17.554438Z  210579862 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=33.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:17.742575Z  887278804 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=88ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:17.852784Z  184732968 METHOD         admin.getAllFaculty      user=1, queries=2, duration=49.6ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 17:06:17.958929Z  490973429 METHOD         admin.getDashboardStats  user=1, queries=16, duration=160ms
+2026-10-30 17:06:18.023512Z  145220143 METHOD         admin.getAllStudents     user=1, queries=14, duration=222ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:23.495441Z  825146777 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=15.1ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:23.658772Z  555641519 METHOD         debug.getSessionInfo     user=1, queries=3, duration=30.5ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:23.759560Z  883555556 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=38.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:24.759712Z   14699297 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=54ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:25.350268Z  321643488 METHOD         admin.getAllFaculty      user=1, queries=2, duration=65.2ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 17:06:25.534330Z  520441942 METHOD         admin.getDashboardStats  user=1, queries=16, duration=263ms
+2026-10-30 17:06:25.555283Z  198899198 METHOD         admin.getAllStudents     user=1, queries=14, duration=259ms
+2026-10-30 17:06:44.073840Z  233817753 LOG            DEBUG                    message=authenticate admin.user@jmc.edu.ph / XXXXXXXX
+2026-10-30 17:06:44.152705Z  233817753 LOG            DEBUG                    message= - found entry 
+2026-10-30 17:06:44.349676Z  233817753 LOG            DEBUG                    message= - password is correct, userId: 1)
+2026-10-30 17:06:44.392500Z  233817753 LOG            DEBUG                    message= - user found
+2026-10-30 17:06:44.455074Z  233817753 LOG            DEBUG                    message= - user signed in
+2026-10-30 17:06:44.544525Z  233817753 METHOD         customAuth.loginWithId   user=1, queries=7, duration=507ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:44.912264Z  109338246 METHOD         debug.getSessionInfo     user=1, queries=3, duration=30.2ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:45.020784Z  733289218 METHOD         admin.getAllFaculty      user=1, queries=2, duration=57.8ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+2026-10-30 17:06:45.169963Z  818116177 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=120ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:45.627499Z   93642882 METHOD         admin.getAllStudents     user=1, queries=14, duration=660ms
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 17:06:45.640536Z   74321899 METHOD         admin.getDashboardStats  user=1, queries=16, duration=688ms
+2026-10-30 17:06:45.678966Z  669063275 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=413ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+2026-10-30 17:06:48.467363Z  874213208 METHOD         admin.getAllSubjects     user=1, queries=2, duration=186ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:48.471714Z  342148383 METHOD         admin.getAllRooms        user=1, queries=2, duration=177ms
+2026-10-30 17:06:48.497685Z  218544838 METHOD         admin.getAllSchedules    user=1, queries=2, duration=219ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:48.541651Z  107686767 METHOD         admin.getAllTimeslots    user=1, queries=2, duration=242ms
+2026-10-30 17:06:48.575565Z  568721281 METHOD         admin.getAllFaculty      user=1, queries=5, duration=284ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+2026-10-30 17:06:48.689629Z   46288433 METHOD         admin.getFacultyLoadReport user=1, queries=4, duration=104ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:48.782626Z  599671746 METHOD         admin.getFacultyLoadReport user=1, queries=4, duration=130ms
+2026-10-30 17:06:48.856542Z  194536499 METHOD         admin.getAllSections     user=1, queries=12, duration=550ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:49.907899Z  839003951 METHOD         admin.getAllFaculty      user=1, queries=5, duration=209ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:50.089609Z 1061621570 METHOD         admin.getAllRooms        user=1, queries=2, duration=85.7ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:50.279113Z  748375161 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=89.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:51.060393Z  671691011 METHOD         admin.getAllConflicts    user=1, queries=8, duration=282ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:51.936224Z  653939318 METHOD         admin.getAllFaculty      user=1, queries=5, duration=159ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:52.110118Z  102796601 METHOD         admin.getAllRooms        user=1, queries=2, duration=87.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:06:52.266383Z  204719495 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=86.2ms
+2026-10-30 17:07:04.479295Z  639262783 METHOD         timetable.getSchedules   user=1, queries=637, duration=14.8s
+2026-10-30 17:07:04.512294Z  792257499 METHOD         timetable.getSummary     user=1, queries=637, duration=14.8s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:07:09.597456Z 1006389122 METHOD         chatHistory.getMySessions user=1, queries=2, duration=216ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:07:11.943148Z  130493413 METHOD         nLP.createChatSession    user=1, queries=2, duration=137ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:07:12.778614Z  525587719 METHOD         nLP.query                user=1, queries=12, duration=737ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:07:12.955030Z  711890508 METHOD         chatHistory.getMySessions user=1, queries=2, duration=85.4ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:07:43.362060Z  489046534 METHOD         nLP.query                user=1, queries=21, duration=5.34s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 17:07:43.656745Z  918556983 METHOD         chatHistory.getMySessions user=1, queries=2, duration=90.4ms
+2026-10-30 17:33:23.923434Z  177305050 LOG            INFO                     message=Created user admin.user@jmc.edu.ph with role admin and ID 12345
+2026-10-30 17:33:23.941312Z  177305050 METHOD         setup.createAccount      user=null, queries=7, duration=733ms
+2026-10-30 17:33:24.239086Z  990592781 LOG            INFO                     message=Created user admin.support@jmc.edu.ph with role admin and ID 54321
+2026-10-30 17:33:24.240206Z  990592781 METHOD         setup.createAccount      user=null, queries=7, duration=178ms
+2026-10-30 17:59:38.373974Z  187577442 WEB            /app/                    user=null, queries=0, duration=486ms
+2026-10-30 17:59:38.935146Z  477318661 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=34.1ms
+2026-10-30 17:59:39.044502Z  192975822 WEB            /app/manifest.json       user=null, queries=0, duration=25.1ms
+2026-10-30 17:59:39.279353Z  972061988 WEB            /app/favicon.png         user=null, queries=0, duration=63ms
+2026-10-30 17:59:39.403492Z  286415124 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=163ms
+2026-10-30 17:59:39.534187Z 1013892094 WEB            /app/main.dart.wasm      user=null, queries=0, duration=56ms
+2026-10-30 17:59:39.572138Z  248733961 WEB            /app/main.dart.mjs       user=null, queries=0, duration=92.2ms
+2026-10-30 17:59:39.697559Z  580285070 WEB            /app/index.html          user=null, queries=0, duration=5.51ms
+2026-10-30 17:59:39.704427Z  629961970 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=4.86ms
+2026-10-30 17:59:39.828221Z  481956463 WEB            /app/assets/FontManifest.json user=null, queries=0, duration=41.6ms
+2026-10-30 17:59:39.835129Z  144560476 WEB            /app/assets/AssetManifest.bin.json user=null, queries=0, duration=76.2ms
+2026-10-30 17:59:42.796196Z  874796551 WEB            /app/main.dart.js        user=null, queries=0, duration=3.32s
+2026-10-30 17:59:43.782261Z  351889319 WEB            /app/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf user=null, queries=0, duration=37.9ms
+2026-10-30 17:59:43.788339Z  538370530 WEB            /app/assets/fonts/MaterialIcons-Regular.otf user=null, queries=0, duration=50.6ms
+2026-10-30 17:59:43.915001Z  391881910 WEB            /app/assets/assets/config.json user=null, queries=0, duration=9.33ms
+2026-10-30 17:59:44.461634Z  159262279 WEB            /app/assets/assets/jmclogo.png user=null, queries=0, duration=46.1ms
+2026-10-30 17:59:44.500030Z  431170829 WEB            /app/assets/assets/jmcbackground.jpg user=null, queries=0, duration=91.7ms
+2026-10-30 18:00:12.984475Z  974564052 METHOD         customAuth.loginWithId   user=null, queries=1, duration=52.4ms
+2026-10-30 18:00:18.520218Z  128983113 METHOD         customAuth.loginWithId   user=null, queries=1, duration=54.8ms
+2026-10-30 18:00:19.078926Z  934388486 WEB            /app/                    user=null, queries=0, duration=92.5ms
+2026-10-30 18:00:19.282151Z  823907140 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=13.6ms
+2026-10-30 18:00:19.496408Z 1012031173 WEB            /app/manifest.json       user=null, queries=0, duration=7.08ms
+2026-10-30 18:00:19.896726Z  741893374 WEB            /app/assets/assets/config.json user=null, queries=0, duration=1.77ms
+2026-10-30 18:00:21.904465Z  858976361 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=4.3ms
+2026-10-30 18:01:13.644405Z  644801964 WEB            /app/                    user=null, queries=0, duration=87.1ms
+2026-10-30 18:01:14.157564Z  840780790 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=6.49ms
+2026-10-30 18:01:14.559971Z 1026828981 WEB            /app/manifest.json       user=null, queries=0, duration=9.19ms
+2026-10-30 18:01:14.794772Z   32468818 WEB            /app/main.dart.wasm      user=null, queries=0, duration=29.7ms
+2026-10-30 18:01:16.181801Z  314297987 WEB            /app/assets/assets/config.json user=null, queries=0, duration=5.77ms
+2026-10-30 18:01:16.573340Z   18268329 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=12.9ms
+2026-10-30 18:01:41.574174Z  311183570 METHOD         customAuth.loginWithId   user=null, queries=1, duration=129ms
+2026-10-30 18:01:49.933588Z  411612911 LOG            DEBUG                    message=authenticate admin.user@jmc.edu.ph / XXXXXXXX
+2026-10-30 18:01:50.310047Z  411612911 LOG            DEBUG                    message= - found entry 
+2026-10-30 18:01:50.959425Z  411612911 LOG            DEBUG                    message= - password is correct, userId: 1)
+2026-10-30 18:01:51.138221Z  411612911 LOG            DEBUG                    message= - user found
+2026-10-30 18:01:51.270449Z  411612911 LOG            DEBUG                    message= - user signed in
+2026-10-30 18:01:51.447628Z  411612911 METHOD         customAuth.loginWithId   user=1, queries=7, duration=1.59s
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:01:52.376114Z  347784291 METHOD         debug.getSessionInfo     user=1, queries=3, duration=187ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:01:52.672406Z  248023353 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=126ms
+2026-10-30 18:01:52.676364Z  201982086 METHOD         admin.getAllFaculty      user=1, queries=2, duration=283ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+2026-10-30 18:01:52.969476Z  662183185 WEB            /app/                    user=null, queries=0, duration=20.3ms
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 18:01:53.305844Z  841332048 METHOD         admin.getDashboardStats  user=1, queries=16, duration=923ms
+2026-10-30 18:01:53.434962Z 1070002716 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=16.9ms
+2026-10-30 18:01:53.528305Z  562239679 WEB            /app/manifest.json       user=null, queries=0, duration=12.3ms
+2026-10-30 18:01:53.693701Z  301754053 METHOD         admin.getAllStudents     user=1, queries=14, duration=1.28s
+2026-10-30 18:01:53.734850Z  658566849 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=852ms
+2026-10-30 18:02:07.883586Z  388028400 WEB            /app/main.dart.wasm      user=null, queries=0, duration=43.1ms
+2026-10-30 18:02:08.621228Z  252303569 WEB            /app/assets/assets/config.json user=null, queries=0, duration=2ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:08.805553Z  675611364 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=44.4ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:09.084617Z 1036206411 METHOD         debug.getSessionInfo     user=1, queries=3, duration=103ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:09.317714Z  333622798 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=113ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:09.762975Z  283454921 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=232ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:09.944524Z  804836231 METHOD         admin.getAllFaculty      user=1, queries=2, duration=66ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 18:02:10.287940Z  370115106 METHOD         admin.getDashboardStats  user=1, queries=16, duration=419ms
+2026-10-30 18:02:10.305179Z  931575373 METHOD         admin.getAllStudents     user=1, queries=14, duration=422ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:53.789735Z   27162327 METHOD         admin.getAllFaculty      user=1, queries=5, duration=60ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:54.057894Z  284690593 METHOD         admin.getAllStudents     user=1, queries=14, duration=230ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:02:54.153538Z  167013047 METHOD         admin.getAllUserRoles    user=1, queries=2, duration=52.7ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:03:02.386448Z  485668780 METHOD         admin.getAllFaculty      user=1, queries=5, duration=97.3ms
+2026-10-30 18:03:02.466716Z  985520179 METHOD         admin.getAllConflicts    user=1, queries=8, duration=174ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:03:03.502487Z  702294055 METHOD         admin.getAllSubjects     user=1, queries=2, duration=74.9ms
+2026-10-30 18:03:03.515911Z  259392606 METHOD         admin.getAllRooms        user=1, queries=2, duration=83.2ms
+2026-10-30 18:03:03.528787Z  209898961 METHOD         admin.getAllTimeslots    user=1, queries=2, duration=93.5ms
+2026-10-30 18:03:03.544677Z  431637551 METHOD         admin.getAllSchedules    user=1, queries=2, duration=125ms
+2026-10-30 18:13:01.530693Z   42374108 WEB            /app/                    user=null, queries=0, duration=41.7ms
+2026-10-30 18:13:01.797819Z   82651757 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=5.37ms
+2026-10-30 18:13:02.112645Z  485447594 WEB            /app/manifest.json       user=null, queries=0, duration=3.94ms
+2026-10-30 18:13:02.134141Z  659926387 WEB            /app/main.dart.mjs       user=null, queries=0, duration=3.27ms
+2026-10-30 18:13:02.200486Z 1063015521 WEB            /app/main.dart.wasm      user=null, queries=0, duration=6.54ms
+2026-10-30 18:13:02.683557Z  840119125 WEB            /app/assets/assets/config.json user=null, queries=0, duration=5.71ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: All authentication methods failed.
+2026-10-30 18:13:02.875089Z  847952112 METHOD         serverpod_auth_core.status.isSignedIn user=null, queries=0, duration=65.3ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: All authentication methods failed.
+2026-10-30 18:13:02.965472Z  824522140 METHOD         serverpod_auth_core.status.signOutDevice user=null, queries=0, duration=36.4ms
+2026-10-30 18:13:05.095579Z  664749057 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=1.6ms
+2026-10-30 18:13:11.106110Z  801497173 LOG            DEBUG                    message=authenticate admin.user@jmc.edu.ph / XXXXXXXX
+2026-10-30 18:13:11.242840Z  801497173 LOG            DEBUG                    message= - found entry 
+2026-10-30 18:13:11.466732Z  801497173 LOG            DEBUG                    message= - password is correct, userId: 1)
+2026-10-30 18:13:11.528906Z  801497173 LOG            DEBUG                    message= - user found
+2026-10-30 18:13:11.575874Z  801497173 LOG            DEBUG                    message= - user signed in
+2026-10-30 18:13:11.666182Z  801497173 METHOD         customAuth.loginWithId   user=1, queries=7, duration=622ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+2026-10-30 18:13:12.044498Z  756293718 METHOD         debug.getSessionInfo     user=1, queries=3, duration=68.8ms
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 18:13:12.169916Z  347128855 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=79.5ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+2026-10-30 18:13:12.304136Z  475198855 METHOD         admin.getAllFaculty      user=1, queries=2, duration=268ms
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Fetched 32 schedules, 10 faculty
+[DEBUG] Faculty 5: name=Efrhain Louis Pajota, maxLoad=18
+[DEBUG] Faculty 6: name=Jerwin Carreon, maxLoad=25
+[DEBUG] Faculty 14: name=Kirvey Balansag, maxLoad=30
+[DEBUG] Faculty 17: name=Eroy, maxLoad=15
+[DEBUG] Faculty 18: name=Ryan Billera, maxLoad=35
+[DEBUG] Faculty 3: name=Arvin Lauron, maxLoad=29
+[DEBUG] Faculty 4: name=Chardane Labiste, maxLoad=15
+[DEBUG] Faculty 7: name=Joshua SianneGabrielle T. Camporedondo, maxLoad=18
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+2026-10-30 18:13:12.612581Z  501624398 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=364ms
+[DEBUG] getDashboardStats: Step 3 complete. Found 30 conflicts.
+2026-10-30 18:13:12.665048Z 1011086266 METHOD         admin.getDashboardStats  user=1, queries=16, duration=633ms
+2026-10-30 18:13:12.882336Z  855142954 METHOD         admin.getAllStudents     user=1, queries=14, duration=846ms

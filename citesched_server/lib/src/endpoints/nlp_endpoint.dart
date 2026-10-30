@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:serverpod/serverpod.dart';
 
 import '../generated/protocol.dart';
@@ -27,7 +25,8 @@ class NLPEndpoint extends Endpoint {
       final resolvedRole = _guardService.resolveRole(authInfo.scopes);
       final sanitizedText = _guardService.sanitizeUserPrompt(text);
 
-      if (sanitizedText.isEmpty || sanitizedText.length > AiGuardService.maxPromptLength) {
+      if (sanitizedText.isEmpty ||
+          sanitizedText.length > AiGuardService.maxPromptLength) {
         return NLPResponse(
           text:
               'Invalid query. Please enter a query between 1-${AiGuardService.maxPromptLength} characters.',
@@ -45,7 +44,8 @@ class NLPEndpoint extends Endpoint {
 
       if (!_guardService.allowRequest('$userId:$resolvedRole')) {
         return NLPResponse(
-          text: 'Too many AI requests right now. Please wait a moment and try again.',
+          text:
+              'Too many AI requests right now. Please wait a moment and try again.',
           intent: NLPIntent.unknown,
         );
       }
@@ -66,12 +66,17 @@ class NLPEndpoint extends Endpoint {
         message: sanitizedText,
       );
 
-      final response = await _nlpService.processQuery(
+      final rawResponse = await _nlpService.processQuery(
         session,
         sanitizedText,
         userId,
         authInfo.scopes.map((item) => item.name).whereType<String>().toList(),
         activeSession.id?.toString(),
+      );
+      final response = rawResponse.copyWith(
+        text: _nlpService.sanitizeResponseText(
+          rawResponse.text,
+        ),
       );
 
       await _saveMessage(
@@ -196,17 +201,20 @@ class NLPEndpoint extends Endpoint {
         if (leftSlot == null || rightSlot == null) continue;
         if (leftSlot.day != rightSlot.day) continue;
 
-        final overlaps = _timeToMinutes(leftSlot.startTime) <
+        final overlaps =
+            _timeToMinutes(leftSlot.startTime) <
                 _timeToMinutes(rightSlot.endTime) &&
             _timeToMinutes(rightSlot.startTime) <
                 _timeToMinutes(leftSlot.endTime);
         if (!overlaps) continue;
 
         final isFacultyConflict = left.facultyId == right.facultyId;
-        final isRoomConflict = left.roomId != null && left.roomId == right.roomId;
+        final isRoomConflict =
+            left.roomId != null && left.roomId == right.roomId;
         final isSectionConflict =
             left.sectionId != null && left.sectionId == right.sectionId;
-        if (!isFacultyConflict && !isRoomConflict && !isSectionConflict) continue;
+        if (!isFacultyConflict && !isRoomConflict && !isSectionConflict)
+          continue;
 
         conflicts.add(
           ScheduleConflict(
@@ -248,7 +256,10 @@ class NLPEndpoint extends Endpoint {
           'Show available rooms',
         ];
         if (conflicts.isNotEmpty) {
-          suggestions.insert(0, 'Review ${conflicts.length} schedule conflicts');
+          suggestions.insert(
+            0,
+            'Review ${conflicts.length} schedule conflicts',
+          );
         }
         return suggestions;
       case 'faculty':
@@ -306,13 +317,16 @@ class NLPEndpoint extends Endpoint {
       requestedRole: role,
     );
     final resolvedUserId = authInfo.userIdentifier.toString();
-    final resolvedTitle =
-        title?.trim().isNotEmpty == true ? title!.trim() : _defaultSessionTitle(resolvedRole);
+    final resolvedTitle = title?.trim().isNotEmpty == true
+        ? title!.trim()
+        : _defaultSessionTitle(resolvedRole);
 
     if (userId != null &&
         userId.trim().isNotEmpty &&
         userId.trim() != resolvedUserId) {
-      throw Exception('You can only create chat sessions for your own account.');
+      throw Exception(
+        'You can only create chat sessions for your own account.',
+      );
     }
 
     return _chatService.createSession(

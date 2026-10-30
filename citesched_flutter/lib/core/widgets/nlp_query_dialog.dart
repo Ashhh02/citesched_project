@@ -10,6 +10,7 @@ import 'package:citesched_flutter/features/admin/widgets/weekly_calendar_view.da
 import 'package:citesched_flutter/features/admin/screens/admin_layout.dart';
 import 'package:citesched_flutter/features/nlp/providers/chat_history_provider.dart';
 import 'package:citesched_flutter/features/nlp/providers/nlp_query_chat_provider.dart';
+import 'package:citesched_flutter/features/nlp/utils/plain_text_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,6 +40,7 @@ class _NLPQueryDialogState extends ConsumerState<NLPQueryDialog> {
   @override
   void initState() {
     super.initState();
+    ref.invalidate(chatHistorySessionsProvider);
     _scrollController.addListener(_handleScrollChanged);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusInput();
@@ -48,7 +50,7 @@ class _NLPQueryDialogState extends ConsumerState<NLPQueryDialog> {
 
   Future<void> _sendQuery() async {
     final query = _queryController.text.trim();
-    if (query.isEmpty) return;
+    if (query.isEmpty || ref.read(nlpQueryChatProvider).isLoading) return;
     _queryController.clear();
     setState(() {
       _showSuggestionsPanel = false;
@@ -107,6 +109,9 @@ class _NLPQueryDialogState extends ConsumerState<NLPQueryDialog> {
       _showSuggestionsPanel = false;
       _selectedSessionId = null;
     });
+    if (_showHistory) {
+      ref.invalidate(chatHistorySessionsProvider);
+    }
     if (!_showHistory) {
       _focusInput();
       _scrollToBottom();
@@ -957,7 +962,7 @@ class _NLPQueryDialogState extends ConsumerState<NLPQueryDialog> {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Text(
-          entry.text,
+          isUser ? entry.text : plainTextAiResponse(entry.text),
           style: GoogleFonts.poppins(
             fontSize: 12,
             color: messageColor,
@@ -1047,6 +1052,7 @@ class _NLPQueryDialogState extends ConsumerState<NLPQueryDialog> {
   }
 
   Future<void> _openSession(ChatSessionSummary entry) async {
+    ref.invalidate(chatHistorySessionProvider(entry.sessionId));
     final historyItems = await ref.read(
       chatHistorySessionProvider(entry.sessionId).future,
     );
@@ -1322,6 +1328,7 @@ class _MessageBubble extends StatelessWidget {
     String text,
   ) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final visibleText = isUser ? text : plainTextAiResponse(text);
     return Row(
       mainAxisAlignment: isUser
           ? MainAxisAlignment.end
@@ -1346,7 +1353,7 @@ class _MessageBubble extends StatelessWidget {
                   : null,
             ),
             child: Text(
-              text,
+              visibleText,
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 height: 1.4,

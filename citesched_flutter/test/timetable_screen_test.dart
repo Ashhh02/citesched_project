@@ -10,6 +10,45 @@ void main() {
     GoogleFonts.config.allowRuntimeFetching = false;
   });
 
+  test('timetable summary reuses the filtered schedules cache', () async {
+    final now = DateTime.utc(2026, 1, 1);
+    final container = ProviderContainer(
+      overrides: [
+        filteredSchedulesProvider.overrideWith(
+          (ref) async => [
+            ScheduleInfo(
+              schedule: Schedule(
+                subjectId: 7,
+                facultyId: 3,
+                section: 'A',
+                units: 3,
+                timeslot: Timeslot(
+                  day: DayOfWeek.mon,
+                  startTime: '08:00',
+                  endTime: '09:30',
+                  label: 'Morning',
+                  createdAt: now,
+                  updatedAt: now,
+                ),
+                createdAt: now,
+                updatedAt: now,
+              ),
+              conflicts: [],
+            ),
+          ],
+        ),
+      ],
+    );
+    addTearDown(container.dispose);
+
+    final summary = await container.read(timetableSummaryProvider.future);
+
+    expect(summary.totalSubjects, 1);
+    expect(summary.totalUnits, 3);
+    expect(summary.totalWeeklyHours, 1.5);
+    expect(summary.conflictCount, 0);
+  });
+
   testWidgets('Timetable screen renders header and summary', (tester) async {
     TestWidgetsFlutterBinding.ensureInitialized();
     await tester.binding.setSurfaceSize(const Size(1440, 900));
@@ -26,7 +65,9 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          filteredSchedulesProvider.overrideWith((ref) async => <ScheduleInfo>[]),
+          filteredSchedulesProvider.overrideWith(
+            (ref) async => <ScheduleInfo>[],
+          ),
           timetableSummaryProvider.overrideWith((ref) async => summary),
         ],
         child: MaterialApp(

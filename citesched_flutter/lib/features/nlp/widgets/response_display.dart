@@ -2,6 +2,7 @@ import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/core/widgets/full_screen_calendar_scaffold.dart';
 import 'package:citesched_flutter/features/admin/widgets/weekly_calendar_view.dart';
 import 'package:citesched_flutter/features/admin/screens/admin_layout.dart';
+import 'package:citesched_flutter/features/nlp/utils/plain_text_response.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,7 +29,7 @@ class ResponseDisplay extends StatelessWidget {
       children: [
         // Main message
         Text(
-          message,
+          plainTextAiResponse(message),
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontSize: 14,

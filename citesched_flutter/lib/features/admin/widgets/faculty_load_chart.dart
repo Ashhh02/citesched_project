@@ -12,11 +12,15 @@ class FacultyLoadChart extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => _buildChart(context);
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) =>
+          _buildChart(context, constraints.maxWidth),
+    );
+  }
 
-  Widget _buildChart(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 600;
+  Widget _buildChart(BuildContext context, double width) {
+    final isMobile = width < 600;
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = Theme.of(context).textTheme.bodyLarge?.color ??

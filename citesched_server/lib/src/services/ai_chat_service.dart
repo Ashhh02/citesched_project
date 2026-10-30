@@ -79,14 +79,15 @@ class AiChatService {
     Session session, {
     required int sessionId,
     int limit = 100,
-  }) {
-    return AiChatMessage.db.find(
+  }) async {
+    final recentMessages = await AiChatMessage.db.find(
       session,
       where: (t) => t.sessionRecordId.equals(sessionId),
       orderBy: (t) => t.timestamp,
-      orderDescending: false,
+      orderDescending: true,
       limit: limit.clamp(1, 500),
     );
+    return recentMessages.reversed.toList(growable: false);
   }
 
   Future<List<AiChatSession>> getSessions(

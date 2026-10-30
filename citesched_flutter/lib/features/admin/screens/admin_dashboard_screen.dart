@@ -2355,7 +2355,7 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
   Widget _buildStatCardsSection(
     BuildContext context,
     DashboardStats stats,
-    bool isDesktop,
+    double width,
     List<ScheduleConflict> recentConflicts,
   ) {
     final cards = [
@@ -2413,7 +2413,7 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
       ),
     ];
 
-    return _buildStatCards(cards, isDesktop);
+    return _buildStatCards(cards, width);
   }
 
   Widget _buildChartAndConflictSection(
@@ -3643,7 +3643,6 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
     required AsyncValue<List<Student>> recentStudentAsync,
     required UserInfo? userInfo,
   }) {
-    final isDesktop = ResponsiveHelper.isDesktop(context);
     final isMobile = ResponsiveHelper.isMobile(context);
 
     return statsAsync.when(
@@ -3673,7 +3672,6 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
         recentStudentAsync: recentStudentAsync,
         userInfo: userInfo,
         isMobile: isMobile,
-        isDesktop: isDesktop,
       ),
     );
   }
@@ -3685,95 +3683,95 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
     required AsyncValue<List<Student>> recentStudentAsync,
     required UserInfo? userInfo,
     required bool isMobile,
-    required bool isDesktop,
   }) {
     final cardBg = Theme.of(context).cardColor;
     const primaryPurple = Color(0xFF720045);
     final recentConflicts = stats.recentConflicts;
     final facultyLoadData = stats.facultyLoad;
 
-    return SingleChildScrollView(
-      padding: EdgeInsets.all(isMobile ? 16 : 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildAdminHeader(
-            context: context,
-            pendingFacultyAsync: pendingFacultyAsync,
-            recentStudentAsync: recentStudentAsync,
-            userInfo: userInfo,
-            isMobile: isMobile,
-            primaryPurple: primaryPurple,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final pagePadding = isMobile ? 16.0 : 24.0;
+        final contentWidth = constraints.maxWidth - pagePadding * 2;
+        final isCompact = contentWidth < 600;
+
+        return SingleChildScrollView(
+          padding: EdgeInsets.all(pagePadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildAdminHeader(
+                context: context,
+                pendingFacultyAsync: pendingFacultyAsync,
+                recentStudentAsync: recentStudentAsync,
+                userInfo: userInfo,
+                isMobile: isCompact,
+                primaryPurple: primaryPurple,
+              ),
+              const SizedBox(height: 32),
+              _buildStatCardsSection(
+                context,
+                stats,
+                contentWidth,
+                recentConflicts,
+              ),
+              const SizedBox(height: 32),
+              _buildChartAndConflictSection(
+                context,
+                cardBg,
+                primaryPurple,
+                facultyLoadData,
+                recentConflicts,
+                contentWidth,
+              ),
+              const SizedBox(height: 32),
+              _buildDistributionSection(
+                context,
+                cardBg,
+                primaryPurple,
+                stats.yearLevelDistribution,
+                stats.sectionDistribution,
+                contentWidth,
+              ),
+            ],
           ),
-          const SizedBox(height: 32),
-          _buildStatCardsSection(context, stats, isDesktop, recentConflicts),
-          const SizedBox(height: 32),
-          _buildChartAndConflictSection(
-            context,
-            cardBg,
-            primaryPurple,
-            facultyLoadData,
-            recentConflicts,
-            MediaQuery.of(context).size.width,
-          ),
-          const SizedBox(height: 32),
-          _buildDistributionSection(
-            context,
-            cardBg,
-            primaryPurple,
-            stats.yearLevelDistribution,
-            stats.sectionDistribution,
-            MediaQuery.of(context).size.width,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildStatCards(List<_StatCardConfig> cards, bool isWide) {
-    if (isWide) {
-      final rowChildren = <Widget>[];
-      for (var i = 0; i < cards.length; i++) {
-        final card = cards[i];
-        rowChildren.add(
-          Expanded(
-            child: StatCard(
-              label: card.label,
-              value: card.value,
-              icon: card.icon,
-              borderColor: card.borderColor,
-              iconColor: card.iconColor,
-              valueColor: card.valueColor,
-              onTap: card.onTap,
-            ),
+  Widget _buildStatCards(List<_StatCardConfig> cards, double width) {
+    final columns = width >= 1100
+        ? 4
+        : width >= 600
+        ? 2
+        : 1;
+    final cardWidgets = cards
+        .map(
+          (card) => StatCard(
+            label: card.label,
+            value: card.value,
+            icon: card.icon,
+            borderColor: card.borderColor,
+            iconColor: card.iconColor,
+            valueColor: card.valueColor,
+            onTap: card.onTap,
           ),
-        );
-        if (i < cards.length - 1) {
-          rowChildren.add(const SizedBox(width: 16));
-        }
-      }
-      return Row(children: rowChildren);
-    }
+        )
+        .toList();
 
-    final columnChildren = <Widget>[];
-    for (var i = 0; i < cards.length; i++) {
-      final card = cards[i];
-      columnChildren.add(
-        StatCard(
-          label: card.label,
-          value: card.value,
-          icon: card.icon,
-          borderColor: card.borderColor,
-          iconColor: card.iconColor,
-          valueColor: card.valueColor,
-          onTap: card.onTap,
-        ),
-      );
-      if (i < cards.length - 1) {
-        columnChildren.add(const SizedBox(height: 16));
-      }
-    }
-    return Column(children: columnChildren);
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: columns,
+        mainAxisExtent: columns == 1 ? 170 : 180,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+      ),
+      itemCount: cardWidgets.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) => cardWidgets[index],
+    );
   }
 
   Widget _buildChartCard(
@@ -3782,11 +3780,6 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
     Color headerBg,
     List<FacultyLoadData> data,
   ) {
-    // Determine inner menu bg (from css: var(--inner-menu-bg))
-    // Typically this is a specific color in the theme, but for now assuming headerBg/Maroon
-    // based on "card-header { background: var(--inner-menu-bg); ... }"
-    // If user layout uses Maroon for sidebar, likely inner-menu-bg is also maroon or slightly different.
-
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textPrimary =
         Theme.of(context).textTheme.bodyLarge?.color ??
@@ -3858,29 +3851,25 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
             ),
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final isMobile = ResponsiveHelper.isMobile(context);
-                final minWidth = (data.length * (isMobile ? 60.0 : 80.0)).clamp(
+                final isNarrow = constraints.maxWidth < 600;
+                final minWidth = (data.length * (isNarrow ? 60.0 : 80.0)).clamp(
                   320.0,
                   1200.0,
                 );
-                if (!isMobile) {
-                  return SizedBox(
-                    height: 350,
-                    width: constraints.maxWidth,
-                    child: FacultyLoadChart(data: data),
-                  );
-                }
-
-                final chartWidth = minWidth > constraints.maxWidth
+                final chartWidth = constraints.maxWidth < minWidth
                     ? minWidth
                     : constraints.maxWidth;
+                final chart = SizedBox(
+                  width: chartWidth,
+                  height: isNarrow ? 280 : 350,
+                  child: FacultyLoadChart(data: data),
+                );
+
+                if (chartWidth <= constraints.maxWidth) return chart;
+
                 return SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: SizedBox(
-                    width: chartWidth,
-                    height: 280,
-                    child: FacultyLoadChart(data: data),
-                  ),
+                  child: chart,
                 );
               },
             ),
@@ -4139,12 +4128,16 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
               children: [
                 Icon(icon, color: textPrimary, size: 20),
                 const SizedBox(width: 8),
-                Text(
-                  title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: textPrimary,
+                Expanded(
+                  child: Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: textPrimary,
+                    ),
                   ),
                 ),
               ],

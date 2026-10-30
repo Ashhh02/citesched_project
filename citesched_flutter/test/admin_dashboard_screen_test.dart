@@ -1,6 +1,8 @@
 import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/features/admin/screens/admin_dashboard_screen.dart';
+import 'package:citesched_flutter/features/admin/screens/admin_layout.dart';
 import 'package:citesched_flutter/features/auth/providers/auth_provider.dart';
+import 'package:citesched_flutter/core/widgets/draggable_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -58,6 +60,9 @@ void main() {
           pendingFacultyRequestsProvider.overrideWith(
             (ref) async => const <Faculty>[],
           ),
+          recentStudentSignupsProvider.overrideWith(
+            (ref) async => const <Student>[],
+          ),
         ],
         child: const MaterialApp(
           home: AdminDashboardScreen(),
@@ -74,5 +79,72 @@ void main() {
     expect(find.text('CONFLICTS'), findsOneWidget);
 
     await tester.pumpWidget(const SizedBox.shrink());
+  });
+
+  testWidgets('Admin layout adapts to available content width', (tester) async {
+    final stats = _buildFakeStats();
+    addTearDown(() async {
+      await tester.binding.setSurfaceSize(null);
+    });
+
+    for (final size in const [
+      Size(1544, 900),
+      Size(1000, 900),
+      Size(390, 844),
+    ]) {
+      await tester.binding.setSurfaceSize(size);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            authProvider.overrideWith(_FakeAuthNotifier.new),
+            dashboardStatsProvider.overrideWith((ref) async => stats),
+            pendingFacultyRequestsProvider.overrideWith(
+              (ref) async => const <Faculty>[],
+            ),
+            recentStudentSignupsProvider.overrideWith(
+              (ref) async => const <Student>[],
+            ),
+          ],
+          child: const MaterialApp(home: AdminLayout()),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 100));
+
+      expect(find.text('FACULTY'), findsOneWidget);
+      expect(
+        tester.takeException(),
+        isNull,
+        reason: 'Dashboard should not overflow at $size.',
+      );
+    }
+
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
+
+  testWidgets('Draggable FAB handles a viewport smaller than the FAB', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(40, 40));
+    addTearDown(() async {
+      await tester.binding.setSurfaceSize(null);
+    });
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: SizedBox.expand(
+          child: Stack(
+            children: [
+              DraggableFab(
+                child: SizedBox(width: 56, height: 56),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+
+    expect(tester.takeException(), isNull);
   });
 }
