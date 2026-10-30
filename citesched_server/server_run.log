@@ -2753,3 +2753,177 @@ AUTH DEBUG: Authenticated User ID: 1
 AUTH DEBUG: Base Scopes: admin, faculty
 AUTH DEBUG: UserRole found: admin
 2026-10-30 19:00:11.440824Z  746801924 METHOD         admin.getScheduleOverviewReport user=1, queries=3, duration=279ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 0 conflicts.
+2026-10-30 19:15:23.203592Z  736305774 METHOD         admin.getDashboardStats  user=1, queries=16, duration=2.24s
+2026-10-30 19:15:26.418329Z 1055826416 WEB            /app/                    user=null, queries=0, duration=60.1ms
+2026-10-30 19:15:26.443155Z  674250311 WEB            /app/icons/Icon-192.png  user=null, queries=0, duration=33.7ms
+2026-10-30 19:15:26.879857Z 1020487327 WEB            /app/icons/Icon-512.png  user=null, queries=0, duration=1.94ms
+2026-10-30 19:15:27.035073Z  899534003 WEB            /app/icons/Icon-maskable-192.png user=null, queries=0, duration=12.6ms
+2026-10-30 19:15:27.114955Z 1050029081 WEB            /app/icons/Icon-maskable-512.png user=null, queries=0, duration=3.52ms
+2026-10-30 19:15:27.324553Z  154534899 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=3.71ms
+2026-10-30 19:15:28.992074Z  953948546 WEB            /.well-known/appspecific/com.chrome.devtools.json user=null, queries=0, duration=996µs
+2026-10-30 19:16:24.479641Z  703540774 WEB            /app/                    user=null, queries=0, duration=14.4ms
+2026-10-30 19:16:25.446415Z   30944644 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=4.46ms
+2026-10-30 19:16:26.502678Z  579032824 WEB            /app/manifest.json       user=null, queries=0, duration=11.6ms
+2026-10-30 19:16:26.666732Z   51461255 WEB            /app/main.dart.js        user=null, queries=0, duration=11.1ms
+2026-10-30 19:16:27.550551Z  796191531 WEB            /app/assets/assets/config.json user=null, queries=0, duration=7.51ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:27.845909Z  740690253 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=22.8ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:28.238004Z  433169193 METHOD         debug.getSessionInfo     user=1, queries=3, duration=156ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:28.723374Z  280868400 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=36.9ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:29.604312Z  471275043 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=569ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:30.784811Z  782902294 METHOD         admin.getAllFaculty      user=1, queries=2, duration=469ms
+[DEBUG] getDashboardStats: Step 3 complete. Found 0 conflicts.
+2026-10-30 19:16:30.940541Z  131817443 METHOD         admin.getDashboardStats  user=1, queries=16, duration=666ms
+2026-10-30 19:16:32.618163Z  499599407 METHOD         admin.getAllStudents     user=1, queries=62, duration=2.31s
+2026-10-30 19:16:33.322184Z   72152282 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=2.92ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:38.193708Z  568862024 METHOD         admin.getAllFaculty      user=1, queries=5, duration=33.7ms
+2026-10-30 19:16:38.223253Z  936751176 METHOD         admin.getAllConflicts    user=1, queries=8, duration=60ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+2026-10-30 19:16:39.378027Z  575159083 METHOD         admin.getAllSubjects     user=1, queries=2, duration=77.1ms
+2026-10-30 19:16:39.383619Z  400381283 METHOD         admin.getAllRooms        user=1, queries=2, duration=76.5ms
+2026-10-30 19:16:39.410068Z 1064480006 METHOD         admin.getAllSchedules    user=1, queries=2, duration=111ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:39.421809Z  654218818 METHOD         admin.getAllTimeslots    user=1, queries=2, duration=100ms
+2026-10-30 19:16:46.852068Z  749495735 WEB            /app/manifest.json       user=null, queries=0, duration=21.7ms
+2026-10-30 19:16:47.202152Z  853586571 WEB            /app/favicon.png         user=null, queries=0, duration=16.3ms
+2026-10-30 19:16:47.757357Z  967231049 WEB            /app/flutter_service_worker.js user=null, queries=0, duration=6.51ms
+2026-10-30 19:16:47.758357Z  677966108 WEB            /app/flutter.js.map      user=null, queries=0, duration=1ms
+2026-10-30 19:16:48.178967Z  879429997 WEB            /app/main.dart.js        user=null, queries=0, duration=13.1ms
+2026-10-30 19:16:48.185328Z  540138612 WEB            /app/main.dart.wasm      user=null, queries=0, duration=16.7ms
+2026-10-30 19:16:48.195377Z 1026711160 WEB            /app/main.dart.mjs       user=null, queries=0, duration=7.64ms
+2026-10-30 19:16:48.252961Z  593182068 WEB            /app/index.html          user=null, queries=0, duration=994µs
+2026-10-30 19:16:48.280841Z  277682751 WEB            /app/flutter_bootstrap.js user=null, queries=0, duration=684µs
+2026-10-30 19:16:48.328962Z  498738680 WEB            /app/assets/AssetManifest.bin.json user=null, queries=0, duration=12ms
+2026-10-30 19:16:48.415008Z  522843523 WEB            /app/assets/FontManifest.json user=null, queries=0, duration=20.8ms
+2026-10-30 19:16:51.841069Z  760584495 WEB            /app/assets/fonts/MaterialIcons-Regular.otf user=null, queries=0, duration=28.4ms
+2026-10-30 19:16:51.844072Z   32431413 WEB            /app/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf user=null, queries=0, duration=20.8ms
+2026-10-30 19:16:52.159132Z 1066828340 WEB            /app/assets/assets/config.json user=null, queries=0, duration=0µs
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:52.283752Z  718449768 METHOD         serverpod_auth_core.status.isSignedIn user=1, queries=1, duration=14.1ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:53.049764Z  874202642 METHOD         debug.getSessionInfo     user=1, queries=3, duration=36.4ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+2026-10-30 19:16:53.348331Z  835621186 WEB            /app/assets/assets/jmcbackground.jpg user=null, queries=0, duration=2.97ms
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:53.360945Z  953573584 METHOD         setup.getUserInfoByEmail user=1, queries=2, duration=39.1ms
+2026-10-30 19:16:53.374560Z  481662435 WEB            /app/assets/assets/jmclogo.png user=null, queries=0, duration=9.72ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:16:53.713112Z  897526624 METHOD         setup.getExistingAccountRoleByEmail user=1, queries=6, duration=129ms
+2026-10-30 19:16:53.812065Z  591348089 WEB            /.well-known/appspecific/com.chrome.devtools.json user=null, queries=0, duration=1ms
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Modern auth returned null, trying legacy AuthKey...
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: Authenticated User ID: 1
+AUTH DEBUG: Base Scopes: admin, faculty
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+AUTH DEBUG: UserRole found: admin
+2026-10-30 19:17:24.859214Z  109192795 METHOD         admin.getAllFaculty      user=1, queries=2, duration=113ms
+[DEBUG] getDashboardStats: Step 2 - Fetching all data
+[DEBUG] getDashboardStats: Fetched 4 schedules, 8 faculty
+[DEBUG] Faculty 15: name=Jerwin A. Carreon, maxLoad=21
+[DEBUG] Faculty 16: name=Efrhain Louis P. Pajota, maxLoad=21
+[DEBUG] Faculty 17: name=Ryan N. Billera, maxLoad=21
+[DEBUG] Faculty 18: name=Arvin G. Lauron, maxLoad=21
+[DEBUG] Faculty 19: name=Chardane P. Labiste, maxLoad=21
+[DEBUG] Faculty 20: name=Nikko Eroy, maxLoad=21
+[DEBUG] Faculty 1: name=Admin Test Account, maxLoad=18
+[DEBUG] Faculty 2: name=Admin Support Account, maxLoad=18
+[DEBUG] getDashboardStats: Step 2 complete
+[DEBUG] getDashboardStats: Step 3 - Calculating conflicts
+[DEBUG] getDashboardStats: Step 3 complete. Found 0 conflicts.
+2026-10-30 19:17:25.029153Z  368932141 METHOD         admin.getDashboardStats  user=1, queries=16, duration=300ms
+2026-10-30 19:17:25.392893Z  676507689 METHOD         admin.getAllStudents     user=1, queries=62, duration=640ms

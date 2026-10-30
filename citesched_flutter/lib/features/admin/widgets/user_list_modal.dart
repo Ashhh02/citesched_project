@@ -78,6 +78,7 @@ class _UserListModalState extends ConsumerState<UserListModal>
         ref.invalidate(sectionListProvider);
         ref.invalidate(studentSectionsProvider);
         ref.invalidate(facultyListProvider);
+        ref.invalidate(archivedFacultyListProvider);
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -532,6 +533,8 @@ class _UserListModalState extends ConsumerState<UserListModal>
       final restored = faculty.copyWith(isActive: true);
       await client.admin.updateFaculty(restored);
       _fetchData();
+      ref.invalidate(facultyListProvider);
+      ref.invalidate(archivedFacultyListProvider);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -582,6 +585,8 @@ class _UserListModalState extends ConsumerState<UserListModal>
       try {
         await client.admin.deleteFaculty(faculty.id!);
         _fetchData();
+        ref.invalidate(facultyListProvider);
+        ref.invalidate(archivedFacultyListProvider);
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(

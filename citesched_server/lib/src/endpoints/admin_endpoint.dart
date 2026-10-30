@@ -1923,13 +1923,7 @@ class AdminEndpoint extends Endpoint {
   /// Get aggregated dashboard statistics.
   Future<DashboardStats> getDashboardStats(Session session) async {
     try {
-      var totalSchedules = await Schedule.db.count(session);
-      var totalFaculty = await Faculty.db.count(
-        session,
-        where: (t) => t.isActive.equals(true),
-      );
       var totalStudents = await Student.db.count(session);
-      var totalSubjects = await Subject.db.count(session);
       var totalRooms = await Room.db.count(session);
 
       // 2. Calculate Faculty Load
@@ -1946,6 +1940,9 @@ class AdminEndpoint extends Endpoint {
       for (var f in allFaculty) {
         print('[DEBUG] Faculty ${f.id}: name=${f.name}, maxLoad=${f.maxLoad}');
       }
+      final totalSchedules = allSchedules.length;
+      final totalFaculty = allFaculty.length;
+      final totalSubjects = allSubjects.length;
 
       // Map subject ID to units for quick lookup
       var subjectUnits = <int, double>{

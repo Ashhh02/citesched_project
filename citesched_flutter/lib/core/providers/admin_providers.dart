@@ -42,6 +42,10 @@ final timeslotsProvider = FutureProvider<List<Timeslot>>((ref) async {
   return await client.admin.getAllTimeslots();
 });
 
+final userRolesProvider = FutureProvider<List<UserRole>>((ref) async {
+  return await client.admin.getAllUserRoles();
+});
+
 // Sections
 final sectionListProvider = FutureProvider<List<Section>>((ref) async {
   return await client.admin.getAllSections();

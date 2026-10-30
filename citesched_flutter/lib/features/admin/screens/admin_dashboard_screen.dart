@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:citesched_flutter/core/providers/admin_providers.dart';
+import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
 import 'package:citesched_flutter/core/utils/responsive_helper.dart';
 import 'package:citesched_flutter/features/admin/widgets/conflict_list_modal.dart';
 import 'package:citesched_flutter/features/admin/widgets/admin_header_container.dart';
@@ -21,16 +22,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:serverpod_auth_client/serverpod_auth_client.dart';
 
 final dashboardStatsProvider = FutureProvider<DashboardStats>((ref) async {
+  ref.watch(scheduleSyncTriggerProvider);
   return await client.admin.getDashboardStats();
 });
 
 final pendingFacultyRequestsProvider = FutureProvider<List<Faculty>>((
   ref,
 ) async {
-  final inactiveFaculty = await client.admin.getAllFaculty(isActive: false);
+  final inactiveFacultyFuture = ref.watch(archivedFacultyListProvider.future);
+  final roleRowsFuture = ref.watch(userRolesProvider.future);
+  final inactiveFaculty = await inactiveFacultyFuture;
   if (inactiveFaculty.isEmpty) return const <Faculty>[];
 
-  final roleRows = await client.admin.getAllUserRoles();
+  final roleRows = await roleRowsFuture;
   final pendingUserIds = roleRows
       .where((r) => r.role.trim().toLowerCase() == 'faculty_pending')
       .map((r) => int.tryParse(r.userId))
@@ -46,7 +50,7 @@ final pendingFacultyRequestsProvider = FutureProvider<List<Faculty>>((
 });
 
 final recentStudentSignupsProvider = FutureProvider<List<Student>>((ref) async {
-  final activeStudents = await client.admin.getAllStudents(isActive: true);
+  final activeStudents = await ref.watch(studentsProvider.future);
   final cutoff = DateTime.now().subtract(const Duration(days: 7));
   final recent = activeStudents
       .where((student) => student.createdAt.isAfter(cutoff))
@@ -2514,6 +2518,9 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
       );
 
       ref.invalidate(pendingFacultyRequestsProvider);
+      ref.invalidate(archivedFacultyListProvider);
+      ref.invalidate(facultyListProvider);
+      ref.invalidate(userRolesProvider);
       ref.invalidate(dashboardStatsProvider);
       _showActionSnackBar(
         title: 'Request Approved',
@@ -2538,6 +2545,8 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
       );
 
       ref.invalidate(pendingFacultyRequestsProvider);
+      ref.invalidate(archivedFacultyListProvider);
+      ref.invalidate(userRolesProvider);
       _showActionSnackBar(
         title: 'Request Declined',
         message:
@@ -3673,6 +3682,7 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
         userInfo: userInfo,
         isMobile: isMobile,
       ),
+      skipLoadingOnRefresh: true,
     );
   }
 

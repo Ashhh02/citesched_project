@@ -140,9 +140,14 @@ class _TimetableScreenState extends ConsumerState<TimetableScreen> {
 
   Future<void> _loadMetadata() async {
     try {
-      final faculty = await client.admin.getAllFaculty(isActive: true);
-      final rooms = await client.admin.getAllRooms(isActive: true);
-      final roles = await client.admin.getAllUserRoles();
+      final metadata = await Future.wait<Object>([
+        ref.read(facultyListProvider.future),
+        ref.read(roomListProvider.future),
+        ref.read(userRolesProvider.future),
+      ]);
+      final faculty = metadata[0] as List<Faculty>;
+      final rooms = metadata[1] as List<Room>;
+      final roles = metadata[2] as List<UserRole>;
       final adminUserIds = roles
           .where((r) => r.role.trim().toLowerCase() == 'admin')
           .map((r) => r.userId.trim())
