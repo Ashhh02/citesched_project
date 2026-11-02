@@ -2927,3 +2927,7 @@ AUTH DEBUG: UserRole found: admin
 [DEBUG] getDashboardStats: Step 3 complete. Found 0 conflicts.
 2026-10-30 19:17:25.029153Z  368932141 METHOD         admin.getDashboardStats  user=1, queries=16, duration=300ms
 2026-10-30 19:17:25.392893Z  676507689 METHOD         admin.getAllStudents     user=1, queries=62, duration=640ms
+2026-10-30 20:10:47.249698Z  689745996 WEB            /app/icons/Icon-192.png  user=null, queries=0, duration=84.5ms
+2026-10-30 20:10:47.514777Z  267138320 WEB            /app/icons/Icon-512.png  user=null, queries=0, duration=3ms
+2026-10-30 20:10:47.672353Z 1010372479 WEB            /app/icons/Icon-maskable-192.png user=null, queries=0, duration=11.1ms
+2026-10-30 20:10:47.778954Z  679747333 WEB            /app/icons/Icon-maskable-512.png user=null, queries=0, duration=3.01ms
