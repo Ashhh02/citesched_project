@@ -1,5 +1,5 @@
 import 'package:citesched_client/citesched_client.dart';
-import 'package:citesched_flutter/core/providers/admin_providers.dart';
+import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
 import 'package:citesched_flutter/core/widgets/full_screen_calendar_scaffold.dart';
 import 'package:citesched_flutter/features/admin/widgets/admin_header_container.dart';
 import 'package:citesched_flutter/features/admin/widgets/timetable_summary_panel.dart';
@@ -13,7 +13,7 @@ final roomScheduleProvider = FutureProvider.family<List<ScheduleInfo>, int>((
   ref,
   roomId,
 ) async {
-  ref.watch(schedulesProvider);
+  ref.watch(scheduleSyncTriggerProvider);
   return await client.timetable.getSchedules(
     TimetableFilterRequest(roomId: roomId),
   );

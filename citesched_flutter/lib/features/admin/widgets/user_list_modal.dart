@@ -125,18 +125,20 @@ class _UserListModalState extends ConsumerState<UserListModal>
     }
 
     try {
-      final faculty = await loadSafely(
-        client.admin.getAllFaculty(isActive: !_isShowingArchivedFaculty),
-        'faculty',
-      );
-      final students = await loadSafely(
-        client.admin.getAllStudents(isActive: !_isShowingArchivedStudents),
-        'students',
-      );
-      final roles = await loadSafely(
-        client.admin.getAllUserRoles(),
-        'roles',
-      );
+      final results = await Future.wait<Object?>([
+        loadSafely(
+          client.admin.getAllFaculty(isActive: !_isShowingArchivedFaculty),
+          'faculty',
+        ),
+        loadSafely(
+          client.admin.getAllStudents(isActive: !_isShowingArchivedStudents),
+          'students',
+        ),
+        loadSafely(client.admin.getAllUserRoles(), 'roles'),
+      ]);
+      final faculty = results[0] as List<Faculty>?;
+      final students = results[1] as List<Student>?;
+      final roles = results[2] as List<UserRole>?;
       if (mounted) {
         setState(() {
           if (faculty != null) _faculty = faculty;

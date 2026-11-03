@@ -1945,26 +1945,28 @@ class AdminEndpoint extends Endpoint {
       final totalSubjects = allSubjects.length;
 
       // Map subject ID to units for quick lookup
-      var subjectUnits = <int, double>{
-        for (var s in allSubjects)
-          if (s.id != null) s.id!: s.units.toDouble(),
+      final subjectsById = <int, Subject>{
+        for (final subject in allSubjects)
+          if (subject.id != null) subject.id!: subject,
+      };
+      final subjectUnits = <int, double>{
+        for (final entry in subjectsById.entries)
+          entry.key: entry.value.units.toDouble(),
       };
 
-      List<FacultyLoadData> facultyLoad = [];
-      for (var faculty in allFaculty) {
-        double currentLoad = 0;
-        var facultySchedules = allSchedules.where(
-          (s) => s.facultyId == faculty.id,
-        );
+      final loadByFacultyId = <int, double>{};
+      for (final schedule in allSchedules) {
+        loadByFacultyId[schedule.facultyId] =
+            (loadByFacultyId[schedule.facultyId] ?? 0) +
+            (subjectUnits[schedule.subjectId] ?? 3.0);
+      }
 
-        for (var schedule in facultySchedules) {
-          currentLoad += subjectUnits[schedule.subjectId] ?? 3.0;
-        }
-
+      final facultyLoad = <FacultyLoadData>[];
+      for (final faculty in allFaculty) {
         facultyLoad.add(
           FacultyLoadData(
             facultyName: faculty.name,
-            currentLoad: currentLoad,
+            currentLoad: loadByFacultyId[faculty.id] ?? 0,
             maxLoad: (faculty.maxLoad ?? 0).toDouble(),
           ),
         );
@@ -1990,20 +1992,8 @@ class AdminEndpoint extends Endpoint {
             (sectionCounts[schedule.section] ?? 0) + 1;
 
         // Year Level Distribution (lookup from subject)
-        var subject = allSubjects.firstWhere(
-          (s) => s.id == schedule.subjectId,
-          orElse: () => Subject(
-            code: 'N/A',
-            name: 'N/A',
-            units: 0,
-            studentsCount: 0,
-            program: Program.it,
-            types: [],
-            createdAt: DateTime.now(),
-            updatedAt: DateTime.now(),
-          ),
-        );
-        var yearLevel = subject.yearLevel?.toString() ?? 'N/A';
+        final yearLevel =
+            subjectsById[schedule.subjectId]?.yearLevel?.toString() ?? 'N/A';
         yearLevelCounts[yearLevel] = (yearLevelCounts[yearLevel] ?? 0) + 1;
       }
 

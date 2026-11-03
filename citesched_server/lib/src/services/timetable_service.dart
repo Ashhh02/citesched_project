@@ -2,6 +2,8 @@ import 'package:serverpod/serverpod.dart';
 import '../generated/protocol.dart';
 import 'conflict_service.dart';
 
+const _scheduleValidationBatchSize = 2;
+
 class TimetableService {
   final ConflictService _conflictService = ConflictService();
 
@@ -201,18 +203,32 @@ class TimetableService {
     SubjectType? loadTypeFilter,
   }) async {
     final result = <ScheduleInfo>[];
-    for (var s in schedules) {
-      await _hydrateSchedule(session, s);
-      final conflicts = await _conflictService.validateSchedule(
-        session,
-        s,
-        excludeScheduleId: s.id,
+    // Leave one production database connection free while validating in parallel.
+    for (
+      var offset = 0;
+      offset < schedules.length;
+      offset += _scheduleValidationBatchSize
+    ) {
+      final batch = schedules.skip(offset).take(_scheduleValidationBatchSize);
+      final validated = await Future.wait(
+        batch.map((schedule) async {
+          await _hydrateSchedule(session, schedule);
+          final conflicts = await _conflictService.validateSchedule(
+            session,
+            schedule,
+            excludeScheduleId: schedule.id,
+          );
+          return ScheduleInfo(schedule: schedule, conflicts: conflicts);
+        }),
       );
 
-      if (!_passesConflictFilter(conflicts, hasConflictsFilter)) continue;
-      if (!_passesLoadTypeFilter(s, loadTypeFilter)) continue;
-
-      result.add(ScheduleInfo(schedule: s, conflicts: conflicts));
+      for (final info in validated) {
+        if (!_passesConflictFilter(info.conflicts, hasConflictsFilter)) {
+          continue;
+        }
+        if (!_passesLoadTypeFilter(info.schedule, loadTypeFilter)) continue;
+        result.add(info);
+      }
     }
 
     return result;

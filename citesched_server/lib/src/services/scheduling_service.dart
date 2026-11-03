@@ -165,13 +165,20 @@ class SchedulingService {
       requestedSections: requestedSections,
     );
 
-    final facultyAvailMap = <int, List<FacultyAvailability>>{};
-    for (final faculty in validFaculties) {
-      final avails = await FacultyAvailability.db.find(
+    final facultyIds = validFaculties.map((faculty) => faculty.id!).toSet();
+    final facultyAvailMap = <int, List<FacultyAvailability>>{
+      for (final facultyId in facultyIds) facultyId: [],
+    };
+    if (facultyIds.isNotEmpty) {
+      final availabilities = await FacultyAvailability.db.find(
         session,
-        where: (t) => t.facultyId.equals(faculty.id!),
+        where: (t) => t.facultyId.inSet(facultyIds),
       );
-      facultyAvailMap[faculty.id!] = avails;
+      for (final availability in availabilities) {
+        facultyAvailMap
+            .putIfAbsent(availability.facultyId, () => [])
+            .add(availability);
+      }
     }
 
     return _GenerateData(
