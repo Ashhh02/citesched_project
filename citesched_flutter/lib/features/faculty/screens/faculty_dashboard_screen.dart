@@ -1,6 +1,7 @@
 import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/main.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:citesched_flutter/core/utils/responsive_helper.dart';
 import 'package:citesched_flutter/core/utils/schedule_export_service.dart';
 import 'package:citesched_flutter/features/auth/providers/auth_provider.dart';
@@ -18,6 +19,7 @@ import 'package:citesched_flutter/features/admin/widgets/weekly_calendar_view.da
 import 'package:citesched_flutter/core/widgets/full_screen_calendar_scaffold.dart';
 
 final facultyScheduleProvider = FutureProvider<List<ScheduleInfo>>((ref) async {
+  ref.watch(sessionCacheRevisionProvider);
   ref.watch(scheduleSyncTriggerProvider);
   return await client.timetable.getPersonalSchedule();
 });
@@ -25,17 +27,19 @@ final facultyScheduleProvider = FutureProvider<List<ScheduleInfo>>((ref) async {
 final facultyAvailabilityProvider = FutureProvider<List<FacultyAvailability>>((
   ref,
 ) async {
+  ref.watch(sessionCacheRevisionProvider);
   ref.watch(scheduleSyncTriggerProvider);
   try {
-    final myFaculty = await client.faculty.getMyProfile();
-    if (myFaculty?.id == null) return [];
-    return await client.admin.getFacultyAvailability(myFaculty!.id!);
+    final faculty = await ref.watch(facultyProfileProvider.future);
+    if (faculty?.id == null) return [];
+    return await client.admin.getFacultyAvailability(faculty!.id!);
   } catch (e) {
     return [];
   }
 });
 
 final facultyProfileProvider = FutureProvider<Faculty?>((ref) async {
+  ref.watch(sessionCacheRevisionProvider);
   return await client.faculty.getMyProfile();
 });
 

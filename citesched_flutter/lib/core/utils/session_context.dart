@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:citesched_flutter/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SessionContext {
   const SessionContext({
@@ -27,10 +28,9 @@ class SessionContext {
 
   factory SessionContext.fromJson(Map<String, dynamic> json) {
     final scopesRaw = json['scopeNames'];
-    final scopes =
-        scopesRaw is List
-            ? scopesRaw.whereType<String>().toList()
-            : const <String>[];
+    final scopes = scopesRaw is List
+        ? scopesRaw.whereType<String>().toList()
+        : const <String>[];
 
     return SessionContext(
       authenticatedUserId: json['authenticatedUserId']?.toString(),
@@ -41,6 +41,10 @@ class SessionContext {
     );
   }
 }
+
+final sessionContextProvider = FutureProvider<SessionContext>(
+  (ref) => fetchSessionContext(),
+);
 
 Future<SessionContext> fetchSessionContext() async {
   try {

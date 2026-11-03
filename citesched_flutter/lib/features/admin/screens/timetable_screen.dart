@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/main.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:citesched_flutter/core/utils/responsive_helper.dart';
 import 'package:citesched_flutter/features/admin/widgets/weekly_calendar_view.dart';
 import 'package:citesched_flutter/features/admin/widgets/timetable_filter_panel.dart';
@@ -30,13 +31,21 @@ final timetableFilterProvider =
 const _timetableFilterCacheLimit = 8;
 final _timetableSchedulesCache = <String, List<ScheduleInfo>>{};
 final _timetableSchedulesRequests = <String, Future<List<ScheduleInfo>>>{};
+int? _timetableCacheSessionRevision;
 
 final filteredSchedulesProvider = FutureProvider<List<ScheduleInfo>>((
   ref,
 ) async {
+  final sessionRevision = ref.watch(sessionCacheRevisionProvider);
+  if (_timetableCacheSessionRevision != sessionRevision) {
+    _timetableSchedulesCache.clear();
+    _timetableSchedulesRequests.clear();
+    _timetableCacheSessionRevision = sessionRevision;
+  }
   final scheduleRevision = ref.watch(scheduleSyncTriggerProvider);
   final filter = ref.watch(timetableFilterProvider);
-  final cacheKey = '$scheduleRevision:${jsonEncode(filter.toJson())}';
+  final cacheKey =
+      '$sessionRevision:$scheduleRevision:${jsonEncode(filter.toJson())}';
   final cachedSchedules = _timetableSchedulesCache.remove(cacheKey);
   if (cachedSchedules != null) {
     _timetableSchedulesCache[cacheKey] = cachedSchedules;
@@ -49,9 +58,11 @@ final filteredSchedulesProvider = FutureProvider<List<ScheduleInfo>>((
   );
   try {
     final schedules = await request;
-    _timetableSchedulesCache[cacheKey] = schedules;
-    while (_timetableSchedulesCache.length > _timetableFilterCacheLimit) {
-      _timetableSchedulesCache.remove(_timetableSchedulesCache.keys.first);
+    if (_timetableCacheSessionRevision == sessionRevision) {
+      _timetableSchedulesCache[cacheKey] = schedules;
+      while (_timetableSchedulesCache.length > _timetableFilterCacheLimit) {
+        _timetableSchedulesCache.remove(_timetableSchedulesCache.keys.first);
+      }
     }
     return schedules;
   } finally {

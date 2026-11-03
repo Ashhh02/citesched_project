@@ -1115,12 +1115,10 @@ Future<List<FacultyAvailability>> _loadFacultyAvailability(
   int? facultyId,
 ) async {
   if (facultyId == null) return const <FacultyAvailability>[];
-  final cached = ref.read(facultyAvailabilityProvider(facultyId));
-  final cachedList = cached.maybeWhen(
-    data: (list) => list,
-    orElse: () => null,
-  );
-  if (cachedList != null) return cachedList;
+  final provider = facultyAvailabilityProvider(facultyId);
+  if (!ref.read(provider).hasError) {
+    return ref.read(provider.future);
+  }
   return client.admin.getFacultyAvailability(facultyId);
 }
 

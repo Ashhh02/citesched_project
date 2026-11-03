@@ -6,6 +6,7 @@ import 'package:citesched_flutter/main.dart';
 import 'package:citesched_flutter/core/providers/admin_providers.dart';
 import 'package:citesched_flutter/core/providers/conflict_provider.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:citesched_flutter/features/admin/widgets/admin_header_container.dart';
 import 'package:citesched_flutter/features/admin/widgets/weekly_calendar_view.dart';
 import 'package:citesched_flutter/core/widgets/full_screen_calendar_scaffold.dart';
@@ -15,6 +16,7 @@ final facultyDetailsSchedulesProvider =
       ref,
       facultyId,
     ) async {
+      ref.watch(sessionCacheRevisionProvider);
       ref.watch(scheduleSyncTriggerProvider);
       return await client.admin.getFacultySchedule(facultyId);
     });

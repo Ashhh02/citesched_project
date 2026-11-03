@@ -1,5 +1,6 @@
 import 'package:citesched_flutter/main.dart';
 import 'package:citesched_flutter/core/utils/session_context.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serverpod_auth_client/serverpod_auth_client.dart';
@@ -12,6 +13,7 @@ final authProvider = NotifierProvider<AuthNotifier, UserInfo?>(() {
 class AuthNotifier extends Notifier<UserInfo?> {
   String? _selectedRole;
   bool _needsRoleOnboarding = false;
+  int _refreshGeneration = 0;
 
   bool _isLegacySession(AuthSuccess? authInfo) {
     final token = authInfo?.token.trim();
@@ -42,8 +44,10 @@ class AuthNotifier extends Notifier<UserInfo?> {
   }
 
   Future<void> _refreshCurrentUser() async {
+    final generation = ++_refreshGeneration;
     try {
-      final sessionContext = await fetchSessionContext();
+      final sessionContext = await ref.read(sessionContextProvider.future);
+      if (generation != _refreshGeneration) return;
       final email = sessionContext.email?.trim().toLowerCase();
       if (email == null || email.isEmpty) {
         // Keep existing signed-in state if backend debug lookup is temporarily
@@ -54,7 +58,14 @@ class AuthNotifier extends Notifier<UserInfo?> {
         return;
       }
 
-      final userInfo = await client.setup.getUserInfoByEmail(email: email);
+      final userInfoFuture = client.setup.getUserInfoByEmail(email: email);
+      final existingRoleFuture = client.setup.getExistingAccountRoleByEmail(
+        email: email,
+      );
+      await Future.wait<Object?>([userInfoFuture, existingRoleFuture]);
+      if (generation != _refreshGeneration) return;
+
+      final userInfo = await userInfoFuture;
       if (userInfo == null) {
         if (state != null) return;
         _needsRoleOnboarding = true;
@@ -62,9 +73,7 @@ class AuthNotifier extends Notifier<UserInfo?> {
         return;
       }
 
-      final existingRole = await client.setup.getExistingAccountRoleByEmail(
-        email: email,
-      );
+      final existingRole = await existingRoleFuture;
       final normalizedRole = existingRole?.trim().toLowerCase();
       final isAdminAccount =
           userInfo.scopeNames.contains('admin') || normalizedRole == 'admin';
@@ -91,6 +100,9 @@ class AuthNotifier extends Notifier<UserInfo?> {
   }
 
   void _onAuthStateChanged() {
+    _refreshGeneration++;
+    ref.read(sessionCacheRevisionProvider.notifier).bump();
+    ref.invalidate(sessionContextProvider);
     if (!client.auth.isAuthenticated) {
       _selectedRole = null;
       _needsRoleOnboarding = false;
@@ -102,22 +114,31 @@ class AuthNotifier extends Notifier<UserInfo?> {
   }
 
   Future<void> refreshCurrentUser() async {
+    ref.read(sessionCacheRevisionProvider.notifier).bump();
+    ref.invalidate(sessionContextProvider);
     await _refreshCurrentUser();
   }
 
   // Method to manually update user info (e.g., after custom login)
   void updateUserInfo(UserInfo? userInfo) {
+    _refreshGeneration++;
+    ref.read(sessionCacheRevisionProvider.notifier).bump();
+    ref.invalidate(sessionContextProvider);
     _needsRoleOnboarding = false;
     state = userInfo;
   }
 
   void setSelectedRole(String? role) {
+    if (_selectedRole == role) return;
     _selectedRole = role;
+    ref.read(sessionCacheRevisionProvider.notifier).bump();
   }
 
   String? get selectedRole => _selectedRole;
 
   Future<void> signOut() async {
+    _refreshGeneration++;
+    ref.read(sessionCacheRevisionProvider.notifier).bump();
     final authInfo = client.auth.authInfo;
     try {
       if (_isGoogleSession(authInfo)) {
@@ -132,6 +153,7 @@ class AuthNotifier extends Notifier<UserInfo?> {
     }
     _selectedRole = null;
     _needsRoleOnboarding = false;
+    ref.invalidate(sessionContextProvider);
     state = null;
   }
 

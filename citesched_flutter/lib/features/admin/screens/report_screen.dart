@@ -5,6 +5,7 @@ import 'package:citesched_flutter/core/utils/schedule_export_service.dart';
 import 'package:citesched_flutter/core/widgets/full_screen_calendar_scaffold.dart';
 import 'package:citesched_flutter/core/providers/conflict_provider.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:citesched_flutter/features/admin/screens/room_details_screen.dart';
 import 'package:citesched_flutter/features/admin/widgets/admin_header_container.dart';
 import 'package:citesched_flutter/features/admin/widgets/weekly_calendar_view.dart';
@@ -17,12 +18,14 @@ import 'package:citesched_flutter/core/providers/admin_providers.dart';
 final facultyLoadReportProvider = FutureProvider<List<FacultyLoadReport>>((
   ref,
 ) async {
+  ref.watch(sessionCacheRevisionProvider);
   ref.watch(scheduleSyncTriggerProvider);
   return await client.admin.getFacultyLoadReport();
 });
 
 final roomUtilizationReportProvider =
     FutureProvider<List<RoomUtilizationReport>>((ref) async {
+      ref.watch(sessionCacheRevisionProvider);
       ref.watch(scheduleSyncTriggerProvider);
       return await client.admin.getRoomUtilizationReport();
     });
@@ -32,6 +35,7 @@ final conflictSummaryReportProvider = allConflictsProvider;
 final scheduleOverviewReportProvider = FutureProvider<ScheduleOverviewReport>((
   ref,
 ) async {
+  ref.watch(sessionCacheRevisionProvider);
   ref.watch(scheduleSyncTriggerProvider);
   return await client.admin.getScheduleOverviewReport();
 });

@@ -932,11 +932,16 @@ class ConflictService {
     return conflicts;
   }
 
-  Future<_ConflictContext> _buildConflictContext(Session session) async =>
-      _buildConflictContextImpl(session);
+  Future<_ConflictContext> _buildConflictContext(
+    Session session, {
+    List<Schedule>? schedules,
+  }) async => _buildConflictContextImpl(session, schedules: schedules);
 
-  Future<_ConflictContext> _buildConflictContextImpl(Session session) async {
-    final schedules = await Schedule.db.find(session);
+  Future<_ConflictContext> _buildConflictContextImpl(
+    Session session, {
+    List<Schedule>? schedules,
+  }) async {
+    final scheduleRows = schedules ?? await Schedule.db.find(session);
     final subjects = await Subject.db.find(session);
     final rooms = await Room.db.find(session);
     final faculty = await Faculty.db.find(session);
@@ -960,7 +965,7 @@ class ConflictService {
     };
 
     final scheduleSlots = <_ScheduleSlot>[];
-    for (final s in schedules) {
+    for (final s in scheduleRows) {
       final tid = s.timeslotId;
       if (tid == null) continue;
       final ts = timeslotMap[tid];
@@ -969,7 +974,7 @@ class ConflictService {
     }
 
     return _ConflictContext(
-      schedules: schedules,
+      schedules: scheduleRows,
       subjectMap: subjectMap,
       roomMap: roomMap,
       facultyMap: facultyMap,
@@ -1367,9 +1372,12 @@ class ConflictService {
   ///   - Program mismatches (subject program ≠ room program)
   ///   - Capacity exceeded (room capacity < student count)
   ///   - Faculty max load exceeded
-  Future<List<ScheduleConflict>> getAllConflicts(Session session) async {
+  Future<List<ScheduleConflict>> getAllConflicts(
+    Session session, {
+    List<Schedule>? schedules,
+  }) async {
     final conflicts = <ScheduleConflict>[];
-    final context = await _buildConflictContext(session);
+    final context = await _buildConflictContext(session, schedules: schedules);
 
     _addRoomOverlapConflicts(context, conflicts);
     _addFacultyOverlapConflicts(context, conflicts);

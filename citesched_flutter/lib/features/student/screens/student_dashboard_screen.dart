@@ -1,6 +1,7 @@
 import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/main.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:citesched_flutter/core/utils/responsive_helper.dart';
 import 'package:citesched_flutter/core/utils/schedule_export_service.dart';
 import 'package:citesched_flutter/core/utils/session_context.dart';
@@ -20,7 +21,8 @@ import 'package:citesched_flutter/core/widgets/full_screen_calendar_scaffold.dar
 import 'package:serverpod_auth_client/serverpod_auth_client.dart';
 
 final currentSignedInEmailProvider = FutureProvider<String?>((ref) async {
-  final sessionContext = await fetchSessionContext();
+  ref.watch(sessionCacheRevisionProvider);
+  final sessionContext = await ref.watch(sessionContextProvider.future);
   final email = sessionContext.email?.trim().toLowerCase();
   if (email != null && email.isNotEmpty) {
     return email;
@@ -34,7 +36,8 @@ final currentSignedInEmailProvider = FutureProvider<String?>((ref) async {
 });
 
 final currentSignedInNameProvider = FutureProvider<String?>((ref) async {
-  final sessionContext = await fetchSessionContext();
+  ref.watch(sessionCacheRevisionProvider);
+  final sessionContext = await ref.watch(sessionContextProvider.future);
   final liveName = sessionContext.userName?.trim();
   if (liveName != null && liveName.isNotEmpty) {
     return liveName;
@@ -48,6 +51,7 @@ final currentSignedInNameProvider = FutureProvider<String?>((ref) async {
 });
 
 final myProfileProvider = FutureProvider<Student?>((ref) async {
+  ref.watch(sessionCacheRevisionProvider);
   try {
     final profile = await client.student.getMyProfile();
     if (profile != null) {
@@ -64,6 +68,7 @@ final myProfileProvider = FutureProvider<Student?>((ref) async {
 });
 
 final myScheduleProvider = FutureProvider<List<ScheduleInfo>>((ref) async {
+  ref.watch(sessionCacheRevisionProvider);
   ref.watch(scheduleSyncTriggerProvider);
   return await client.timetable.getPersonalSchedule();
 });

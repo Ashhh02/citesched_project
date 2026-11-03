@@ -367,8 +367,9 @@ class AdminEndpoint extends Endpoint {
     final sectionAvailability = _parseSectionAvailability(
       sectionRecord?.availabilityJson,
     );
-    final bypassSectionAvailability =
-        _isStudentAvailabilityExemptSubject(subject);
+    final bypassSectionAvailability = _isStudentAvailabilityExemptSubject(
+      subject,
+    );
 
     final requiredMinutes = _requiredScheduleMinutes(subject, schedule);
     final candidateTimeslots =
@@ -472,7 +473,10 @@ class AdminEndpoint extends Endpoint {
     final yearLevel = _resolveYearLevel(parsedYearLevel, student.yearLevel);
 
     if (student.sectionId != null) {
-      final currentSection = await Section.db.findById(session, student.sectionId!);
+      final currentSection = await Section.db.findById(
+        session,
+        student.sectionId!,
+      );
       if (currentSection != null &&
           currentSection.sectionCode == rawSection &&
           currentSection.yearLevel == yearLevel &&
@@ -517,19 +521,90 @@ class AdminEndpoint extends Endpoint {
     return newSection.id;
   }
 
-  Future<void> _repairStudentSectionRelation(
+  Future<void> _repairStudentSectionRelations(
     Session session,
-    Student student,
+    List<Student> students,
   ) async {
-    if ((student.section?.trim().isEmpty ?? true) || student.id == null) {
-      return;
+    final sections = await Section.db.find(session);
+    final sectionsById = <int, Section>{
+      for (final section in sections)
+        if (section.id != null) section.id!: section,
+    };
+    final sectionsByCodeProgramYear = <(String, Program, int), Section>{};
+    final sectionsByCodeProgram = <(String, Program), Section>{};
+    for (final section in sections) {
+      sectionsByCodeProgramYear.putIfAbsent(
+        (section.sectionCode, section.program, section.yearLevel),
+        () => section,
+      );
+      sectionsByCodeProgram.putIfAbsent(
+        (section.sectionCode, section.program),
+        () => section,
+      );
     }
 
-    final resolvedSectionId = await _resolveStudentSectionId(session, student);
-    if (resolvedSectionId != null && resolvedSectionId != student.sectionId) {
-      student.sectionId = resolvedSectionId;
-      student.updatedAt = DateTime.now();
-      await Student.db.updateRow(session, student);
+    for (final student in students) {
+      final rawSection = student.section?.trim();
+      if (rawSection == null || rawSection.isEmpty || student.id == null) {
+        continue;
+      }
+
+      try {
+        final program = _programFromStudentCourse(student.course);
+        final parsedYearLevel = _yearLevelFromSectionCode(
+          rawSection,
+          fallback: 0,
+        );
+        final yearLevel = _resolveYearLevel(
+          parsedYearLevel,
+          student.yearLevel,
+        );
+        final currentSection = student.sectionId == null
+            ? null
+            : sectionsById[student.sectionId];
+        Section? resolvedSection;
+
+        if (currentSection != null &&
+            currentSection.sectionCode == rawSection &&
+            currentSection.yearLevel == yearLevel &&
+            currentSection.program == program) {
+          resolvedSection = currentSection;
+        } else {
+          resolvedSection =
+              sectionsByCodeProgramYear[(rawSection, program, yearLevel)] ??
+              sectionsByCodeProgram[(rawSection, program)];
+        }
+
+        if (resolvedSection == null) {
+          resolvedSection = await Section.db.insertRow(
+            session,
+            Section(
+              sectionCode: rawSection,
+              program: program,
+              yearLevel: yearLevel,
+              semester: 1,
+              academicYear: '${DateTime.now().year}-${DateTime.now().year + 1}',
+              createdAt: DateTime.now(),
+              updatedAt: DateTime.now(),
+            ),
+          );
+          if (resolvedSection.id != null) {
+            sectionsById[resolvedSection.id!] = resolvedSection;
+          }
+          sectionsByCodeProgramYear[(rawSection, program, yearLevel)] =
+              resolvedSection;
+          sectionsByCodeProgram[(rawSection, program)] = resolvedSection;
+        }
+
+        if (resolvedSection.id != null &&
+            resolvedSection.id != student.sectionId) {
+          student.sectionId = resolvedSection.id;
+          student.updatedAt = DateTime.now();
+          await Student.db.updateRow(session, student);
+        }
+      } catch (e) {
+        session.log('Error repairing student section ${student.id}: $e');
+      }
     }
   }
 
@@ -1008,13 +1083,7 @@ class AdminEndpoint extends Endpoint {
       include: Student.include(sectionRef: Section.include()),
     );
 
-    for (final student in students) {
-      try {
-        await _repairStudentSectionRelation(session, student);
-      } catch (e) {
-        session.log('Error repairing student section ${student.id}: $e');
-      }
-    }
+    await _repairStudentSectionRelations(session, students);
 
     if (!isActive) return students;
 
@@ -1927,19 +1996,12 @@ class AdminEndpoint extends Endpoint {
       var totalRooms = await Room.db.count(session);
 
       // 2. Calculate Faculty Load
-      print('[DEBUG] getDashboardStats: Step 2 - Fetching all data');
       var allSchedules = await Schedule.db.find(session);
       var allFaculty = await Faculty.db.find(
         session,
         where: (t) => t.isActive.equals(true),
       );
       var allSubjects = await Subject.db.find(session);
-      print(
-        '[DEBUG] getDashboardStats: Fetched ${allSchedules.length} schedules, ${allFaculty.length} faculty',
-      );
-      for (var f in allFaculty) {
-        print('[DEBUG] Faculty ${f.id}: name=${f.name}, maxLoad=${f.maxLoad}');
-      }
       final totalSchedules = allSchedules.length;
       final totalFaculty = allFaculty.length;
       final totalSubjects = allSubjects.length;
@@ -1971,16 +2033,10 @@ class AdminEndpoint extends Endpoint {
           ),
         );
       }
-      print('[DEBUG] getDashboardStats: Step 2 complete');
 
       // 3. Integrity Check (Conflicts)
-      print('[DEBUG] getDashboardStats: Step 3 - Calculating conflicts');
       List<ScheduleConflict> conflicts = await ConflictService()
-          .getAllConflicts(session);
-
-      print(
-        '[DEBUG] getDashboardStats: Step 3 complete. Found ${conflicts.length} conflicts.',
-      );
+          .getAllConflicts(session, schedules: allSchedules);
 
       // 4. Distribution Summaries
       var sectionCounts = <String, int>{};
@@ -2106,13 +2162,7 @@ class AdminEndpoint extends Endpoint {
       session,
       where: (t) => t.isActive.equals(true),
     );
-    for (final student in students) {
-      try {
-        await _repairStudentSectionRelation(session, student);
-      } catch (e) {
-        session.log('Error repairing section before getAllSections: $e');
-      }
-    }
+    await _repairStudentSectionRelations(session, students);
 
     return await Section.db.find(session);
   }

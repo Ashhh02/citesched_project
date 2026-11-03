@@ -6,6 +6,7 @@ import 'package:citesched_flutter/features/nlp/utils/nlp_constants.dart';
 import 'package:citesched_flutter/features/nlp/utils/nlp_query_parser.dart';
 import 'package:citesched_flutter/features/auth/providers/auth_provider.dart';
 import 'package:citesched_flutter/features/nlp/providers/chat_history_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -76,6 +77,7 @@ class NLPChatNotifier extends Notifier<NLPChatState> {
   bool _pendingTimetable = false;
   String? _sessionId;
   String? _sessionTitle;
+  int? _sessionCacheRevision;
 
   String? _selectedRole() => ref.read(authProvider.notifier).selectedRole;
 
@@ -93,6 +95,14 @@ class NLPChatNotifier extends Notifier<NLPChatState> {
 
   @override
   NLPChatState build() {
+    final revision = ref.watch(sessionCacheRevisionProvider);
+    if (_sessionCacheRevision != revision) {
+      _sessionCacheRevision = revision;
+      _initialized = false;
+      _pendingTimetable = false;
+      _sessionId = null;
+      _sessionTitle = null;
+    }
     Future.microtask(_initializeWelcome);
     return NLPChatState();
   }

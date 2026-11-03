@@ -1,6 +1,7 @@
 import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/core/providers/admin_providers.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:citesched_flutter/features/admin/widgets/admin_header_container.dart';
 import 'package:citesched_flutter/main.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ final facultyScheduleProvider = FutureProvider.family<List<Schedule>, int>((
   ref,
   facultyId,
 ) async {
+  ref.watch(sessionCacheRevisionProvider);
   ref.watch(scheduleSyncTriggerProvider);
   return await client.admin.getFacultySchedule(facultyId);
 });

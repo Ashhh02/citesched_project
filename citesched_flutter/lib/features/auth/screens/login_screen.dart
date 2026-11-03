@@ -183,7 +183,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       authNotifier.updateUserInfo(null);
       authNotifier.setSelectedRole(null);
 
-      final sessionContext = await fetchSessionContext();
+      final sessionContext = await ref.read(sessionContextProvider.future);
       final email = sessionContext.email?.trim();
       final displayName = sessionContext.userName;
       final fallbackRole =

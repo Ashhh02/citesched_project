@@ -2,6 +2,7 @@ import 'package:citesched_client/citesched_client.dart';
 import 'package:citesched_flutter/features/auth/providers/auth_provider.dart';
 import 'package:citesched_flutter/features/nlp/providers/chat_history_provider.dart';
 import 'package:citesched_flutter/main.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final nlpQueryChatProvider =
@@ -72,6 +73,7 @@ class NLPQueryChatNotifier extends Notifier<NLPQueryChatState> {
   bool _initialized = false;
   bool _pendingTimetable = false;
   String? _pendingScheduleView;
+  int? _sessionCacheRevision;
 
   String? _selectedRole() => ref.read(authProvider.notifier).selectedRole;
 
@@ -89,6 +91,13 @@ class NLPQueryChatNotifier extends Notifier<NLPQueryChatState> {
 
   @override
   NLPQueryChatState build() {
+    final revision = ref.watch(sessionCacheRevisionProvider);
+    if (_sessionCacheRevision != revision) {
+      _sessionCacheRevision = revision;
+      _initialized = false;
+      _pendingTimetable = false;
+      _pendingScheduleView = null;
+    }
     if (!_initialized) {
       _initialized = true;
       return NLPQueryChatState(

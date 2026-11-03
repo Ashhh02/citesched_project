@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:citesched_flutter/core/providers/admin_providers.dart';
 import 'package:citesched_flutter/core/providers/schedule_sync_provider.dart';
+import 'package:citesched_flutter/core/providers/session_cache_provider.dart';
 import 'package:citesched_flutter/core/utils/responsive_helper.dart';
 import 'package:citesched_flutter/features/admin/widgets/conflict_list_modal.dart';
 import 'package:citesched_flutter/features/admin/widgets/admin_header_container.dart';
@@ -22,6 +23,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:serverpod_auth_client/serverpod_auth_client.dart';
 
 final dashboardStatsProvider = FutureProvider<DashboardStats>((ref) async {
+  ref.watch(sessionCacheRevisionProvider);
   ref.watch(scheduleSyncTriggerProvider);
   return await client.admin.getDashboardStats();
 });
@@ -29,6 +31,7 @@ final dashboardStatsProvider = FutureProvider<DashboardStats>((ref) async {
 final pendingFacultyRequestsProvider = FutureProvider<List<Faculty>>((
   ref,
 ) async {
+  ref.watch(sessionCacheRevisionProvider);
   final inactiveFacultyFuture = ref.watch(archivedFacultyListProvider.future);
   final roleRowsFuture = ref.watch(userRolesProvider.future);
   final inactiveFaculty = await inactiveFacultyFuture;
@@ -50,6 +53,7 @@ final pendingFacultyRequestsProvider = FutureProvider<List<Faculty>>((
 });
 
 final recentStudentSignupsProvider = FutureProvider<List<Student>>((ref) async {
+  ref.watch(sessionCacheRevisionProvider);
   final activeStudents = await ref.watch(studentsProvider.future);
   final cutoff = DateTime.now().subtract(const Duration(days: 7));
   final recent = activeStudents
