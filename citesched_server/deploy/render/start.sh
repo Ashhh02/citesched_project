@@ -3,7 +3,7 @@
 set -eu
 
 CONFIG_FILE="/app/config/passwords.yaml"
-PRODUCTION_CONFIG_FILE="/app/config/production.yaml"
+PRODUCTION_CONFIG_FILE="${SERVERPOD_PRODUCTION_CONFIG_FILE:-/app/config/production.yaml}"
 NGINX_SOURCE="/app/nginx.conf"
 NGINX_CONFIG="/etc/nginx/nginx.conf"
 
@@ -40,10 +40,75 @@ PUBLIC_HOST=""
 PUBLIC_PORT=""
 PUBLIC_SCHEME=""
 
+resolve_database_ssl() {
+  url="$1"
+  ssl_override="${SERVERPOD_DATABASE_REQUIRE_SSL:-}"
+
+  if [ -n "$ssl_override" ]; then
+    ssl_override="$(printf '%s' "$ssl_override" | tr '[:upper:]' '[:lower:]')"
+    case "$ssl_override" in
+      true|false)
+        DB_REQUIRE_SSL="$ssl_override"
+        return 0
+        ;;
+      *)
+        echo "SERVERPOD_DATABASE_REQUIRE_SSL must be true or false." >&2
+        return 1
+        ;;
+    esac
+  fi
+
+  ssl_mode=""
+  case "$url" in
+    *\?*)
+      query="${url#*\?}"
+      query="${query%%#*}"
+      while [ -n "$query" ]; do
+        case "$query" in
+          *'&'*)
+            parameter="${query%%&*}"
+            query="${query#*&}"
+            ;;
+          *)
+            parameter="$query"
+            query=""
+            ;;
+        esac
+        case "$parameter" in
+          sslmode=*)
+            ssl_mode="${parameter#sslmode=}"
+            break
+            ;;
+        esac
+      done
+      ;;
+  esac
+
+  ssl_mode="$(printf '%s' "$ssl_mode" | tr '[:upper:]' '[:lower:]')"
+  case "$ssl_mode" in
+    require|verify-ca|verify-full|prefer|allow)
+      DB_REQUIRE_SSL="true"
+      ;;
+    disable)
+      DB_REQUIRE_SSL="false"
+      ;;
+    "")
+      config_ssl="$(current_database_config_value requireSsl | awk '{$1=$1; print}')"
+      DB_REQUIRE_SSL="$(first_non_empty "$config_ssl" "false")"
+      ;;
+    *)
+      echo "Unsupported PostgreSQL sslmode in database URL." >&2
+      return 1
+      ;;
+  esac
+}
+
 load_database_config() {
   db_url="$(first_non_empty "${SERVERPOD_DATABASE_URL:-}" "${DATABASE_URL:-}" "${RENDER_DATABASE_URL:-}")"
 
   if [ -n "$db_url" ]; then
+    resolve_database_ssl "$db_url" || return $?
+
     without_scheme="${db_url#*://}"
     authority="${without_scheme%%/*}"
     DB_NAME="${without_scheme#*/}"
@@ -62,30 +127,19 @@ load_database_config() {
       DB_HOST="${host_and_port%%:*}"
       DB_PORT="${host_and_port#*:}"
     fi
-
-    case "$DB_HOST" in
-      *.render.com)
-        DB_REQUIRE_SSL="true"
-        ;;
-      *)
-        DB_REQUIRE_SSL="false"
-        ;;
-    esac
-    return 0
+  else
+    DB_HOST="$(first_non_empty "${SERVERPOD_DATABASE_HOST:-}")"
+    DB_PORT="$(first_non_empty "${SERVERPOD_DATABASE_PORT:-}")"
+    DB_NAME="$(first_non_empty "${SERVERPOD_DATABASE_NAME:-}")"
+    DB_USER="$(first_non_empty "${SERVERPOD_DATABASE_USER:-}")"
+    DB_PASSWORD="$(first_non_empty "${SERVERPOD_DATABASE_PASSWORD:-}")"
+    resolve_database_ssl "" || return $?
   fi
-
-  DB_HOST="$(first_non_empty "${SERVERPOD_DATABASE_HOST:-}")"
-  DB_PORT="$(first_non_empty "${SERVERPOD_DATABASE_PORT:-}")"
-  DB_NAME="$(first_non_empty "${SERVERPOD_DATABASE_NAME:-}")"
-  DB_USER="$(first_non_empty "${SERVERPOD_DATABASE_USER:-}")"
-  DB_PASSWORD="$(first_non_empty "${SERVERPOD_DATABASE_PASSWORD:-}")"
-  DB_REQUIRE_SSL="$(first_non_empty "${SERVERPOD_DATABASE_REQUIRE_SSL:-}")"
 
   DB_HOST="$(first_non_empty "$DB_HOST" "$(current_database_config_value host)")"
   DB_PORT="$(first_non_empty "$DB_PORT" "$(current_database_config_value port)" "5432")"
   DB_NAME="$(first_non_empty "$DB_NAME" "$(current_database_config_value name)")"
   DB_USER="$(first_non_empty "$DB_USER" "$(current_database_config_value user)")"
-  DB_REQUIRE_SSL="$(first_non_empty "$DB_REQUIRE_SSL" "$(current_database_config_value requireSsl)" "false")"
 }
 
 load_public_url_config() {
@@ -151,52 +205,54 @@ EOF
   fi
 }
 
-load_database_config
-load_public_url_config
-write_production_config
-write_password_config
+if [ "${0##*/}" = "start.sh" ]; then
+  load_database_config
+  load_public_url_config
+  write_production_config
+  write_password_config
 
-export PORT="${PORT:-10000}"
-envsubst '${PORT}' < "$NGINX_SOURCE" > "$NGINX_CONFIG"
+  export PORT="${PORT:-10000}"
+  envsubst '${PORT}' < "$NGINX_SOURCE" > "$NGINX_CONFIG"
 
-set -- --mode production --server-id default --logging normal --role monolith
-if [ "${SERVERPOD_APPLY_MIGRATIONS:-false}" = "true" ]; then
-  set -- "$@" --apply-migrations
+  set -- --mode production --server-id default --logging normal --role monolith
+  if [ "${SERVERPOD_APPLY_MIGRATIONS:-false}" = "true" ]; then
+    set -- "$@" --apply-migrations
+  fi
+  if [ "${SERVERPOD_APPLY_REPAIR_MIGRATION:-false}" = "true" ]; then
+    set -- "$@" --apply-repair-migration
+  fi
+
+  /app/server "$@" &
+
+  server_pid=$!
+
+  cleanup() {
+    kill "$server_pid" 2>/dev/null || true
+  }
+
+  trap cleanup INT TERM EXIT
+
+  wait_for_port() {
+    host="$1"
+    port="$2"
+    name="$3"
+    attempts="${4:-90}"
+    count=0
+
+    while [ "$count" -lt "$attempts" ]; do
+      if nc -z "$host" "$port" >/dev/null 2>&1; then
+        return 0
+      fi
+      count=$((count + 1))
+      sleep 1
+    done
+
+    echo "Timed out waiting for $name on $host:$port" >&2
+    return 1
+  }
+
+  wait_for_port 127.0.0.1 8080 "Serverpod API"
+  wait_for_port 127.0.0.1 8082 "Serverpod web"
+
+  exec nginx -g 'daemon off;'
 fi
-if [ "${SERVERPOD_APPLY_REPAIR_MIGRATION:-false}" = "true" ]; then
-  set -- "$@" --apply-repair-migration
-fi
-
-/app/server "$@" &
-
-server_pid=$!
-
-cleanup() {
-  kill "$server_pid" 2>/dev/null || true
-}
-
-trap cleanup INT TERM EXIT
-
-wait_for_port() {
-  host="$1"
-  port="$2"
-  name="$3"
-  attempts="${4:-90}"
-  count=0
-
-  while [ "$count" -lt "$attempts" ]; do
-    if nc -z "$host" "$port" >/dev/null 2>&1; then
-      return 0
-    fi
-    count=$((count + 1))
-    sleep 1
-  done
-
-  echo "Timed out waiting for $name on $host:$port" >&2
-  return 1
-}
-
-wait_for_port 127.0.0.1 8080 "Serverpod API"
-wait_for_port 127.0.0.1 8082 "Serverpod web"
-
-exec nginx -g 'daemon off;'
